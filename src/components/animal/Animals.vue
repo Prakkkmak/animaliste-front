@@ -1,10 +1,14 @@
 <template>
-    <h1> Liste des animaux </h1>
     <ul v-if="!loading && data && data.length">
-        <li v-for="animal in data" :key="animal.id" class="animal">
-            <p><strong>{{ animal.name }}</strong></p>
-            <p></p>
-        </li>
+        <div v-for="animal in data" :key="animal.id" class="columns is-clickable has-background-light mt-2">
+            <div class="column">
+                <div class="columns">
+                    <div class="column is-three-quarters">{{ animal.name }}</div> 
+                    <div class="column">{{ animal.sex }}</div> 
+                    <div class="column">{{ animal.sex }}</div> 
+                </div>
+            </div>
+        </div>
     </ul>
     <p v-if="loading">
         Chargement en cours..
@@ -43,7 +47,6 @@ export default {
                 })
             }
         }
-    }  
-        
+    }        
 }
 </script>
