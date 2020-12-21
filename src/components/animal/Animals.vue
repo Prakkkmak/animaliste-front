@@ -1,11 +1,16 @@
 <template>
     <ul v-if="!loading && data && data.length">
-        <div v-for="animal in data" :key="animal.id" class="columns is-clickable has-background-light mt-2">
-            <div class="column">
+        <div v-for="animalDatum in data" :key="animalDatum.id" class="columns is-clickable has-background-light mt-2" v-on:click="() => animalDatum.extended = !animalDatum.extended">
+            <div v-if="!animalDatum.extended" class="column">
                 <div class="columns">
-                    <div class="column is-three-quarters">{{ animal.name }}</div> 
-                    <div class="column">{{ animal.sex }}</div> 
-                    <div class="column">{{ animal.sex }}</div> 
+                    <div class="column is-three-quarters">{{ animalDatum.name }}</div> 
+                    <div class="column">{{ animalDatum.sex }}</div> 
+                    <div class="column">{{ animalDatum.sex }}</div> 
+                </div>
+            </div>
+            <div v-if="animalDatum.extended" class="column">
+                <div class="columns">
+                    <AnimalDetail :animalDatum="animalDatum"/>
                 </div>
             </div>
         </div>
@@ -19,7 +24,11 @@
 </template>
 
 <script>
+import AnimalDetail from './AnimalDetail.vue'
 export default {
+    components: {
+        AnimalDetail
+    },
     data(){
         return {
             data : [],
@@ -33,7 +42,7 @@ export default {
              const res = await fetch('http://localhost:8090/animals',{
                 method: 'get',
                 headers: {
-                    'content-type': 'applicaiton/json'
+                    'content-type': 'application/json'
                 }
             })
             this.data = await res.json()
@@ -47,6 +56,6 @@ export default {
                 })
             }
         }
-    }        
+    },
 }
 </script>
