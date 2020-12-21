@@ -1,17 +1,16 @@
 <template>
     <ul v-if="!loading && data && data.length">
-        <div v-for="animalDatum in data" :key="animalDatum.id" class="columns is-clickable has-background-light mt-2" v-on:click="() => animalDatum.extended = !animalDatum.extended">
+        <div v-for="animalDatum in data" :key="animalDatum.id" class="columns is-clickable has-background-light mt-2 mx-4" v-on:click="() => animalDatum.extended = !animalDatum.extended">
             <div v-if="!animalDatum.extended" class="column">
                 <div class="columns">
                     <div class="column is-three-quarters">{{ animalDatum.name }}</div> 
-                    <div class="column">{{ animalDatum.sex }}</div> 
-                    <div class="column">{{ animalDatum.sex }}</div> 
+                    <div class="column">{{ animalDatum.specie }}</div> 
                 </div>
             </div>
             <div v-if="animalDatum.extended" class="column">
-                <div class="columns">
-                    <AnimalDetail :animalDatum="animalDatum"/>
-                </div>
+
+                <AnimalDetail :data="animalDatum"/>
+
             </div>
         </div>
     </ul>
