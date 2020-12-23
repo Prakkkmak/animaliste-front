@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <Animals />  
+    <AnimalCreation />
+    <Animals />
   </div>
 </template>
 
 <script>
 import Animals from './components/animal/Animals.vue'
+import AnimalCreation from './components/animal/AnimalCreation.vue'
 
 export default {
   name: 'App',
   components: {
-    Animals
+    Animals,
+    AnimalCreation
   }
 }
 </script>
