@@ -45,7 +45,8 @@ export default {
     },
     methods: {
         createAnimal: function(event){
-            let newAnimal = JSON.stringify(animal)
+            let newAnimal = JSON.stringify(this.animal)
+            console.log(event, newAnimal)
             //axios.post()
         }
     }
