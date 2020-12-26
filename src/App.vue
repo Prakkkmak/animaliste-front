@@ -1,4 +1,5 @@
 <template>
+  <h2>{{ $t("hello") }}</h2>
   <div id="app">
     <Animals />  
   </div>
