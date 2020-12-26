@@ -1,6 +1,6 @@
 <template>
   <div class="columns">
-    <div class="column is-1">
+    <div class="column is-2">
         <label class="label">Nom :</label>
         <input class="input is-primary" v-model="animal.name" type="text" placeholder="Chachounet"/>
     </div>
@@ -23,7 +23,7 @@
     </div>
     <div class="column is-4">
         <br/>
-        <button class="button is-primary" v-on:click="createAnimal">Enregistrer</button>
+        <button class="button is-success" v-on:click="createAnimal">Enregistrer</button>
     </div>
   </div>
 </template>
