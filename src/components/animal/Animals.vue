@@ -1,10 +1,8 @@
 <template>
-    <h1> Liste des animaux </h1>
-    <ul v-if="!loading && data && data.length">
-        <li v-for="animal in data" :key="animal.id" class="animal">
-            <p><strong>{{ animal.name }}</strong></p>
-            <p></p>
-        </li>
+    <ul v-if="!loading && data?.length">
+        <div v-for="animalDatum in data" :key="animalDatum.id" class="columns">
+            <AnimalDetail :data="animalDatum"/>
+        </div>
     </ul>
     <p v-if="loading">
         Chargement en cours..
@@ -15,7 +13,11 @@
 </template>
 
 <script>
+import AnimalDetail from './AnimalDetail.vue'
 export default {
+    components: {
+        AnimalDetail
+    },
     data(){
         return {
             data : [],
@@ -29,7 +31,7 @@ export default {
              const res = await fetch('http://localhost:8090/animals',{
                 method: 'get',
                 headers: {
-                    'content-type': 'applicaiton/json'
+                    'content-type': 'application/json'
                 }
             })
             this.data = await res.json()
@@ -43,7 +45,6 @@ export default {
                 })
             }
         }
-    }  
-        
+    },
 }
 </script>

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Animals from './components/Animals.vue'
+import Animals from './components/animal/Animals.vue'
 
 export default {
   name: 'App',
