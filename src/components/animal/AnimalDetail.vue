@@ -3,27 +3,17 @@
         <div class="column is-1">
             <img src="https://dummyimage.com/320x200/000/fff"/>
         </div>
-        <div class="column is-2" v-on:click="() => i = true">
+        <div class="column is-2">
             <p v-if="!i">{{ data.name }}</p>
-            <input v-on:keyup.enter="() => i = false" v-if="i" class="input" type="text" :placeholder="data.name">
         </div>
-        <div class="column">
-            <p>{{ data.specie }}</p>
-        </div>
-        <div class="column">
-            {{ data.id }}
-            <p>Enregistré le:{{ data.registerDate }}</p>
+        <div class="column has-text-left">
+            <p v-for="(datum, index) in data" :key="index"><b>{{ index }}</b> : {{ datum }}</p>
         </div>
     </div>
 </template>
 <script>
 export default {
     props: ['data'],
-    data(){
-        return {
-            i: false
-        }
-    }
 }
 </script>
 <style lang="css">
