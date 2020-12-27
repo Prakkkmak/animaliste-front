@@ -1,6 +1,6 @@
 <template>
     <div class="column">
-        <div v-on:click="() => extended = !extended" class="column is-clickable has-background-primary">{{ data.name }} </div>
+        <div @click="extended = !extended" class="column is-clickable has-background-primary">{{ data.name }} </div>
         <div v-if="extended" class="column">
            <div class="columns">
                <div class="column">
