@@ -1,7 +1,7 @@
 <template>
     <div class="columns has-background-light">
         <div class="column is-1">
-            <button class="button is-primary" v-on:click="isPopUpOpen = !isPopUpOpen">Nouvel animal</button>
+            <button class="button is-primary" @click="isPopUpOpen = !isPopUpOpen">Nouvel animal</button>
         </div>
     </div>
 
@@ -10,13 +10,13 @@
         <div class="modal-card">
             <header class="modal-card-head">
                 <p class="modal-card-title">Ajout d'un animal</p>
-                <button class="delete" aria-label="delete" v-on:click="isPopUpOpen = !isPopUpOpen"></button>
+                <button class="delete" aria-label="delete" @click="isPopUpOpen = !isPopUpOpen"></button>
             </header>
             <section class="modal-card-body">
-                <AnimalCreationDetail />
+                <AnimalCreationDetail @exit="validateCreationAndReload"/>
             </section>
             <footer class="modal-card-foot">
-                <buton class="button" v-on:click="isPopUpOpen = !isPopUpOpen">Annuler</buton>
+                <button class="button" @click="isPopUpOpen = !isPopUpOpen">Annuler</button>
             </footer>
         </div>
     </div>
@@ -25,12 +25,19 @@
 <script>
 import AnimalCreationDetail from './AnimalCreationDetail.vue'
 export default {
+    emits: ['animalCreated'],
     components: {
         AnimalCreationDetail
     },
     data(){
         return{
             isPopUpOpen: false
+        }
+    },
+    methods: {
+        validateCreationAndReload(){
+            this.isPopUpOpen = !this.isPopUpOpen
+            this.$emit('animalCreated')
         }
     }
 }

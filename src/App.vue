@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <AnimalCreation />
-    <Animals />
+    <AnimalCreation @animalCreated="updateList" />
+    <Animals :key="animalListKey" />
   </div>
 </template>
 
@@ -14,6 +14,16 @@ export default {
   components: {
     Animals,
     AnimalCreation
+  },
+  data(){
+    return {
+      animalListKey: 1,
+    }
+  },
+  methods: {
+    updateList(){
+      this.animalListKey = this.animalListKey+1
+    }
   }
 }
 </script>

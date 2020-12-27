@@ -14,16 +14,15 @@
             <select v-model="animal.sex">
                 <option
                     v-for="option in sexes"
-                    :value="option"
+                    :value="option === 'Mâle' ? true : false"
                     :key="option"
-                    :selected='option === "femelle" ? true : false'
                 >{{ option }}</option>
             </select>
         </div>
     </div>
     <div class="column is-4">
         <br/>
-        <button class="button is-success" v-on:click="createAnimal">Enregistrer</button>
+        <button class="button is-success" @click="createAnimal">Enregistrer</button>
     </div>
   </div>
 </template>
@@ -40,14 +39,32 @@ export default {
                 name: "",
                 specie: "",
                 sex: true
-            }
+            },
         }
     },
     methods: {
-        createAnimal: function(event){
+        async createAnimal(){
             let newAnimal = JSON.stringify(this.animal)
-            console.log(event, newAnimal)
-            //axios.post()
+            try{
+                let res = await fetch('http://localhost:8090/animals',
+                {
+                    method: "POST",
+                    body: newAnimal,
+                    headers: {
+                        'content-type': 'application/json'
+                    }
+                })
+                if (res.status == 201)
+                    await this.$emit('exit')
+            }
+            catch(err){
+                this.error.value = err;
+                if(err.json){
+                    return err.json.then(json => {
+                        this.error.value.message = json.message
+                    })
+                }
+            }
         }
     }
 }
