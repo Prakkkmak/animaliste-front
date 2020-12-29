@@ -35,11 +35,7 @@ export default {
                 "Mâle",
                 "Femelle"
             ],
-            animal: {
-                name: "",
-                specie: "",
-                sex: true
-            },
+            animal: {},
         }
     },
     methods: {
@@ -69,7 +65,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-</style>

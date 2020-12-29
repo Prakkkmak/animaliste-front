@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     updateList(){
-      this.animalListKey = this.animalListKey+1
+      this.animalListKey = this.animalListKey + 1;
     }
   }
 }

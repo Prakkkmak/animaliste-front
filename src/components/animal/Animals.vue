@@ -1,7 +1,7 @@
 <template>
     <ul v-if="!loading && data?.length">
         <div v-for="animalDatum in data" :key="animalDatum.id" class="columns has-background-light mt-2 mx-4">
-            <div class="column is-clickable is-1 has-background-primary"  @click="() => animalDatum.extended = !animalDatum.extended">{{ animalDatum.name }} </div>
+            <div class="column is-clickable is-1 has-background-primary"  v-on:click="() => animalDatum.extended = !animalDatum.extended">{{ animalDatum.name }} </div>
             <div v-if="!animalDatum.extended" class="column">
                 <div class="columns">
                     <div class="column is-1">{{ animalDatum.name }}</div> 

@@ -36,13 +36,9 @@ export default {
     },
     methods: {
         validateCreationAndReload(){
-            this.isPopUpOpen = !this.isPopUpOpen
-            this.$emit('animalCreated')
+            this.isPopUpOpen = !this.isPopUpOpen;
+            this.$emit('animalCreated');
         }
     }
 }
 </script>
-
-<style>
-
-</style>
