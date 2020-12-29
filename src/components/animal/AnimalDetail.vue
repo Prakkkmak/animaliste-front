@@ -1,6 +1,6 @@
 <template>
     <div class="column">
-        <div @click="extended = !extended" class="column is-clickable has-background-primary">{{ data.name }} </div>
+        <div @click="extended = !extended" class="column is-clickable has-background-primary">{{ data.name }}</div>
         <div v-if="extended" class="column">
            <div class="columns">
                <div class="column">
@@ -26,6 +26,7 @@
                     <figure class="image">
                         <img src="https://dummyimage.com/320x200/000/fff"/>
                     </figure>
+                    <button @click="deleteAnimal" class="button is-danger">Supprimer</button>
                 </div>
            </div> 
         </div>
@@ -42,6 +43,23 @@ export default {
         return {
             extended: false
         }
+    },
+    methods : {
+        async deleteAnimal() {
+            try {
+                const res = await fetch(process.env.VUE_APP_BASE_URL + '/animals/'+ this.data.id, {
+                    method: 'DELETE',
+                    headers: {
+                        'content-type': 'application/json'
+                    }
+                });
+                this.$emit('delete-animal', this.data.id)
+            }
+            catch(err){
+                console.log(err);
+            }
+        },
     }
+    
 }
 </script>
