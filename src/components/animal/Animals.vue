@@ -1,7 +1,7 @@
 <template>
     <ul v-if="!loading && data?.length">
         <div v-for="animalDatum in data" :key="animalDatum.id" class="columns">
-            <AnimalDetail :data="animalDatum"/>
+            <AnimalDetail :data="animalDatum" @delete-animal="deleteAnimal"/>
         </div>
     </ul>
     <p v-if="loading">
@@ -28,7 +28,7 @@ export default {
     async mounted(){
         this.loading = true;
         try {
-             const res = await fetch('http://localhost:8090/animals',{
+             const res = await fetch(process.env.VUE_APP_BASE_URL + '/animals',{
                 method: 'get',
                 headers: {
                     'content-type': 'application/json'
@@ -46,5 +46,10 @@ export default {
             }
         }
     },
+    methods: {
+        deleteAnimal(id){
+            this.data = this.data.filter(datum => datum.id != id)
+        }
+    }
 }
 </script>
