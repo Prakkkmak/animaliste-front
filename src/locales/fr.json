@@ -2,7 +2,7 @@
     "animalDetail":{
         "attitudeDescription": "Description de l'atitude",
         "chip": "Puce",
-        "descritpion": "Description",
+        "description": "description",
         "dislikes":"N'aime pas",
         "male": "Mâle",
         "female": "Femelle",

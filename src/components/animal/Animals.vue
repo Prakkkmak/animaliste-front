@@ -1,7 +1,7 @@
 <template>
     <ul v-if="!loading && data?.length">
         <div v-for="animalDatum in data" :key="animalDatum.id" class="columns">
-            <AnimalDetail :data="animalDatum" @delete-animal="deleteAnimal"/>
+            <AnimalDetail :data="animalDatum" @delete-animal="deleteAnimal" @update-animal="updateAnimal"/>
         </div>
     </ul>
     <p v-if="loading">
@@ -49,6 +49,15 @@ export default {
     methods: {
         deleteAnimal(id){
             this.data = this.data.filter(datum => datum.id != id)
+        },
+        updateAnimal(id, newData){
+          for(let i in this.data){
+            if(this.data[i].id === id){
+              for(let j in newData){
+                this.data[i][j] = newData[j]
+              }
+            }
+          }
         }
     }
 }
