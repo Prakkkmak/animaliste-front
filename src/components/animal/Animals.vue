@@ -1,18 +1,7 @@
 <template>
     <ul v-if="!loading && data?.length">
-        <div v-for="animalDatum in data" :key="animalDatum.id" class="columns has-background-light mt-2 mx-4">
-            <div class="column is-clickable is-1 has-background-primary"  v-on:click="() => animalDatum.extended = !animalDatum.extended">{{ animalDatum.name }} </div>
-            <div v-if="!animalDatum.extended" class="column">
-                <div class="columns">
-                    <div class="column is-1">{{ animalDatum.name }}</div> 
-                    <div class="column is-2">{{ animalDatum.name }}</div> 
-                    <div class="column">{{ animalDatum.specie }}</div>
-                    <div class="column">{{ animalDatum.id }}</div>  
-                </div>
-            </div>
-            <div v-if="animalDatum.extended" class="column">
-                <AnimalDetail :data="animalDatum"/>
-            </div>
+        <div v-for="animalDatum in data" :key="animalDatum.id" class="columns">
+            <AnimalDetail :data="animalDatum" @delete-animal="deleteAnimal"/>
         </div>
     </ul>
     <p v-if="loading">
@@ -39,7 +28,7 @@ export default {
     async mounted(){
         this.loading = true;
         try {
-             const res = await fetch('http://localhost:8090/animals',{
+             const res = await fetch(process.env.VUE_APP_BASE_URL + '/animals',{
                 method: 'get',
                 headers: {
                     'content-type': 'application/json'
@@ -57,5 +46,10 @@ export default {
             }
         }
     },
+    methods: {
+        deleteAnimal(id){
+            this.data = this.data.filter(datum => datum.id != id)
+        }
+    }
 }
 </script>

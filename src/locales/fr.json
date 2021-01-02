@@ -1,0 +1,23 @@
+{
+    "animalDetail":{
+        "attitudeDescription": "Description de l'atitude",
+        "chip": "Puce",
+        "descritpion": "Description",
+        "dislikes":"N'aime pas",
+        "male": "Mâle",
+        "female": "Femelle",
+        "hello": "Bonjour",
+        "identifier": "Identifiant",
+        "likes": "Aime",
+        "name": "Nom",
+        "noData": "Donnée non renseignée",
+        "nutrition": "Nutrition",
+        "origin": "Origine",
+        "physicalDescription": "Description physique",
+        "registerDate": "Date d'enregistrement",
+        "race": "Race",
+        "vaccines": "Vaccins",
+        "sex": "Sexe",
+        "specie": "Espece"
+    } 
+}
