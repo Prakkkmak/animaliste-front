@@ -47,7 +47,7 @@ export default {
     methods : {
         async deleteAnimal() {
             try {
-                const res = await fetch(process.env.VUE_APP_BASE_URL + '/animals/'+ this.data.id, {
+                await fetch(process.env.VUE_APP_BASE_URL + '/animals/'+ this.data.id, {
                     method: 'DELETE',
                     headers: {
                         'content-type': 'application/json'
