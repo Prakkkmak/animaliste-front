@@ -4,25 +4,22 @@
     <div v-if="extended" class="column">
       <div class="columns">
         <div class="column">
-          <AnimalDatum keyName="name" :value="data.name" @update-field="updateAnimal"/>
-          <AnimalDatum v-if="data.sex === true" keyName="sex" :value="$t('animalDetail.male')"
-                       @update-field="updateAnimal"/>
-          <AnimalDatum v-if="data.sex === false" keyName="sex" :value="$t('animalDetail.female')"
-                       @update-field="updateAnimal"/>
-          <AnimalDatum v-else keyName="sex" :value="$t('animalDetail.sex')" @update-field="updateAnimal"/>
-          <AnimalDatum keyName='specie' :value="data.specie" @update-field="updateAnimal"/>
-          <AnimalDatum keyName="race" :value="data.race" @update-field="updateAnimal"/>
-          <AnimalDatum keyName="description" :value="data.description" @update-field="updateAnimal"/>
-          <AnimalDatum keyName="physicalDescription" :value="data.physicalDescription" @update-field="updateAnimal"/>
-          <AnimalDatum keyName="attitudeDescription" :value="data.attitudeDescription" @update-field="updateAnimal"/>
-          <AnimalDatum keyName="likes" :value="data.likes" @update-field="updateAnimal"/>
-          <AnimalDatum keyName="dislikes" :value="data.dislikes" @update-field="updateAnimal"/>
-          <AnimalDatum keyName="vaccines" :value="data.vaccines" @update-field="updateAnimal"/>
-          <AnimalDatum keyName="nutrition" :value="data.nutrition" @update-field="updateAnimal"/>
-          <AnimalDatum keyName="origin" :value="data.origin" @update-field="updateAnimal"/>
-          <AnimalDatum keyName="chip" :value="data.chip" @update-field="updateAnimal"/>
-          <AnimalDatum keyName="registerDate" :value="data.registerDate" @update-field="updateAnimal"/>
-          <AnimalDatum keyName="identifier" :value="data.id" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('name')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('sex')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('specie')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('race')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('description')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('physicalDescription')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('attitudeDescription')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('likes')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('dislikes')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('vaccines')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('nutrition')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('origin')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('chip')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('registerDate')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('identifier')" @update-field="updateAnimal" />
+
         </div>
         <div class="column is-4">
           <figure class="image">
@@ -53,6 +50,9 @@ export default {
     await this.loadAnimal();
   },
   methods: {
+    getFieldData(key){
+      return {key: key, value: this.data[key], editable: false}
+    },
     async loadAnimal() {
       this.loading = true;
       try {
@@ -83,10 +83,13 @@ export default {
         this.$emit('delete-animal', this.data.id)
       }
     },
-    async updateAnimal(newData) {
+    updateAnimal(newData) {
       for (let i in newData) {
         this.data[i] = newData[i];
       }
+      this.saveAnimal();
+    },
+    async saveAnimal(){
       try {
         await fetch(process.env.VUE_APP_BASE_URL + '/animals/' + this.data.id, {
           method: 'PUT',
@@ -98,7 +101,7 @@ export default {
       } catch (err) {
         console.log(err);
       }
-    },
+    }
   }
 
 }

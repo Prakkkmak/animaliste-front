@@ -1,8 +1,8 @@
 <template>
     <div class="columns">
-        <div class="column is-4 has-background-info has-text-left"> {{  $t('animalDetail.' + keyName) }} </div>
+        <div class="column is-4 has-background-info has-text-left"> {{  $t('animalDetail.' + fieldData.key) }} </div>
         <div class="column has-text-left" v-if="!edit" @click="edit = true">
-          <p v-if="value">{{  value }}</p>
+          <p v-if="fieldData.value">{{  fieldData.value }}</p>
           <p v-else>{{ $t('animalDetail.noData')}}</p>
         </div>
         <div v-else class="column">
@@ -35,11 +35,12 @@
 
 <script>
 export default {
-    props: ['keyName', 'value'],
+    props: ['fieldData'],
+    emits: ['update-field'],
     data(){
       return {
-        edit: false,
-        newValue: this.value
+        newValue: this.fieldData.value,
+        edit: false
       }
     },
     methods:{
@@ -47,7 +48,7 @@ export default {
         this.edit = false
         if(this.newValue !== this.value){
           const newData = {};
-          newData[this.keyName] = this.newValue;
+          newData[this.fieldData.key] = this.newValue;
           this.$emit('update-field', newData)
         }
       }
