@@ -19,5 +19,6 @@
         "vaccines": "Vaccins",
         "sex": "Sexe",
         "specie": "Espece"
-    } 
+    }, 
+    "save": "Enregistrer"
 }

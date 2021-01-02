@@ -1,15 +1,15 @@
 <template>
   <div class="columns">
     <div class="column is-2">
-        <label class="label">Nom :</label>
+        <label class="label">{{ $t('animalDetail.name') }}</label>
         <input class="input is-primary" v-model="animal.name" type="text" placeholder="Chachounet"/>
     </div>
     <div class="column is-2">
-        <label class="label">Espèce :</label>
+        <label class="label">{{ $t('animalDetail.specie') }}</label>
         <input class="input is-primary" v-model="animal.specie" type="text" placeholder="Chat"/>
     </div>
     <div class="column is-3">
-        <label class="label">Sexe :</label>
+        <label class="label">{{ $t('animalDetail.sex') }}</label>
         <div class="select is-primary">
             <select v-model="animal.sex">
                 <option
@@ -22,7 +22,7 @@
     </div>
     <div class="column is-4">
         <br/>
-        <button class="button is-success" @click="createAnimal">Enregistrer</button>
+        <button class="button is-success" @click="createAnimal">{{ $t('save') }}</button>
     </div>
   </div>
 </template>
