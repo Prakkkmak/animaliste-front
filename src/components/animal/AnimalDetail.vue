@@ -19,13 +19,14 @@
           <AnimalDatum :fieldData="getFieldData('chip')" @update-field="updateAnimal"/>
           <AnimalDatum :fieldData="getFieldData('registerDate')" @update-field="updateAnimal"/>
           <AnimalDatum :fieldData="getFieldData('identifier')" @update-field="updateAnimal" />
-
         </div>
         <div class="column is-4">
           <figure class="image">
             <img src="https://dummyimage.com/320x200/000/fff"/>
           </figure>
-          <button @click="deleteAnimal" class="button is-danger">Supprimer</button>
+          <button v-if="modification" class="button is-warning" @click="cancelModification">{{ $t('button.cancel') }}</button>
+          <button v-if="modification" class="button is-success" @click="saveAnimal">{{ $t('button.save') }}</button>
+          <button class="button is-danger"  @click="deleteAnimal">{{ $t('button.delete') }}</button>
         </div>
       </div>
     </div>
@@ -44,6 +45,7 @@ export default {
       data: {},
       extended: false,
       loading: true,
+      modification: false
     }
   },
   async mounted() {
@@ -67,6 +69,7 @@ export default {
         console.log(err);
       } finally {
         this.loading = false;
+        this.modification = false;
       }
     },
     async deleteAnimal() {
@@ -87,7 +90,10 @@ export default {
       for (let i in newData) {
         this.data[i] = newData[i];
       }
-      this.saveAnimal();
+      this.modification = true;
+    },
+    cancelModification(){
+      this.loadAnimal()
     },
     async saveAnimal(){
       try {
@@ -101,6 +107,7 @@ export default {
       } catch (err) {
         console.log(err);
       }
+      this.modification = false;
     }
   }
 

@@ -1,7 +1,7 @@
 <template>
     <div class="columns">
         <div class="column is-4 has-background-info has-text-left"> {{  $t('animalDetail.' + fieldData.key) }} </div>
-        <div class="column has-text-left" v-if="!edit" @click="edit = true">
+        <div class="column is-8 has-text-left" v-if="!edit" @click="edit = true">
           <p v-if="fieldData.value">{{  fieldData.value }}</p>
           <p v-else>{{ $t('animalDetail.noData')}}</p>
         </div>
@@ -10,23 +10,9 @@
             <div class="column">
               <div class="field">
                 <div class="control">
-                  <input class="input is-primary" type="text" v-model="newValue">
+                  <input class="input is-primary" type="text" v-model="newValue" @blur="updateField">
                 </div>
               </div>
-            </div>
-            <div class="column">
-              <button class="button is-success" @click="updateField">
-              <span class="icon is-small">
-                <i class="fas fa-check"></i>
-              </span>
-                <span>Save</span>
-              </button>
-              <button class="button is-danger is-outlined"  @click="edit = false">
-                <span>Delete</span>
-                <span class="icon is-small">
-                <i class="fas fa-times"></i>
-              </span>
-              </button>
             </div>
           </div>
         </div>
@@ -45,12 +31,13 @@ export default {
     },
     methods:{
       updateField: function(){
-        this.edit = false
+        this.edit = false;
         if(this.newValue !== this.value){
           const newData = {};
           newData[this.fieldData.key] = this.newValue;
-          this.$emit('update-field', newData)
+          this.$emit('update-field', newData);
         }
+        this.newValue = this.fieldData.value;
       }
     }
 }
