@@ -1,65 +1,115 @@
 <template>
-    <div class="column">
-        <div @click="extended = !extended" class="column is-clickable has-background-primary">{{ data.name }}</div>
-        <div v-if="extended" class="column">
-           <div class="columns">
-               <div class="column">
-                    <AnimalDatum :label="$t('animalDetail.name')" :value="data.name"/>
-                    <AnimalDatum v-if="data.sex === true" :label="$t('animalDetail.sex')" :value="$t('animalDetail.male')"/>
-                    <AnimalDatum v-if="data.sex === false" :label="$t('animalDetail.sex')" :value="$t('animalDetail.female')"/>
-                    <AnimalDatum v-else :label="$t('animalDetail.sex')" :value="$t('animalDetail.sex')"/>
-                    <AnimalDatum :label="$t('animalDetail.specie')" :value="data.specie"/>
-                    <AnimalDatum :label="$t('animalDetail.race')" :value="data.race"/>
-                    <AnimalDatum :label="$t('animalDetail.descritpion')" :value="data.description"/>
-                    <AnimalDatum :label="$t('animalDetail.physicalDescription')" :value="data.physicalDescription"/>
-                    <AnimalDatum :label="$t('animalDetail.attitudeDescription')" :value="data.attitudeDescription"/>
-                    <AnimalDatum :label="$t('animalDetail.likes')" :value="data.likes"/>
-                    <AnimalDatum :label="$t('animalDetail.dislikes')" :value="data.dislikes"/>
-                    <AnimalDatum :label="$t('animalDetail.vaccines')" :value="data.vaccines"/>
-                    <AnimalDatum :label="$t('animalDetail.nutrition')" :value="data.nutrition"/>
-                    <AnimalDatum :label="$t('animalDetail.origin')" :value="data.origin"/>
-                    <AnimalDatum :label="$t('animalDetail.chip')" :value="data.chip"/>
-                    <AnimalDatum :label="$t('animalDetail.registerDate')" :value="data.registerDate"/>
-                    <AnimalDatum :label="$t('animalDetail.identifier')" :value="data.id"/>
-                </div>
-                <div class="column is-4">
-                    <figure class="image">
-                        <img src="https://dummyimage.com/320x200/000/fff"/>
-                    </figure>
-                    <button @click="deleteAnimal" class="button is-danger">Supprimer</button>
-                </div>
-           </div> 
+  <div class="column">
+    <div @click="extended = !extended" class="column is-clickable has-background-primary">{{ data.name }}</div>
+    <div v-if="extended" class="column">
+      <div class="columns">
+        <div class="column">
+          <AnimalDatum :fieldData="getFieldData('name')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('sex')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('specie')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('race')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('description')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('physicalDescription')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('attitudeDescription')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('likes')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('dislikes')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('vaccines')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('nutrition')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('origin')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('chip')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('registerDate')" @update-field="updateAnimal"/>
+          <AnimalDatum :fieldData="getFieldData('identifier')" @update-field="updateAnimal" />
         </div>
+        <div class="column is-4">
+          <figure class="image">
+            <img src="https://dummyimage.com/320x200/000/fff"/>
+          </figure>
+          <button v-if="modification" class="button is-warning" @click="cancelModification">{{ $t('button.cancel') }}</button>
+          <button v-if="modification" class="button is-success" @click="saveAnimal">{{ $t('button.save') }}</button>
+          <button class="button is-danger"  @click="deleteAnimal">{{ $t('button.delete') }}</button>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 <script>
 import AnimalDatum from './AnimalDatum.vue'
+
 export default {
-    components: {
-        AnimalDatum
-    },
-    props: ['data'],
-    data() {
-        return {
-            extended: false
-        }
-    },
-    methods : {
-        async deleteAnimal() {
-            try {
-                await fetch(process.env.VUE_APP_BASE_URL + '/animals/'+ this.data.id, {
-                    method: 'DELETE',
-                    headers: {
-                        'content-type': 'application/json'
-                    }
-                });
-                this.$emit('delete-animal', this.data.id)
-            }
-            catch(err){
-                console.log(err);
-            }
-        },
+  components: {
+    AnimalDatum
+  },
+  props: ['id'],
+  data() {
+    return {
+      data: {},
+      extended: false,
+      loading: true,
+      modification: false
     }
-    
+  },
+  async mounted() {
+    await this.loadAnimal();
+  },
+  methods: {
+    getFieldData(key){
+      return {key: key, value: this.data[key], editable: false}
+    },
+    async loadAnimal() {
+      this.loading = true;
+      try {
+        const res = await fetch(process.env.VUE_APP_BASE_URL + '/animals/' + this.id, {
+          method: 'get',
+          headers: {
+            'content-type': 'application/json'
+          }
+        })
+        this.data = await res.json()
+      } catch (err) {
+        console.log(err);
+      } finally {
+        this.loading = false;
+        this.modification = false;
+      }
+    },
+    async deleteAnimal() {
+      try {
+        await fetch(process.env.VUE_APP_BASE_URL + '/animals/' + this.data.id, {
+          method: 'DELETE',
+          headers: {
+            'content-type': 'application/json'
+          }
+        });
+      } catch (err) {
+        console.log(err);
+      } finally {
+        this.$emit('delete-animal', this.data.id)
+      }
+    },
+    updateAnimal(newData) {
+      for (let i in newData) {
+        this.data[i] = newData[i];
+      }
+      this.modification = true;
+    },
+    cancelModification(){
+      this.loadAnimal()
+    },
+    async saveAnimal(){
+      try {
+        await fetch(process.env.VUE_APP_BASE_URL + '/animals/' + this.data.id, {
+          method: 'PUT',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(this.data)
+        });
+      } catch (err) {
+        console.log(err);
+      }
+      this.modification = false;
+    }
+  }
+
 }
 </script>
