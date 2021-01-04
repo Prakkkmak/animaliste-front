@@ -1,16 +1,29 @@
 <template>
   <div id="app">
-    <Animals />  
+    <AnimalCreation @animalCreated="updateList" />
+    <Animals :key="animalListKey" />
   </div>
 </template>
 
 <script>
 import Animals from './components/animal/Animals.vue'
+import AnimalCreation from './components/animal/AnimalCreation.vue'
 
 export default {
   name: 'App',
   components: {
-    Animals
+    Animals,
+    AnimalCreation
+  },
+  data(){
+    return {
+      animalListKey: 1,
+    }
+  },
+  methods: {
+    updateList(){
+      this.animalListKey = this.animalListKey + 1;
+    }
   }
 }
 </script>

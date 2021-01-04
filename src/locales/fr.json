@@ -24,5 +24,7 @@
         "cancel": "Annuler",
         "delete": "Supprimer",
         "save": "Sauvegarder"
+    }, 
+    "save": "Enregistrer"
     }
 }
