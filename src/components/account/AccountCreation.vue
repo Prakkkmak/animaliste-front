@@ -23,6 +23,12 @@
       <i class="fas fa-lock"></i>
     </span>
     </p>
+    <p class="control has-icons-left">
+      <input class="input" type="password" placeholder="Password" v-model="passwordVerification">
+      <span class="icon is-small is-left">
+      <i class="fas fa-lock"></i>
+    </span>
+    </p>
   </div>
   <div class="field">
     <p class="control">
@@ -42,6 +48,7 @@ export default {
     return{
       mail: "",
       password: "",
+      passwordVerification: "",
       errors: [],
     }
   },
@@ -51,7 +58,7 @@ export default {
       if(this.mail.length < 5 || !this.mail.includes('@')){
         this.errors.push(this.$t('account.errorMail'));
       }
-      if(this.password.length < 8){
+      if(this.password.length < 8 || this.password !== this.passwordVerification){
         this.errors.push(this.$t('account.errorPassword'));
       }
       return this.errors.length === 0
