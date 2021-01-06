@@ -1,9 +1,10 @@
 <template>
-  <ul v-if="!loading && data?.length">
-    <div v-for="animalId in data" :key="animalId" class="columns">
-      <AnimalDetail :id="animalId" @delete-animal="deleteAnimal"/>
+  <ul v-if="!loading">
+    <input class="input" type="text" placeholder="" v-model="dataFilterString">
+    <div v-for="animal in data" :key="animal.id" class="columns">
+      <AnimalDetail :id="animal.id" @delete-animal="deleteAnimal" @update-animal="updateAnimal" v-if="!dataFilterString.length || filteredData.includes(animal.id)"/>
     </div>
-  </ul>
+    </ul>
   <p v-if="loading">
     Chargement en cours..
   </p>
@@ -19,7 +20,9 @@ export default {
   data() {
     return {
       data: {},
-      loading: true
+      filteredData: [],
+      loading: true,
+      dataFilterString: ""
     }
   },
   async mounted() {
@@ -31,17 +34,43 @@ export default {
           'content-type': 'application/json'
         }
       })
-      this.data = await res.json()
-      this.data = this.data.map((item) => item.id) //Transforme l'array en map
+      this.data = await res.json();
     } catch (err) {
       console.log(err);
     } finally {
       this.loading = false;
     }
   },
+  watch: {
+    dataFilterString: function(){
+      this.filterAnimal()
+    }
+  },
   methods: {
     deleteAnimal(id) {
-      this.data.delete(id);
+      this.data.delete(this.getIndex(id));
+    },
+    updateAnimal(data) {
+      this.data[this.getIndex(data.id)] = data;
+    },
+    filterAnimal(){
+      this.filteredData = []
+      for (const animal of this.data) {
+        for(const field in animal){
+          console.log(animal[field])
+          if(typeof animal[field] === 'string' && animal[field].includes(this.dataFilterString)){
+            this.filteredData.push(animal.id)
+          }
+        }
+      }
+    },
+    getData(id){
+      this.data.forEach((animal) => {
+        if(animal.id === id) return animal;
+      })
+    },
+    getIndex(id){
+      return this.data.indexOf(this.getData(id))
     }
   }
 }

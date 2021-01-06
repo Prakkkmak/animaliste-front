@@ -34,12 +34,12 @@
 </template>
 <script>
 import AnimalDatum from './AnimalDatum.vue'
-
 export default {
   components: {
     AnimalDatum
   },
   props: ['id'],
+  emits: ['delete-animal', 'update-animal'],
   data() {
     return {
       data: {},
@@ -91,6 +91,7 @@ export default {
         this.data[i] = newData[i];
       }
       this.modification = true;
+      this.$emit('update_animal', this.data)
     },
     cancelModification(){
       this.loadAnimal()

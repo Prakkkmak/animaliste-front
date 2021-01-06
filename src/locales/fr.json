@@ -25,5 +25,6 @@
         "delete": "Supprimer",
         "save": "Sauvegarder"
     }, 
-    "save": "Enregistrer"
+    "save": "Enregistrer",
+    "search": "Rechercher"
 }
