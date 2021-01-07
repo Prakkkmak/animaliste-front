@@ -7,7 +7,7 @@
   </div>
   <div class="field">
     <p class="control has-icons-left has-icons-right">
-      <input class="input" type="email" placeholder="Email" v-model="mail">
+      <input class="input" type="email" :placeholder="$t('account.mail')" v-model="mail">
       <span class="icon is-small is-left">
       <i class="fas fa-envelope"></i>
     </span>
@@ -18,13 +18,13 @@
   </div>
   <div class="field">
     <p class="control has-icons-left">
-      <input class="input" type="password" placeholder="Password" v-model="password">
+      <input class="input" type="password" :placeholder="$t('account.password')" v-model="password">
       <span class="icon is-small is-left">
       <i class="fas fa-lock"></i>
     </span>
     </p>
     <p class="control has-icons-left">
-      <input class="input" type="password" placeholder="Password" v-model="passwordVerification">
+      <input class="input" type="password" :placeholder="$t('account.password')" v-model="passwordVerification">
       <span class="icon is-small is-left">
       <i class="fas fa-lock"></i>
     </span>
@@ -33,7 +33,7 @@
   <div class="field">
     <p class="control">
       <button class="button is-success" @click="createAccount">
-        Login
+        {{ $t("account.register") }}
       </button>
     </p>
   </div>
