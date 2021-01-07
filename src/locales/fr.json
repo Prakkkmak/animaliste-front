@@ -26,5 +26,15 @@
         "save": "Sauvegarder"
     }, 
     "save": "Enregistrer",
+    "account": {
+        "disconnect": "Se déconnecter",
+        "errorMail": "Mail incorrect.",
+        "errorPassword": "Mot de passe incorrect.",
+        "login": "Se connecter",
+        "mail": "Email",
+        "password": "Mot de passe",
+        "register": "Enregister"
+    }
+    "save": "Enregistrer",
     "search": "Rechercher"
 }
