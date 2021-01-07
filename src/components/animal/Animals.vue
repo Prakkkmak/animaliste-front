@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     deleteAnimal(id) {
-      this.data.delete(this.getIndex(id));
+      this.data.splice(this.getIndex(id),1);
     },
     updateAnimal(data) {
       this.data[this.getIndex(data.id)] = data;
