@@ -24,8 +24,7 @@
         "cancel": "Annuler",
         "delete": "Supprimer",
         "save": "Sauvegarder"
-    }, 
-    "save": "Enregistrer",
+    },
     "account": {
         "disconnect": "Se déconnecter",
         "errorMail": "Mail incorrect.",
@@ -34,7 +33,18 @@
         "mail": "Email",
         "password": "Mot de passe",
         "register": "Enregister"
-    }
+    },
+    "menu": {
+        "administration": "Administration",
+        "animals": "Animaux",
+        "cats": "Chats",
+        "createAccount": "Créer un compte",
+        "createAnimal": "Enregistrer un nouvel animal",
+        "connect": "Se connecter",
+        "dogs": "Chiens",
+        "general": "Général",
+        "other": "Autres"
+    },
     "save": "Enregistrer",
     "search": "Rechercher"
 }

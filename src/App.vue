@@ -1,8 +1,15 @@
 <template>
   <div id="app">
-    <AccountCreation />
-    <AnimalCreation @animalCreated="updateList" />
-    <Animals :key="animalListKey" />
+    <div class="columns">
+      <div class="column is-2">
+        <Menu />
+      </div>
+      <div class="column">
+        <AccountCreation />
+        <AnimalCreation @animal-created="updateList" />
+        <Animals :key="animalListKey" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -10,10 +17,12 @@
 import Animals from './components/animal/Animals.vue'
 import AnimalCreation from './components/animal/AnimalCreation.vue'
 import AccountCreation from "./components/account/AccountCreation";
+import Menu from "./components/Menu";
 
 export default {
   name: 'App',
   components: {
+    Menu,
     AccountCreation,
     Animals,
     AnimalCreation
