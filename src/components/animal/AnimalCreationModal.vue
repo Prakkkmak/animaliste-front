@@ -4,7 +4,7 @@
     <div class="modal-card">
       <header class="modal-card-head">
         <p class="modal-card-title">Ajout d'un animal</p>
-        <button class="delete" aria-label="delete" @click="this.$emit('close')"></button>
+        <button class="delete" aria-label="delete" @click="$emit('close')"></button>
       </header>
       <section class="modal-card-body">
         <AnimalCreationForm @exit="validateCreationAndReload"/>

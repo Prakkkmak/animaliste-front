@@ -4,7 +4,7 @@
       {{ $t("menu.general") }}
     </p>
     <ul class="menu-list">
-      <li><a>{{ $t("menu.createAnimal") }}</a></li>
+      <AnimalCreationMenu/>
       <li>
         <a>{{ $t("menu.animals") }}</a>
         <ul>
@@ -26,8 +26,10 @@
 </template>
 
 <script>
+import AnimalCreationMenu from "./AnimalCreationMenu";
 export default {
-name: "Menu.vue"
+name: "Menu.vue",
+  components: {AnimalCreationMenu}
 }
 </script>
 
