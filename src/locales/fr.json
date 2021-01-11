@@ -23,9 +23,9 @@
     "button": {
         "cancel": "Annuler",
         "delete": "Supprimer",
-        "save": "Sauvegarder"
-    }, 
-    "save": "Enregistrer",
+        "save": "Enregistrer",
+        "search": "Rechercher"
+    },
     "account": {
         "disconnect": "Se déconnecter",
         "errorMail": "Mail incorrect.",
@@ -35,6 +35,10 @@
         "password": "Mot de passe",
         "register": "Enregister"
     },
-    "save": "Enregistrer",
-    "search": "Rechercher"
+    "titles": {
+        "addAnimal": "Ajout d'un animal"
+    },
+    "misc": {
+        "newAnimal": "Nouvel animal"
+    }
 }

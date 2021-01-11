@@ -1,7 +1,7 @@
 <template>
     <div class="columns has-background-light">
         <div class="column is-1">
-            <button class="button is-primary" @click="isPopUpOpen = !isPopUpOpen">Nouvel animal</button>
+            <button class="button is-primary" @click="isPopUpOpen = !isPopUpOpen">{{ $t('misc.newAnimal') }}</button>
         </div>
     </div>
 
@@ -9,14 +9,14 @@
         <div class="modal-background"></div>
         <div class="modal-card">
             <header class="modal-card-head">
-                <p class="modal-card-title">Ajout d'un animal</p>
+                <p class="modal-card-title">{{ $t('titles.addAnimal') }}</p>
                 <button class="delete" aria-label="delete" @click="isPopUpOpen = !isPopUpOpen"></button>
             </header>
             <section class="modal-card-body">
                 <AnimalCreationDetail @exit="validateCreationAndReload"/>
             </section>
             <footer class="modal-card-foot">
-                <button class="button" @click="isPopUpOpen = !isPopUpOpen">Annuler</button>
+                <button class="button" @click="isPopUpOpen = !isPopUpOpen">{{ $t('button.cancel') }}</button>
             </footer>
         </div>
     </div>

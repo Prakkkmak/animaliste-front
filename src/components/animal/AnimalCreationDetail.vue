@@ -14,7 +14,7 @@
             <select v-model="animal.sex">
                 <option
                     v-for="option in sexes"
-                    :value="option === 'Mâle'"
+                    :value="option === $t('animalDetail.noData')"
                     :key="option"
                 >{{ option }}</option>
             </select>
@@ -32,8 +32,8 @@ export default {
     data(){
         return{
             sexes: [
-                "Mâle",
-                "Femelle"
+                $t('animalDetail.male'),
+                $t('animalDetail.female')
             ],
             animal: this.emptyAnimal()
         }
