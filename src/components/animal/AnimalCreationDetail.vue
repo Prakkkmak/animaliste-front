@@ -14,7 +14,7 @@
             <select v-model="animal.sex">
                 <option
                     v-for="option in sexes"
-                    :value="option === 'Mâle' ? true : false"
+                    :value="option === 'Mâle'"
                     :key="option"
                 >{{ option }}</option>
             </select>
@@ -35,14 +35,15 @@ export default {
                 "Mâle",
                 "Femelle"
             ],
-            animal: {},
+            animal: this.emptyAnimal()
         }
     },
+    emits: ['exit'],
     methods: {
         async createAnimal(){
             let newAnimal = JSON.stringify(this.animal)
             try{
-                let res = await fetch('http://localhost:8090/animals',
+                await fetch('http://localhost:8090/animals',
                 {
                     method: "POST",
                     body: newAnimal,
@@ -50,17 +51,19 @@ export default {
                         'content-type': 'application/json'
                     }
                 })
-                if (res.status == 201)
-                    await this.$emit('exit')
             }
             catch(err){
-                this.error.value = err;
-                if(err.json){
-                    return err.json.then(json => {
-                        this.error.value.message = json.message
-                    })
-                }
+                console.log(err);
             }
+            this.animal = this.emptyAnimal();
+            this.$emit('exit');
+        },
+        emptyAnimal(){
+          return {
+            name: '',
+            specie: '',
+            sex: false
+          }
         }
     }
 }
