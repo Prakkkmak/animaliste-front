@@ -81,21 +81,20 @@ export default {
       }
       return this.errors.length === 0;
     },
-    async createAccount(){
-      if(!this.checkForm()) return;
-      try{
-        await fetch(process.env.VUE_APP_BASE_URL + '/accounts',
-            {
-              method: "POST",
-              headers: {
-                'content-type': 'application/json'
-              },
-              body: {
-                mail: this.mail,
-                password: this.hashPassword(this.password)},
-            });
-      }
-      catch(err){
+    async createAccount() {
+      if (!this.checkForm()) return;
+      try {
+        await fetch(process.env.VUE_APP_BASE_URL + '/accounts', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: {
+            mail: this.mail,
+            password: this.hashPassword(this.password),
+          },
+        });
+      } catch (err) {
         console.log(err);
       }
     },
