@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/vue';
-import AccountCreation from './AccountCreation';
+import AccountCreation from '../../../../components/account/AccountCreation.vue';
 
 // TODO Encore creation
 
