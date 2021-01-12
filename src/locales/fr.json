@@ -35,10 +35,12 @@
         "password": "Mot de passe",
         "register": "Enregister"
     },
-    "titles": {
-        "addAnimal": "Ajout d'un animal"
-    },
-    "misc": {
-        "newAnimal": "Nouvel animal"
+    "creationAnimal": {
+        "titles": {
+            "addAnimal": "Ajout d'un animal"
+        },
+        "buttons": {
+            "newAnimal": "Nouvel animal"
+        }
     }
 }
