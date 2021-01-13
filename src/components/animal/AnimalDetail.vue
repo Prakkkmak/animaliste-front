@@ -5,6 +5,7 @@
       <div class="columns">
         <div class="column">
           <AnimalDatum :fieldData="getFieldData('name')" @update-field="updateAnimal"/>
+          <!-- Cette vue est peut-être à modifier. -->
           <AnimalDatum :fieldData="getFieldData('sex')" @update-field="updateAnimal"/>
           <AnimalDatum :fieldData="getFieldData('specie')" @update-field="updateAnimal"/>
           <AnimalDatum :fieldData="getFieldData('race')" @update-field="updateAnimal"/>
