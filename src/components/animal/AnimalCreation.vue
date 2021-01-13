@@ -2,16 +2,15 @@
   <div class="columns has-background-light">
     <div class="column is-1">
       <button class="button is-primary" @click="isPopUpOpen = !isPopUpOpen">
-        Nouvel animal
+        {{ $t('creationAnimal.newAnimal') }}
       </button>
     </div>
   </div>
-
   <div class="modal is-active" v-show="isPopUpOpen">
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Ajout d'un animal</p>
+        <p class="modal-card-title">{{ $t('creationAnimal.addAnimal') }}</p>
         <button
           class="delete"
           aria-label="delete"
@@ -23,7 +22,7 @@
       </section>
       <footer class="modal-card-foot">
         <button class="button" @click="isPopUpOpen = !isPopUpOpen">
-          Annuler
+          {{ $t('button.cancel') }}
         </button>
       </footer>
     </div>
