@@ -84,7 +84,7 @@ export default {
     async createAccount() {
       if (!this.checkForm()) return;
       try {
-        await fetch('http://localhost:8090/accounts', {
+        await fetch(process.env.VUE_APP_BASE_URL + '/accounts', {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
