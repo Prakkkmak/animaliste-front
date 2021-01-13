@@ -24,7 +24,7 @@
         <select v-model="animal.sex">
           <option
             v-for="option in sexes"
-            :value="option === $t('animalDetail.noData')"
+            :value="option === $t('animalDetail.female')"
             :key="option"
           >
             {{ option }}
