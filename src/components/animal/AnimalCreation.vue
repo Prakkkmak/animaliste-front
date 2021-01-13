@@ -2,7 +2,7 @@
   <div class="columns has-background-light">
     <div class="column is-1">
       <button class="button is-primary" @click="isPopUpOpen = !isPopUpOpen">
-        {{ $t('creationAnimal.newAnimal') }}
+        {{ $t('animalCreation.newAnimal') }}
       </button>
     </div>
   </div>
@@ -10,7 +10,7 @@
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">{{ $t('creationAnimal.addAnimal') }}</p>
+        <p class="modal-card-title">{{ $t('animalCreation.addAnimal') }}</p>
         <button
           class="delete"
           aria-label="delete"

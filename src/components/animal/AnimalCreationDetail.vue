@@ -35,17 +35,19 @@
     <div class="column is-4">
       <br />
       <button class="button is-success" @click="createAnimal">
-        {{ $t('save') }}
+        {{ $t('button.save') }}
       </button>
     </div>
   </div>
 </template>
 
 <script>
+import { languages } from '../../locales/index.js';
+
 export default {
   data() {
     return {
-      sexes: [$t('animalDetail.male'), $t('animalDetail.female')],
+      sexes: [languages.fr.animalDetail.male, languages.fr.animalDetail.female],
       animal: this.emptyAnimal(),
     };
   },
