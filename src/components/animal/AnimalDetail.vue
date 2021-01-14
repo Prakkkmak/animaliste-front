@@ -156,7 +156,7 @@ export default {
       }
     },
     updateAnimal(newData) {
-      Object.keys.forEach((data) => {
+      Object.keys(newData).forEach((data) => {
         this.data[data] = newData[data];
       });
       this.modification = true;
