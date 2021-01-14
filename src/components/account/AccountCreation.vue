@@ -1,4 +1,7 @@
 <template>
+  <div v-if="accountCreated">
+    <b> {{ $t('account.accountCreated') }} </b>
+  </div>
   <div v-if="errors.length">
     <b>{{ $t('account.errorsText') }}</b>
     <ul>
@@ -65,6 +68,7 @@ export default {
       password: '',
       passwordVerification: '',
       errors: [],
+      accountCreated: false,
     };
   },
   methods: {
@@ -97,6 +101,11 @@ export default {
         });
       } catch (err) {
         console.log(err);
+      } finally {
+        this.mail = '';
+        this.password = '';
+        this.passwordVerification = '';
+        this.accountCreated = true;
       }
     },
     async hashPassword(password) {

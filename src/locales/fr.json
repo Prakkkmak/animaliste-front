@@ -27,6 +27,7 @@
         "search": "Rechercher"
     },
     "account": {
+        "accountCreated": "Compte créé avec succès !",
         "disconnect": "Se déconnecter",
         "errorMail": "Mail incorrect.",
         "errorPassword": "Mot de passe incorrect.",
