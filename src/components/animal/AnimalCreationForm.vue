@@ -54,7 +54,7 @@ export default {
     async createAnimal() {
       const newAnimal = JSON.stringify(this.animal);
       try {
-        await fetch('http://localhost:8090/animals', {
+        await fetch(`${process.env.VUE_APP_BASE_URL}/animals`, {
           method: 'POST',
           body: newAnimal,
           headers: {
