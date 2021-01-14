@@ -9,10 +9,8 @@
 
   <AnimalCreationModal
     v-show="isPopUpOpen"
-    @animal-created="
-      this.$emit('animal-created');
-      isPopUpOpen = false;
-    "
+    @close="isPopUpOpen = false"
+    @animal-created="onAnimalCreated"
   />
 </template>
 
@@ -29,6 +27,11 @@ export default {
       isPopUpOpen: false,
     };
   },
-  methods: {},
+  methods: {
+    onAnimalCreated() {
+      this.$emit('animal-created');
+      this.isPopUpOpen = false;
+    },
+  },
 };
 </script>
