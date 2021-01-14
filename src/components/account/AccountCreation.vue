@@ -85,15 +85,15 @@ export default {
       if (!this.checkForm()) return;
       const newAccount = JSON.stringify({
         mail: this.mail,
-        password: await this.hashPassword(this.password)
+        password: await this.hashPassword(this.password),
       });
       try {
-        await fetch(process.env.VUE_APP_BASE_URL + '/accounts', {
+        await fetch(`${process.env.VUE_APP_BASE_URL}/accounts`, {
           method: 'POST',
           body: newAccount,
           headers: {
             'content-type': 'application/json',
-          }
+          },
         });
       } catch (err) {
         console.log(err);

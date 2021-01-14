@@ -156,9 +156,9 @@ export default {
       }
     },
     updateAnimal(newData) {
-      for (const i in newData) {
-        this.data[i] = newData[i];
-      }
+      Object.keys.forEach((data) => {
+        this.data[data] = newData[data];
+      });
       this.modification = true;
       this.$emit('update_animal', this.data);
     },
