@@ -3,7 +3,7 @@
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Ajout d'un animal</p>
+        <p class="modal-card-title">{{ $t('animalCreation.addAnimal') }}</p>
         <button
           class="delete"
           aria-label="delete"
@@ -14,7 +14,9 @@
         <AnimalCreationForm @exit="validateCreationAndReload" />
       </section>
       <footer class="modal-card-foot">
-        <button class="button" @click="this.$emit('close')">Annuler</button>
+        <button class="button" @click="this.$emit('close')">
+          {{ $t('button.cancel') }}
+        </button>
       </footer>
     </div>
   </div>

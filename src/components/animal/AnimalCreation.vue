@@ -2,7 +2,7 @@
   <div class="columns has-background-light">
     <div class="column is-1">
       <button class="button is-primary" @click="isPopUpOpen = true">
-        Nouvel animal
+        {{ $t('animalCreation.newAnimal') }}
       </button>
     </div>
   </div>
