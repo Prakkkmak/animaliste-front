@@ -1,6 +1,6 @@
 <template>
   <div v-if="errors.length">
-    <b>Please correct the following error(s):</b>
+    <b>{{ $t('account.errorsText') }}</b>
     <ul>
       <li v-for="error in errors" :key="error">{{ error }}</li>
     </ul>

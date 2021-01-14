@@ -30,6 +30,7 @@
         "disconnect": "Se déconnecter",
         "errorMail": "Mail incorrect.",
         "errorPassword": "Mot de passe incorrect.",
+        "errorsText": "Veuillez corriger les erreurs suivantes",
         "login": "Se connecter",
         "mail": "Email",
         "password": "Mot de passe",
