@@ -35,6 +35,10 @@
       </li>
     </ul>
   </aside>
+  <footer class="footer">
+    Version DEV-0.1 (14/01/2021)
+    <a href="https://github.com/Prakkkmak/animaliste-front">Github</a>
+  </footer>
 </template>
 
 <script>
