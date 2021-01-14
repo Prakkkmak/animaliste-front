@@ -36,7 +36,7 @@ export default {
   async mounted() {
     this.loading = true;
     try {
-      const res = await fetch(process.env.VUE_APP_BASE_URL + '/animals', {
+      const res = await fetch(`${process.env.VUE_APP_BASE_URL}/animals`, {
         method: 'get',
         headers: {
           'content-type': 'application/json',
@@ -56,7 +56,6 @@ export default {
   },
   methods: {
     deleteAnimal(id) {
-      console.log(this.getIndex(id));
       this.data.splice(this.getIndex(id), 1);
     },
     updateAnimal(data) {
@@ -64,9 +63,8 @@ export default {
     },
     filterAnimal() {
       this.filteredData = [];
-      Object.keys(this.data).forEach((animal) => {
+      this.data.forEach((animal) => {
         Object.keys(animal).forEach((field) => {
-          console.log(animal[field]);
           if (
             typeof animal[field] === 'string' &&
             animal[field].includes(this.dataFilterString)
@@ -77,9 +75,7 @@ export default {
       });
     },
     getData(id) {
-      this.data.forEach((animal) => {
-        if (animal.id === id) return animal;
-      });
+      return this.data.find((animal) => animal.id === id);
     },
     getIndex(id) {
       return this.data.indexOf(this.getData(id));
