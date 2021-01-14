@@ -35,6 +35,17 @@
         "password": "Mot de passe",
         "register": "Enregister"
     },
+    "menu": {
+        "administration": "Administration",
+        "animals": "Animaux",
+        "cats": "Chats",
+        "createAccount": "Créer un compte",
+        "createAnimal": "Enregistrer un nouvel animal",
+        "connect": "Se connecter",
+        "dogs": "Chiens",
+        "general": "Général",
+        "other": "Autres"
+    },
     "animalCreation": {
             "addAnimal": "Ajout d'un animal",
             "newAnimal": "Nouvel animal"

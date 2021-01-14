@@ -1,41 +1,26 @@
 <template>
   <div class="columns has-background-light">
     <div class="column is-1">
-      <button class="button is-primary" @click="isPopUpOpen = !isPopUpOpen">
+      <button class="button is-primary" @click="isPopUpOpen = true">
         {{ $t('animalCreation.newAnimal') }}
       </button>
     </div>
   </div>
-  <div class="modal is-active" v-show="isPopUpOpen">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">{{ $t('animalCreation.addAnimal') }}</p>
-        <button
-          class="delete"
-          aria-label="delete"
-          @click="isPopUpOpen = !isPopUpOpen"
-        ></button>
-      </header>
-      <section class="modal-card-body">
-        <AnimalCreationDetail @exit="validateCreationAndReload" />
-      </section>
-      <footer class="modal-card-foot">
-        <button class="button" @click="isPopUpOpen = !isPopUpOpen">
-          {{ $t('button.cancel') }}
-        </button>
-      </footer>
-    </div>
-  </div>
+
+  <AnimalCreationModal
+    v-show="isPopUpOpen"
+    @close="isPopUpOpen = false"
+    @animal-created="onAnimalCreated"
+  />
 </template>
 
 <script>
-import AnimalCreationDetail from './AnimalCreationDetail.vue';
+import AnimalCreationModal from './AnimalCreationModal';
 
 export default {
-  emits: ['animalCreated'],
+  emits: ['animal-created'],
   components: {
-    AnimalCreationDetail,
+    AnimalCreationModal,
   },
   data() {
     return {
@@ -43,9 +28,9 @@ export default {
     };
   },
   methods: {
-    validateCreationAndReload() {
-      this.isPopUpOpen = !this.isPopUpOpen;
-      this.$emit('animalCreated');
+    onAnimalCreated() {
+      this.$emit('animal-created');
+      this.isPopUpOpen = false;
     },
   },
 };
