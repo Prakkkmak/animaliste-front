@@ -14,10 +14,10 @@
 </template>
 
 <script>
-import Animals from './components/animal/Animals.vue'
-import AnimalCreation from './components/animal/AnimalCreation.vue'
-import AccountCreation from "./components/account/AccountCreation";
-import Menu from "./components/menu/Menu";
+import Animals from './components/animal/Animals.vue';
+import AnimalCreation from './components/animal/AnimalCreation.vue';
+import AccountCreation from './components/account/AccountCreation';
+import Menu from './components/menu/Menu';
 
 export default {
   name: 'App',
@@ -25,19 +25,19 @@ export default {
     Menu,
     AccountCreation,
     Animals,
-    AnimalCreation
+    AnimalCreation,
   },
-  data(){
+  data() {
     return {
       animalListKey: 1,
-    }
+    };
   },
   methods: {
-    updateList(){
-      this.animalListKey = this.animalListKey + 1;
-    }
-  }
-}
+    updateList() {
+      this.animalListKey += 1;
+    },
+  },
+};
 </script>
 
 <style>

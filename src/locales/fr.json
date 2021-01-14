@@ -23,7 +23,8 @@
     "button": {
         "cancel": "Annuler",
         "delete": "Supprimer",
-        "save": "Sauvegarder"
+        "save": "Enregistrer",
+        "search": "Rechercher"
     },
     "account": {
         "disconnect": "Se déconnecter",
@@ -45,6 +46,8 @@
         "general": "Général",
         "other": "Autres"
     },
-    "save": "Enregistrer",
-    "search": "Rechercher"
+    "animalCreation": {
+            "addAnimal": "Ajout d'un animal",
+            "newAnimal": "Nouvel animal"
+    }
 }
