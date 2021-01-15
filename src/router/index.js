@@ -1,20 +1,26 @@
 // From https://www.vuemastery.com/blog/vue-router-a-tutorial-for-vue-3/
 
 import { createWebHistory, createRouter } from 'vue-router';
-import App from '@/App.vue';
-import AnimalDetail from '@/components/animal/AnimalDetail.vue';
+import Animals from '@/components/animal/Animals';
+import AnimalDetail from '@/components/animal/detail/AnimalDetail';
+import AccountCreation from '@/components/account/creation/AccountCreation';
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: App,
+    name: 'Animals',
+    component: Animals,
   },
   {
     path: '/animals/:id',
     name: 'AnimalDetail',
     component: AnimalDetail,
     props: true,
+  },
+  {
+    path: '/compte',
+    name: 'Account',
+    component: AccountCreation,
   },
 ];
 
