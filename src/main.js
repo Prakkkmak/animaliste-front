@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import { createI18n } from 'vue-i18n';
+import router from './router';
 import App from './App.vue';
 import { languages, defaultLocale } from './locales/index.js';
 import '@fortawesome/fontawesome-free/css/all.css';
@@ -17,4 +18,5 @@ const i18n = createI18n({
 const app = createApp(App);
 
 app.use(i18n);
+app.use(router);
 app.mount('#app');

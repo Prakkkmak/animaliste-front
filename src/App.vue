@@ -5,27 +5,19 @@
         <Menu />
       </div>
       <div class="column">
-        <AccountCreation />
-        <AnimalCreation @animal-created="updateList" />
-        <Animals :key="animalListKey" />
+        <router-view />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Animals from './components/animal/Animals.vue';
-import AnimalCreation from './components/animal/creation/AnimalCreation.vue';
-import AccountCreation from './components/account/creation/AccountCreation.vue';
 import Menu from './components/menu/Menu.vue';
 
 export default {
   name: 'App',
   components: {
     Menu,
-    AccountCreation,
-    Animals,
-    AnimalCreation,
   },
   data() {
     return {
