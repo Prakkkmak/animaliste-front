@@ -98,7 +98,7 @@
   </div>
 </template>
 <script>
-import AnimalDatum from './AnimalDatum.vue';
+import AnimalDatum from './AnimalField.vue';
 
 export default {
   components: {

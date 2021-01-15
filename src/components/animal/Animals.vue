@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import AnimalDetail from './AnimalDetail.vue';
+import AnimalDetail from './detail/AnimalDetail.vue';
 
 export default {
   components: {
