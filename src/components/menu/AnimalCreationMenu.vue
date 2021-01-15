@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import AnimalCreationModal from '../animal/creation/AnimalCreationModal';
+import AnimalCreationModal from '../animal/creation/AnimalCreationModal.vue';
 
 export default {
   name: 'AnimalCreationMenu',
