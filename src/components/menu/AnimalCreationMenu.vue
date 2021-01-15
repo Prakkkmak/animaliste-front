@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import AnimalCreationModal from '../animal/AnimalCreationModal';
+import AnimalCreationModal from '../animal/creation/AnimalCreationModal';
 
 export default {
   name: 'AnimalCreationMenu',

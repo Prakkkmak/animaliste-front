@@ -15,8 +15,8 @@
 
 <script>
 import Animals from './components/animal/Animals.vue';
-import AnimalCreation from './components/animal/AnimalCreation.vue';
-import AccountCreation from './components/account/AccountCreation';
+import AnimalCreation from './components/animal/creation/AnimalCreation.vue';
+import AccountCreation from './components/account/creation/AccountCreation';
 import Menu from './components/menu/Menu';
 
 export default {
