@@ -67,7 +67,7 @@
             @update-field="updateAnimal"
           />
           <AnimalDatum
-            :fieldData="getFieldData('identifier')"
+            :fieldData="getFieldData('id')"
             @update-field="updateAnimal"
           />
         </div>
