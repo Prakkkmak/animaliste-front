@@ -11,17 +11,17 @@
         </router-link>
         <ul>
           <li>
-            <router-link :to="{ name: 'Animals' }">
+            <router-link :to="{ name: 'UnderConstruction' }">
               <a>{{ $t('menu.cats') }}</a>
             </router-link>
           </li>
           <li>
-            <router-link :to="{ name: 'Animals' }">
+            <router-link :to="{ name: 'UnderConstruction' }">
               <a>{{ $t('menu.dogs') }}</a>
             </router-link>
           </li>
           <li>
-            <router-link :to="{ name: 'Animals' }">
+            <router-link :to="{ name: 'UnderConstruction' }">
               <a>{{ $t('menu.other') }}</a>
             </router-link>
           </li>
@@ -38,7 +38,7 @@
         </router-link>
       </li>
       <li>
-        <router-link :to="{ name: 'AccountCreation' }">
+        <router-link :to="{ name: 'UnderConstruction' }">
           <a>{{ $t('menu.connect') }}</a>
         </router-link>
       </li>
