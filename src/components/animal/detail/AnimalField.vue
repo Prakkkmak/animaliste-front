@@ -8,18 +8,14 @@
       <p v-else>{{ $t('animalDetail.noData') }}</p>
     </div>
     <div v-else class="column">
-      <div class="columns">
-        <div class="column">
-          <div class="field">
-            <div class="control">
-              <input
-                class="input is-primary"
-                type="text"
-                v-model="newValue"
-                @blur="updateField"
-              />
-            </div>
-          </div>
+      <div class="field">
+        <div class="control">
+          <input
+            class="input is-primary"
+            type="text"
+            v-model="newValue"
+            @blur="updateField"
+          />
         </div>
       </div>
     </div>
