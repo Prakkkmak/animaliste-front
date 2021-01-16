@@ -3,23 +3,19 @@
     <div class="column is-4 has-background-info has-text-left">
       {{ $t('animalDetail.' + fieldData.key) }}
     </div>
-    <div class="column is-8 has-text-left" v-if="!edit" @click="edit = true">
+    <div class="column is-8 has-text-left" v-if="!edit">
       <p v-if="fieldData.value">{{ fieldData.value }}</p>
       <p v-else>{{ $t('animalDetail.noData') }}</p>
     </div>
     <div v-else class="column">
-      <div class="columns">
-        <div class="column">
-          <div class="field">
-            <div class="control">
-              <input
-                class="input is-primary"
-                type="text"
-                v-model="newValue"
-                @blur="updateField"
-              />
-            </div>
-          </div>
+      <div class="field">
+        <div class="control">
+          <input
+            class="input is-primary"
+            type="text"
+            v-model="newValue"
+            @blur="updateField"
+          />
         </div>
       </div>
     </div>
@@ -28,23 +24,20 @@
 
 <script>
 export default {
-  props: ['fieldData'],
+  props: ['fieldData', 'edit'],
   emits: ['update-field'],
   data() {
     return {
       newValue: this.fieldData.value,
-      edit: false,
     };
   },
   methods: {
     updateField() {
-      this.edit = false;
-      if (this.newValue !== this.value) {
+      if (this.newValue !== this.fieldData.value) {
         const newData = {};
         newData[this.fieldData.key] = this.newValue;
         this.$emit('update-field', newData);
       }
-      this.newValue = this.fieldData.value;
     },
   },
 };

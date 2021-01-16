@@ -11,63 +11,78 @@
         <div class="column">
           <AnimalDatum
             :fieldData="getFieldData('name')"
+            :edit="modification"
             @update-field="updateAnimal"
           />
           <!-- Cette vue est peut-être à modifier. -->
           <AnimalDatum
             :fieldData="getFieldData('sex')"
+            :edit="modification"
             @update-field="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('specie')"
+            :edit="modification"
             @update-field="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('race')"
+            :edit="modification"
             @update-field="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('description')"
+            :edit="modification"
             @update-field="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('physicalDescription')"
+            :edit="modification"
             @update-field="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('attitudeDescription')"
+            :edit="modification"
             @update-field="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('likes')"
+            :edit="modification"
             @update-field="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('dislikes')"
+            :edit="modification"
             @update-field="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('vaccines')"
+            :edit="modification"
             @update-field="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('nutrition')"
+            :edit="modification"
             @update-field="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('origin')"
+            :edit="modification"
             @update-field="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('chip')"
+            :edit="modification"
             @update-field="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('registerDate')"
+            :edit="modification"
             @update-field="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('id')"
+            :edit="false"
             @update-field="updateAnimal"
           />
         </div>
@@ -88,6 +103,9 @@
             @click="saveAnimal"
           >
             {{ $t('button.save') }}
+          </button>
+          <button v-else class="button is-warning" @click="modification = true">
+            {{ $t('button.modify') }}
           </button>
           <button class="button is-danger" @click="deleteAnimal">
             {{ $t('button.delete') }}
@@ -119,7 +137,7 @@ export default {
   },
   methods: {
     getFieldData(key) {
-      return { key, value: this.data[key], editable: false };
+      return { key, value: this.data[key] };
     },
     async loadAnimal() {
       this.loading = true;
