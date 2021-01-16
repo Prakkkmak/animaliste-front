@@ -45,7 +45,7 @@
     </ul>
   </aside>
   <footer class="footer">
-    Version DEV-0.1 (14/01/2021)
+    Version {{ showVersion() }}
     <a href="https://github.com/Prakkkmak/animaliste-front">Github</a>
   </footer>
 </template>
@@ -56,6 +56,11 @@ import AnimalCreationMenu from './AnimalCreationMenu';
 export default {
   name: 'Menu.vue',
   components: { AnimalCreationMenu },
+  methods: {
+    showVersion() {
+      return process.env.VUE_APP_VERSION;
+    },
+  },
 };
 </script>
 
