@@ -105,7 +105,7 @@
             {{ $t('button.save') }}
           </button>
           <button v-else class="button is-warning" @click="modification = true">
-            {{ $t('button.cancel') }}
+            {{ $t('button.modify') }}
           </button>
           <button class="button is-danger" @click="deleteAnimal">
             {{ $t('button.delete') }}

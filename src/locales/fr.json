@@ -24,7 +24,8 @@
         "cancel": "Annuler",
         "delete": "Supprimer",
         "save": "Enregistrer",
-        "search": "Rechercher"
+        "search": "Rechercher",
+        "modify": "Modifier"
     },
     "account": {
         "accountCreated": "Compte créé avec succès !",

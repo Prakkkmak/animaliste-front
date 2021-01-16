@@ -33,12 +33,11 @@ export default {
   },
   methods: {
     updateField() {
-      if (this.newValue !== this.value) {
+      if (this.newValue !== this.fieldData.value) {
         const newData = {};
         newData[this.fieldData.key] = this.newValue;
         this.$emit('update-field', newData);
       }
-      this.newValue = this.fieldData.value;
     },
   },
 };
