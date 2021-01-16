@@ -14,7 +14,6 @@
             :edit="modification"
             @update-field="updateAnimal"
           />
-          <!-- Cette vue est peut-être à modifier. -->
           <AnimalDatum
             :fieldData="getFieldData('sex')"
             :edit="modification"
@@ -32,16 +31,6 @@
           />
           <AnimalDatum
             :fieldData="getFieldData('description')"
-            :edit="modification"
-            @update-field="updateAnimal"
-          />
-          <AnimalDatum
-            :fieldData="getFieldData('physicalDescription')"
-            :edit="modification"
-            @update-field="updateAnimal"
-          />
-          <AnimalDatum
-            :fieldData="getFieldData('attitudeDescription')"
             :edit="modification"
             @update-field="updateAnimal"
           />
