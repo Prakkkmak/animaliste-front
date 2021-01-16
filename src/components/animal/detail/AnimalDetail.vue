@@ -119,7 +119,7 @@ export default {
   },
   methods: {
     getFieldData(key) {
-      return { key, value: this.data[key], editable: false };
+      return { key, value: this.data[key] };
     },
     async loadAnimal() {
       this.loading = true;
