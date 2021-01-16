@@ -6,16 +6,24 @@
     <ul class="menu-list">
       <AnimalCreationMenu />
       <li>
-        <a>{{ $t('menu.animals') }}</a>
+        <router-link :to="{ name: 'Animals' }">
+          <a>{{ $t('menu.animals') }}</a>
+        </router-link>
         <ul>
           <li>
-            <a>{{ $t('menu.cats') }}</a>
+            <router-link :to="{ name: 'Animals' }">
+              <a>{{ $t('menu.cats') }}</a>
+            </router-link>
           </li>
           <li>
-            <a>{{ $t('menu.dogs') }}</a>
+            <router-link :to="{ name: 'Animals' }">
+              <a>{{ $t('menu.dogs') }}</a>
+            </router-link>
           </li>
           <li>
-            <a>{{ $t('menu.other') }}</a>
+            <router-link :to="{ name: 'Animals' }">
+              <a>{{ $t('menu.other') }}</a>
+            </router-link>
           </li>
         </ul>
       </li>
@@ -25,13 +33,14 @@
     </p>
     <ul class="menu-list">
       <li>
-        <a>{{ $t('menu.createAccount') }}</a>
+        <router-link :to="{ name: 'AccountCreation' }">
+          <a>{{ $t('menu.createAccount') }}</a>
+        </router-link>
       </li>
       <li>
-        <a>{{ $t('menu.connect') }}</a>
-      </li>
-      <li>
-        <a>{{ $t('menu.other') }}</a>
+        <router-link :to="{ name: 'AccountCreation' }">
+          <a>{{ $t('menu.connect') }}</a>
+        </router-link>
       </li>
     </ul>
   </aside>

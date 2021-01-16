@@ -18,8 +18,8 @@ const routes = [
     props: true,
   },
   {
-    path: '/compte',
-    name: 'Account',
+    path: '/register',
+    name: 'AccountCreation',
     component: AccountCreation,
   },
 ];
