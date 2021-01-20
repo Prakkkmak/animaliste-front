@@ -74,6 +74,7 @@ export default {
           }
         );
         this.$emit('account-login', res);
+        localStorage.setItem('token', res.toString());
       } catch (err) {
         this.errors.push(err);
       } finally {
