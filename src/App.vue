@@ -1,4 +1,5 @@
 <template>
+  <p>token : {{ $store.state.token }}</p>
   <div v-if="!account">
     <AccountLogin @account-login="accountLogin" />
   </div>
@@ -23,6 +24,11 @@ export default {
   components: {
     AccountLogin,
     Menu,
+  },
+  mounted() {
+    if (this.$store.state.token) {
+      this.account = this.$store.state.token;
+    }
   },
   data() {
     return {

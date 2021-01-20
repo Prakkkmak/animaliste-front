@@ -1,6 +1,8 @@
 import { createStore } from 'vuex';
+import createPersistedState from 'vuex-persistedstate';
 
 const store = createStore({
+  plugins: [createPersistedState()],
   state: {
     token: '',
   },
@@ -10,6 +12,12 @@ const store = createStore({
       const thisState = { ...state };
       thisState.token = token;
       Object.assign(state, thisState);
+    },
+    getToken(state) {
+      return state.token;
+    },
+    compareToken(state, token) {
+      return state.token === token;
     },
   },
 });

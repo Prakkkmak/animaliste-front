@@ -73,8 +73,8 @@ export default {
             },
           }
         );
-        this.$emit('account-login', res);
-        localStorage.setItem('token', res.toString());
+        this.$store.commit('setToken', res.toString());
+        this.$emit('account-login', res.toString());
       } catch (err) {
         this.errors.push(err);
       } finally {
