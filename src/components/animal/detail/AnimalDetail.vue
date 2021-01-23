@@ -18,6 +18,7 @@
           <AnimalDatum
             :fieldData="getFieldData('sex')"
             :edit="modification"
+            :displayComponent="'AnimalFieldDisplaySex'"
             @update-field="updateAnimal"
           />
           <AnimalDatum

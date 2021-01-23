@@ -4,9 +4,7 @@
       {{ $t('animalDetail.' + fieldData.key) }}
     </div>
     <div class="column is-8 has-text-left" v-if="!edit">
-      <p v-if="fieldData.key === 'sex'">{{ showSexValue() }}</p>
-      <p v-else-if="fieldData.value">{{ fieldData.value }}</p>
-      <p v-else>{{ $t('animalDetail.noData') }}</p>
+      <component :is="defineDisplayComponent" />
     </div>
     <div v-else class="column">
       <div class="field">
@@ -24,8 +22,19 @@
 </template>
 
 <script>
+import { defineAsyncComponent } from 'vue';
+import AnimalFieldDisplayDefault from '../form/AnimalFieldDisplayDefault.vue';
+
+const AsyncComponent = defineAsyncComponent(() =>
+  import(`../form/${this.displayComponent}`)
+);
+
 export default {
-  props: ['fieldData', 'edit'],
+  components: {
+    AnimalFieldDisplayDefault,
+    'async-component': AsyncComponent,
+  },
+  props: ['fieldData', 'edit', 'displayComponent', 'fieldComponent'],
   emits: ['update-field'],
   data() {
     return {
@@ -40,9 +49,9 @@ export default {
         this.$emit('update-field', newData);
       }
     },
-    showSexValue() {
-      if (this.fieldData.value) return this.$t('animalDetail.male');
-      return this.$t('animalDetail.female');
+    defineDisplayComponent() {
+      if (!this.displayComponent) return AnimalFieldDisplayDefault;
+      return 'async-component';
     },
   },
 };
