@@ -18,7 +18,7 @@
           <AnimalDatum
             :fieldData="getFieldData('sex')"
             :edit="modification"
-            :displayComponent="'AnimalFieldDisplaySex'"
+            :displayComponent="animalFieldDisplaySex"
             @update-field="updateAnimal"
           />
           <AnimalDatum
@@ -117,6 +117,7 @@
   </div>
 </template>
 <script>
+import AnimalFieldDisplaySex from '@/components/animal/form/AnimalFieldDisplaySex';
 import AnimalDatum from './AnimalField.vue';
 
 export default {
@@ -131,6 +132,7 @@ export default {
       extended: false,
       loading: true,
       modification: false,
+      animalFieldDisplaySex: AnimalFieldDisplaySex,
     };
   },
   async mounted() {
