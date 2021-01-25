@@ -58,8 +58,6 @@
 </template>
 
 <script>
-import bcryptjs from 'bcryptjs';
-
 export default {
   name: 'AccountCreation',
   data() {
@@ -89,16 +87,20 @@ export default {
       if (!this.checkForm()) return;
       const newAccount = JSON.stringify({
         mail: this.mail,
-        password: await this.hashPassword(this.password),
+        password: this.password,
       });
       try {
-        await fetch(`${process.env.VUE_APP_BASE_URL}/accounts`, {
-          method: 'POST',
-          body: newAccount,
-          headers: {
-            'content-type': 'application/json',
-          },
-        });
+        const res = await fetch(
+          `${process.env.VUE_APP_BASE_URL}/users/register`,
+          {
+            method: 'POST',
+            body: newAccount,
+            headers: {
+              'content-type': 'application/json',
+            },
+          }
+        );
+        this.$store.commit('setToken', res.toString());
       } catch (err) {
         console.log(err);
       } finally {
@@ -107,9 +109,6 @@ export default {
         this.passwordVerification = '';
         this.accountCreated = true;
       }
-    },
-    async hashPassword(password) {
-      return bcryptjs.hash(password, 10);
     },
   },
 };

@@ -47,8 +47,6 @@
 </template>
 
 <script>
-import bcryptjs from 'bcryptjs';
-
 export default {
   name: 'AccountLogin.vue',
   emits: ['account-login'],
@@ -62,18 +60,20 @@ export default {
   },
   methods: {
     async login() {
-      const hashedPassword = await this.hashPassword(this.password);
       try {
-        const res = await fetch(
-          `${process.env.VUE_APP_BASE_URL}/accounts?mail=${this.mail}&password=${hashedPassword}`,
-          {
-            method: 'GET',
-            headers: {
-              'content-type': 'application/json',
-            },
-          }
-        );
+        const credentials = {
+          mail: this.mail,
+          password: this.password,
+        };
+        const res = await fetch(`${process.env.VUE_APP_BASE_URL}/users/login`, {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify(credentials),
+        });
         this.$store.commit('setToken', res.toString());
+        res.text().then((t) => console.log(t));
         this.$emit('account-login', res.toString());
       } catch (err) {
         this.errors.push(err);
@@ -82,9 +82,6 @@ export default {
         this.password = '';
         this.accountLogin = true;
       }
-    },
-    async hashPassword(password) {
-      return bcryptjs.hash(password, 10);
     },
   },
 };

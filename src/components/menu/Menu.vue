@@ -38,7 +38,7 @@
         </router-link>
       </li>
       <li>
-        <router-link :to="{ name: 'UnderConstruction' }">
+        <router-link :to="{ name: 'AccountLogin' }">
           <a>{{ $t('menu.connect') }}</a>
         </router-link>
       </li>
