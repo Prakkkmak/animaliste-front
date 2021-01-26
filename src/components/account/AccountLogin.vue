@@ -47,6 +47,9 @@
 </template>
 
 <script>
+import httpClient from '@/api/httpClient';
+import { login } from '@/api/users.api';
+
 export default {
   name: 'AccountLogin.vue',
   emits: ['account-login'],
@@ -61,20 +64,11 @@ export default {
   methods: {
     async login() {
       try {
-        const credentials = {
-          mail: this.mail,
-          password: this.password,
-        };
-        const res = await fetch(`${process.env.VUE_APP_BASE_URL}/users/login`, {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json',
-          },
-          body: JSON.stringify(credentials),
-        });
-        this.$store.commit('setToken', res.toString());
-        res.text().then((t) => console.log(t));
-        this.$emit('account-login', res.toString());
+        const res = await login(this.mail, this.password);
+        const token = res.data;
+        this.$store.commit('setToken', token);
+        httpClient.defaults.headers.common.Authorization = token;
+        this.$emit('account-login', token);
       } catch (err) {
         this.errors.push(err);
       } finally {

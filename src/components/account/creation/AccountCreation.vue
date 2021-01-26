@@ -58,6 +58,9 @@
 </template>
 
 <script>
+import httpClient from '@/api/httpClient';
+import { register } from '@/api/users.api';
+
 export default {
   name: 'AccountCreation',
   data() {
@@ -85,22 +88,11 @@ export default {
     },
     async createAccount() {
       if (!this.checkForm()) return;
-      const newAccount = JSON.stringify({
-        mail: this.mail,
-        password: this.password,
-      });
       try {
-        const res = await fetch(
-          `${process.env.VUE_APP_BASE_URL}/users/register`,
-          {
-            method: 'POST',
-            body: newAccount,
-            headers: {
-              'content-type': 'application/json',
-            },
-          }
-        );
-        this.$store.commit('setToken', res.toString());
+        const res = await register(this.mail, this.password);
+        const token = res.data;
+        this.$store.commit('setToken', token);
+        httpClient.defaults.headers.common.Authorization = token;
       } catch (err) {
         console.log(err);
       } finally {
