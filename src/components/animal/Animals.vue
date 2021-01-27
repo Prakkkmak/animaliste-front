@@ -38,7 +38,7 @@ export default {
     this.loading = true;
     try {
       const res = await getAllAnimals();
-      this.data = await res.data;
+      this.data = res.data;
     } catch (err) {
       console.log(err);
     } finally {

@@ -2,6 +2,8 @@ import axios from 'axios';
 import router from '@/router';
 import store from '@/store';
 
+const UNOTHORIZED_CODE = 403;
+
 const httpClient = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL,
   timeout: 1000, // indicates, 1000ms ie. 1 second
@@ -32,7 +34,11 @@ httpClient.interceptors.response.use(
   },
   async (error) => {
     console.log('INTERCEPTOR KO');
-    await router.push({ path: 'login' });
+    if (error.status === UNOTHORIZED_CODE) {
+      await router.push({ path: 'login' });
+      return Promise.accept();
+    }
+
     return Promise.reject(error);
   }
 );

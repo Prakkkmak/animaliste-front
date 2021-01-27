@@ -132,7 +132,7 @@ export default {
     async loadAnimal() {
       this.loading = true;
       try {
-        const res = await getAnimalById(this.data.id);
+        const res = await getAnimalById(this.id);
         this.data = res.data;
       } catch (err) {
         console.log(err);
