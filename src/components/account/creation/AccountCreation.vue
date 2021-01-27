@@ -58,8 +58,7 @@
 </template>
 
 <script>
-import httpClient from '@/api/httpClient';
-import { register } from '@/api/users.api';
+import { register } from '@/api/user.api';
 
 export default {
   name: 'AccountCreation',
@@ -92,7 +91,6 @@ export default {
         const res = await register(this.mail, this.password);
         const token = res.data;
         this.$store.commit('setToken', token);
-        httpClient.defaults.headers.common.Authorization = token;
       } catch (err) {
         console.log(err);
       } finally {

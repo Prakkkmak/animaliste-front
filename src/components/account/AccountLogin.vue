@@ -47,8 +47,7 @@
 </template>
 
 <script>
-import httpClient from '@/api/httpClient';
-import { login } from '@/api/users.api';
+import { login } from '@/api/user.api';
 
 export default {
   name: 'AccountLogin.vue',
@@ -67,7 +66,6 @@ export default {
         const res = await login(this.mail, this.password);
         const token = res.data;
         this.$store.commit('setToken', token);
-        httpClient.defaults.headers.common.Authorization = token;
         this.$emit('account-login', token);
       } catch (err) {
         this.errors.push(err);

@@ -42,6 +42,8 @@
 </template>
 
 <script>
+import { createAnimal } from '@/api/animal.api';
+
 export default {
   data() {
     return {
@@ -52,15 +54,8 @@ export default {
   emits: ['exit'],
   methods: {
     async createAnimal() {
-      const newAnimal = JSON.stringify(this.animal);
       try {
-        await fetch(`${process.env.VUE_APP_BASE_URL}/animals`, {
-          method: 'POST',
-          body: newAnimal,
-          headers: {
-            'content-type': 'application/json',
-          },
-        });
+        await createAnimal(this.animal);
       } catch (err) {
         console.log(err);
       }

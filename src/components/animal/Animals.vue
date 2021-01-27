@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { getAllAnimals } from '@/api/animal.api';
 import AnimalDetail from './detail/AnimalDetail.vue';
 
 export default {
@@ -36,13 +37,8 @@ export default {
   async mounted() {
     this.loading = true;
     try {
-      const res = await fetch(`${process.env.VUE_APP_BASE_URL}/animals`, {
-        method: 'get',
-        headers: {
-          'content-type': 'application/json',
-        },
-      });
-      this.data = await res.json();
+      const res = await getAllAnimals();
+      this.data = await res.data;
     } catch (err) {
       console.log(err);
     } finally {
