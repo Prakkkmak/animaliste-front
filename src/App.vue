@@ -1,9 +1,6 @@
 <template>
-  <p>token : {{ $store.state.token }}</p>
-  <div v-if="!account">
-    <AccountLogin @account-login="accountLogin" />
-  </div>
-  <div v-else>
+  <p>TOKEN ACTUEL : {{ $store.state.token }}</p>
+  <div>
     <div class="columns">
       <div class="column is-2">
         <Menu />
@@ -17,12 +14,10 @@
 
 <script>
 import Menu from '@/components/menu/Menu.vue';
-import AccountLogin from '@/components/account/AccountLogin';
 
 export default {
   name: 'App',
   components: {
-    AccountLogin,
     Menu,
   },
   mounted() {
