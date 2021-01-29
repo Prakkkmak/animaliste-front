@@ -5,6 +5,7 @@ import Animals from '@/components/animal/Animals';
 import AnimalDetail from '@/components/animal/detail/AnimalDetail';
 import AccountCreation from '@/components/account/creation/AccountCreation';
 import UnderConstruction from '@/components/other/UnderConstruction';
+import AccountLogin from '@/components/account/AccountLogin';
 
 const routes = [
   {
@@ -22,6 +23,11 @@ const routes = [
     path: '/register',
     name: 'AccountCreation',
     component: AccountCreation,
+  },
+  {
+    path: '/login',
+    name: 'AccountLogin',
+    component: AccountLogin,
   },
   {
     path: '/under_construction',
