@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { createAnimal } from '@/api/animal.api';
+import animalApi from '@/api/animal.api';
 
 export default {
   data() {
@@ -55,7 +55,7 @@ export default {
   methods: {
     async createAnimal() {
       try {
-        await createAnimal(this.animal);
+        await animalApi.createAnimal(this.animal);
       } catch (err) {
         console.log(err);
       }

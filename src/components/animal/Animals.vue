@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { getAllAnimals } from '@/api/animal.api';
+import animalApi from '@/api/animal.api';
 import AnimalDetail from './detail/AnimalDetail.vue';
 
 export default {
@@ -37,7 +37,7 @@ export default {
   async mounted() {
     this.loading = true;
     try {
-      const res = await getAllAnimals();
+      const res = await animalApi.getAllAnimals();
       this.data = res.data;
     } catch (err) {
       console.log(err);

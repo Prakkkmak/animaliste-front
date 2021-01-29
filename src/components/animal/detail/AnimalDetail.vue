@@ -105,7 +105,7 @@
   </div>
 </template>
 <script>
-import { getAnimalById, saveAnimal, deleteAnimal } from '@/api/animal.api';
+import animalApi from '@/api/animal.api';
 import AnimalDatum from './AnimalField.vue';
 
 export default {
@@ -132,7 +132,7 @@ export default {
     async loadAnimal() {
       this.loading = true;
       try {
-        const res = await getAnimalById(this.id);
+        const res = await animalApi.getAnimalById(this.id);
         this.data = res.data;
       } catch (err) {
         console.log(err);
@@ -143,7 +143,7 @@ export default {
     },
     async deleteAnimal() {
       try {
-        await deleteAnimal(this.data.id);
+        await animalApi.deleteAnimal(this.data.id);
       } catch (err) {
         console.log(err);
       } finally {
@@ -162,7 +162,7 @@ export default {
     },
     async saveAnimal() {
       try {
-        await saveAnimal(this.data.id, this.data);
+        await animalApi.saveAnimal(this.data.id, this.data);
       } catch (err) {
         console.log(err);
       }

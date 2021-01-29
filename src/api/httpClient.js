@@ -2,7 +2,7 @@ import axios from 'axios';
 import router from '@/router';
 import store from '@/store';
 
-const UNOTHORIZED_CODE = 403;
+const FORBIDDEN_CODE = 403;
 
 const httpClient = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL,
@@ -13,13 +13,12 @@ const httpClient = axios.create({
 });
 
 httpClient.interceptors.request.use(
-  function (config) {
+  (config) => {
     // eslint-disable-next-line no-param-reassign
     config.headers.Authorization = store.state.token;
-    console.log(JSON.stringify(config.headers));
     return config;
   },
-  function (error) {
+  (error) => {
     // Do something with request error
     return Promise.reject(error);
   }
@@ -27,14 +26,12 @@ httpClient.interceptors.request.use(
 
 httpClient.interceptors.response.use(
   function (response) {
-    console.log('INTERCEPTOR OK');
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
     return response;
   },
   async (error) => {
-    console.log('INTERCEPTOR KO');
-    if (error.status === UNOTHORIZED_CODE) {
+    if (error.status === FORBIDDEN_CODE) {
       await router.push({ path: 'login' });
       return Promise.accept();
     }
