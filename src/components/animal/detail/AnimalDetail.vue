@@ -14,7 +14,6 @@
             :edit="modification"
             @update-field="updateAnimal"
           />
-          <!-- Cette vue est peut-être à modifier. -->
           <AnimalDatum
             :fieldData="getFieldData('sex')"
             :edit="modification"
@@ -33,16 +32,6 @@
           />
           <AnimalDatum
             :fieldData="getFieldData('description')"
-            :edit="modification"
-            @update-field="updateAnimal"
-          />
-          <AnimalDatum
-            :fieldData="getFieldData('physicalDescription')"
-            :edit="modification"
-            @update-field="updateAnimal"
-          />
-          <AnimalDatum
-            :fieldData="getFieldData('attitudeDescription')"
             :edit="modification"
             @update-field="updateAnimal"
           />
@@ -117,7 +106,7 @@
   </div>
 </template>
 <script>
-import AnimalFieldDisplaySex from '@/components/animal/form/AnimalFieldDisplaySex';
+import animalApi from '@/api/animal.api';
 import AnimalDatum from './AnimalField.vue';
 
 export default {
@@ -145,16 +134,8 @@ export default {
     async loadAnimal() {
       this.loading = true;
       try {
-        const res = await fetch(
-          `${process.env.VUE_APP_BASE_URL}/animals/${this.id}`,
-          {
-            method: 'get',
-            headers: {
-              'content-type': 'application/json',
-            },
-          }
-        );
-        this.data = await res.json();
+        const res = await animalApi.getAnimalById(this.id);
+        this.data = res.data;
       } catch (err) {
         console.log(err);
       } finally {
@@ -164,12 +145,7 @@ export default {
     },
     async deleteAnimal() {
       try {
-        await fetch(`${process.env.VUE_APP_BASE_URL}/animals/${this.data.id}`, {
-          method: 'DELETE',
-          headers: {
-            'content-type': 'application/json',
-          },
-        });
+        await animalApi.deleteAnimal(this.data.id);
       } catch (err) {
         console.log(err);
       } finally {
@@ -188,13 +164,7 @@ export default {
     },
     async saveAnimal() {
       try {
-        await fetch(`${process.env.VUE_APP_BASE_URL}/animals/${this.data.id}`, {
-          method: 'PUT',
-          headers: {
-            'content-type': 'application/json',
-          },
-          body: JSON.stringify(this.data),
-        });
+        await animalApi.saveAnimal(this.data.id, this.data);
       } catch (err) {
         console.log(err);
       }

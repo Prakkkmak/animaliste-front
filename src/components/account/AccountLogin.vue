@@ -1,5 +1,5 @@
 <template>
-  <div v-if="accountCreated">
+  <div v-if="accountLogin">
     <b> {{ $t('account.accountCreated') }} </b>
   </div>
   <div v-if="errors.length">
@@ -36,21 +36,10 @@
         <i class="fas fa-lock"></i>
       </span>
     </p>
-    <p class="control has-icons-left">
-      <input
-        class="input"
-        type="password"
-        :placeholder="$t('account.password')"
-        v-model="passwordVerification"
-      />
-      <span class="icon is-small is-left">
-        <i class="fas fa-lock"></i>
-      </span>
-    </p>
   </div>
   <div class="field">
     <p class="control">
-      <button class="button is-success" @click="createAccount">
+      <button class="button is-success" @click="login">
         {{ $t('account.register') }}
       </button>
     </p>
@@ -58,48 +47,36 @@
 </template>
 
 <script>
-import { register } from '@/api/user.api';
+import { login } from '@/api/user.api';
 
 export default {
-  name: 'AccountCreation',
+  name: 'AccountLogin.vue',
+  emits: ['account-login'],
   data() {
     return {
       mail: '',
       password: '',
-      passwordVerification: '',
       errors: [],
-      accountCreated: false,
+      accountLogin: false,
     };
   },
   methods: {
-    checkForm() {
-      this.errors = [];
-      if (this.mail.length < 5 || !this.mail.includes('@')) {
-        this.errors.push(this.$t('account.errorMail'));
-      }
-      if (
-        this.password.length < 8 ||
-        this.password !== this.passwordVerification
-      ) {
-        this.errors.push(this.$t('account.errorPassword'));
-      }
-      return this.errors.length === 0;
-    },
-    async createAccount() {
-      if (!this.checkForm()) return;
+    async login() {
       try {
-        const res = await register(this.mail, this.password);
+        const res = await login(this.mail, this.password);
         const token = res.data;
         this.$store.commit('setToken', token);
+        this.$emit('account-login', token);
       } catch (err) {
-        console.log(err);
+        this.errors.push(err);
       } finally {
         this.mail = '';
         this.password = '';
-        this.passwordVerification = '';
-        this.accountCreated = true;
+        this.accountLogin = true;
       }
     },
   },
 };
 </script>
+
+<style scoped></style>
