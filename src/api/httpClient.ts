@@ -33,7 +33,7 @@ httpClient.interceptors.response.use(
   async (error) => {
     if (error.response.status === FORBIDDEN_CODE) {
       await router.push({ path: 'login' });
-      return Promise.accept();
+      return Promise.resolve();
     }
 
     return Promise.reject(error);

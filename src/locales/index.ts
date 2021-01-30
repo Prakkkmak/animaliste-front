@@ -1,5 +1,5 @@
-import fr from './fr.json';
-import en from './en.json';
+const fr = require('./fr.json');
+const en = require('./en.json');
 
 export const defaultLocale = 'fr';
 

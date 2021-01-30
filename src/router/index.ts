@@ -1,11 +1,9 @@
-// From https://www.vuemastery.com/blog/vue-router-a-tutorial-for-vue-3/
-
 import { createWebHistory, createRouter } from 'vue-router';
-import Animals from '@/components/animal/Animals';
-import AnimalDetail from '@/components/animal/detail/AnimalDetail';
-import AccountCreation from '@/components/account/creation/AccountCreation';
-import UnderConstruction from '@/components/other/UnderConstruction';
-import AccountLogin from '@/components/account/AccountLogin';
+import Animals from '@/components/animal/Animals.vue';
+import AnimalDetail from '@/components/animal/detail/AnimalDetail.vue';
+import AccountCreation from '@/components/account/creation/AccountCreation.vue';
+import UnderConstruction from '@/components/other/UnderConstruction.vue';
+import AccountLogin from '@/components/account/AccountLogin.vue';
 
 const routes = [
   {
