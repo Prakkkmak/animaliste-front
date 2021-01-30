@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import { createI18n } from 'vue-i18n';
+import Toasted from 'vue-toasted';
 import router from './router';
 import store from './store';
 import App from './App.vue';
@@ -18,6 +19,7 @@ const i18n = createI18n({
 
 const app = createApp(App);
 
+app.use(Toasted);
 app.use(i18n);
 app.use(router);
 app.use(store);
