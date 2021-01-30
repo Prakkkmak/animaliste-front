@@ -20,6 +20,7 @@
 <script>
 export default {
   props: ['data', 'edit'],
+  emits: ['update'],
   data() {
     return {
       newValue: this.data,
