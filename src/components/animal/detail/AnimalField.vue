@@ -3,39 +3,33 @@
     <div class="column is-4 has-background-info has-text-left">
       {{ $t('animalDetail.' + fieldData.key) }}
     </div>
-    <div class="column is-8 has-text-left" v-if="!edit">
-      <p v-if="fieldData.value">{{ fieldData.value }}</p>
-      <p v-else>{{ $t('animalDetail.noData') }}</p>
-    </div>
-    <div v-else class="column">
-      <div class="field">
-        <div class="control">
-          <input
-            class="input is-primary"
-            type="text"
-            v-model="newValue"
-            @blur="updateField"
-          />
-        </div>
-      </div>
-    </div>
+    <component
+      :is="display"
+      :data="fieldData.value"
+      :edit="edit"
+      @update="updateField"
+    />
   </div>
 </template>
 
 <script>
+import AnimalFieldDisplayDefault from '../form/AnimalFieldDisplayDefault.vue';
+
 export default {
-  props: ['fieldData', 'edit'],
+  props: ['fieldData', 'edit', 'displayComponent'],
   emits: ['update-field'],
   data() {
     return {
-      newValue: this.fieldData.value,
+      display: this.displayComponent
+        ? this.displayComponent
+        : AnimalFieldDisplayDefault,
     };
   },
   methods: {
-    updateField() {
-      if (this.newValue !== this.fieldData.value) {
+    updateField(newValue) {
+      if (newValue !== this.fieldData.value) {
         const newData = {};
-        newData[this.fieldData.key] = this.newValue;
+        newData[this.fieldData.key] = newValue;
         this.$emit('update-field', newData);
       }
     },

@@ -17,6 +17,7 @@
           <AnimalDatum
             :fieldData="getFieldData('sex')"
             :edit="modification"
+            :displayComponent="animalFieldDisplaySex"
             @update-field="updateAnimal"
           />
           <AnimalDatum
@@ -120,6 +121,7 @@ export default {
       extended: false,
       loading: true,
       modification: false,
+      animalFieldDisplaySex: AnimalFieldDisplaySex,
     };
   },
   async mounted() {
