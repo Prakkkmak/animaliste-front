@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 import { createI18n } from 'vue-i18n';
-import Toast, { PluginOptions } from "vue-toastification";
+import Toast, { PluginOptions } from 'vue-toastification';
 import router from './router';
 import store from './store';
 import App from './App.vue';
@@ -30,4 +30,4 @@ app.use(router);
 app.use(store);
 app.mount('#app');
 
-export default app;
+export { app, i18n };
