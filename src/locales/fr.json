@@ -53,5 +53,8 @@
     "animalCreation": {
             "addAnimal": "Ajout d'un animal",
             "newAnimal": "Nouvel animal"
+    },
+    "toasts": {
+        "pageUnderConstruction": "Page en cours de construction."
     }
 }

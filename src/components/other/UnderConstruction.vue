@@ -1,15 +1,20 @@
 <template>
   <div>Page en construction, merci de revenir dans une version future :)</div>
   <img
-    src="https://lh3.googleusercontent.com/proxy/SxV9uyTwzApKx-5TqG0XDOfE2sP7SK8QOZwDFTPlPbyTFwuOQc3PITg-G4gjvwpVqMxeT-sm4CHs2NRhDGK7jpd4_0SF-Du47kwJ0vzFIkV2JPwA62vuO4Q"
+    src="https://omi.uk/wp-content/uploads/2020/05/xUnderConstruction.png.pagespeed.ic.HA9e42B4xH.webp"
     alt="Under Construction"
   />
 </template>
 
-<script>
-export default {
-  name: 'UnderConstruction.vue',
-};
+<script lang="ts">
+import { Vue } from 'vue-class-component';
+import toaster from '@/utils/toaster';
+
+export default class UnderConstruction extends Vue {
+  mounted() {
+    toaster.error('toasts.pageUnderConstruction', { timeout: 2000 });
+  }
+}
 </script>
 
 <style scoped></style>
