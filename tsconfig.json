@@ -13,8 +13,11 @@
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
-      "webpack-env"
+      "webpack-env",
+      "reflect-metadata",
+      "jest"
     ],
+    "typeRoots": ["./types", "./node_modules/@types"],
     "paths": {
       "@/*": [
         "src/*"
@@ -35,6 +38,8 @@
     "tests/**/*.tsx"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "**/*.spec.ts",
+    "**/*.test.ts"
   ]
 }
