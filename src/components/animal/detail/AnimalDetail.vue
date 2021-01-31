@@ -107,6 +107,7 @@
 </template>
 <script>
 import animalApi from '@/api/animal.api';
+import AnimalFieldDisplaySex from '@/components/animal/form/AnimalFieldDisplaySex';
 import AnimalDatum from './AnimalField.vue';
 
 export default {
