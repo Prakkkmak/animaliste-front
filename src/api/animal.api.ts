@@ -3,16 +3,16 @@ import httpClient from './httpClient';
 
 const END_POINT = '/animals';
 const api = {
-  getAllAnimals: () => httpClient.get(END_POINT),
+  getAllAnimals: async () => httpClient.get(END_POINT),
 
-  getAnimalById: (id: string) => httpClient.get(`${END_POINT}/${id}`),
+  getAnimalById: async (id: string) => httpClient.get(`${END_POINT}/${id}`),
 
-  createAnimal: (animalBody: any) => httpClient.post('', animalBody),
+  createAnimal: async (animalBody: any) => httpClient.post('', animalBody),
 
-  saveAnimal: (id: string, animalBody: Animal) =>
+  saveAnimal: async (id: string, animalBody: Animal) =>
     httpClient.put(`${END_POINT}/${id}`, animalBody),
 
-  deleteAnimal: (id: number) => httpClient.delete(`${END_POINT}/${id}`),
+  deleteAnimal: async (id: number) => httpClient.delete(`${END_POINT}/${id}`),
 };
 
 export default api;
