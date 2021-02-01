@@ -54,7 +54,10 @@
             "addAnimal": "Ajout d'un animal",
             "newAnimal": "Nouvel animal"
     },
-    "toasts": {
-        "pageUnderConstruction": "Page en cours de construction."
+    "toast": {
+        "pageUnderConstruction": "Page en cours de construction.",
+        "error": {
+            "unknownError": "une erreur est survenue. Veuillez contacter un administrateur système."
+        }
     }
 }
