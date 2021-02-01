@@ -1,9 +1,9 @@
 <template>
   <div v-if="accountCreated">
-    <b> {{ $t('account.accountCreated') }} </b>
+    <b> {{ $t("account.accountCreated") }} </b>
   </div>
   <div v-if="errors.length">
-    <b>{{ $t('account.errorsText') }}</b>
+    <b>{{ $t("account.errorsText") }}</b>
     <ul>
       <li v-for="error in errors" :key="error">{{ error }}</li>
     </ul>
@@ -51,22 +51,22 @@
   <div class="field">
     <p class="control">
       <button class="button is-success" @click="createAccount">
-        {{ $t('account.register') }}
+        {{ $t("account.register") }}
       </button>
     </p>
   </div>
 </template>
 
 <script>
-import { register } from '@/api/user.api';
+import { register } from "@/api/user.api";
 
 export default {
-  name: 'AccountCreation',
+  name: "AccountCreation",
   data() {
     return {
-      mail: '',
-      password: '',
-      passwordVerification: '',
+      mail: "",
+      password: "",
+      passwordVerification: "",
       errors: [],
       accountCreated: false,
     };
@@ -74,14 +74,14 @@ export default {
   methods: {
     checkForm() {
       this.errors = [];
-      if (this.mail.length < 5 || !this.mail.includes('@')) {
-        this.errors.push(this.$t('account.errorMail'));
+      if (this.mail.length < 5 || !this.mail.includes("@")) {
+        this.errors.push(this.$t("account.errorMail"));
       }
       if (
         this.password.length < 8 ||
         this.password !== this.passwordVerification
       ) {
-        this.errors.push(this.$t('account.errorPassword'));
+        this.errors.push(this.$t("account.errorPassword"));
       }
       return this.errors.length === 0;
     },
@@ -90,13 +90,13 @@ export default {
       try {
         const res = await register(this.mail, this.password);
         const token = res.data;
-        this.$store.commit('setToken', token);
+        this.$store.commit("setToken", token);
       } catch (err) {
         console.log(err);
       } finally {
-        this.mail = '';
-        this.password = '';
-        this.passwordVerification = '';
+        this.mail = "";
+        this.password = "";
+        this.passwordVerification = "";
         this.accountCreated = true;
       }
     },

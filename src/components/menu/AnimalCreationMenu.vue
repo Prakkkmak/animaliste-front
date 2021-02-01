@@ -1,6 +1,6 @@
 <template>
   <li @click="isPopUpOpen = true">
-    <a>{{ $t('menu.createAnimal') }}</a>
+    <a>{{ $t("menu.createAnimal") }}</a>
   </li>
   <AnimalCreationModal
     v-show="isPopUpOpen"
@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import AnimalCreationModal from '../animal/creation/AnimalCreationModal.vue';
+import AnimalCreationModal from "../animal/creation/AnimalCreationModal.vue";
 
 export default {
-  name: 'AnimalCreationMenu',
+  name: "AnimalCreationMenu",
   components: { AnimalCreationModal },
   data() {
     return {
@@ -23,7 +23,7 @@ export default {
   methods: {
     onAnimalCreated() {
       this.isPopUpOpen = false;
-      this.$emit('animal-created');
+      this.$emit("animal-created");
     },
   },
 };

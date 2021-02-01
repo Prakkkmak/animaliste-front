@@ -2,7 +2,7 @@
   <div class="columns has-background-light">
     <div class="column is-1">
       <button class="button is-primary" @click="isPopUpOpen = true">
-        {{ $t('animalCreation.newAnimal') }}
+        {{ $t("animalCreation.newAnimal") }}
       </button>
     </div>
   </div>
@@ -15,10 +15,10 @@
 </template>
 
 <script>
-import AnimalCreationModal from './AnimalCreationModal';
+import AnimalCreationModal from "./AnimalCreationModal";
 
 export default {
-  emits: ['animal-created'],
+  emits: ["animal-created"],
   components: {
     AnimalCreationModal,
   },
@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     onAnimalCreated() {
-      this.$emit('animal-created');
+      this.$emit("animal-created");
       this.isPopUpOpen = false;
     },
   },

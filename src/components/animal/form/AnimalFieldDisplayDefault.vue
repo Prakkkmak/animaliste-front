@@ -1,7 +1,7 @@
 <template>
   <div class="column is-8 has-text-left" v-if="!edit">
     <p v-if="data">{{ data }}</p>
-    <p v-else>{{ $t('animalDetail.noData') }}</p>
+    <p v-else>{{ $t("animalDetail.noData") }}</p>
   </div>
   <div v-else class="column">
     <div class="field">
@@ -19,8 +19,8 @@
 
 <script>
 export default {
-  props: ['data', 'edit'],
-  emits: ['update'],
+  props: ["data", "edit"],
+  emits: ["update"],
   data() {
     return {
       newValue: this.data,
@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     sendNewValue() {
-      this.$emit('update', this.newValue);
+      this.$emit("update", this.newValue);
     },
   },
 };

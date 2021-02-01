@@ -85,20 +85,20 @@
             class="button is-warning"
             @click="cancelModification"
           >
-            {{ $t('button.cancel') }}
+            {{ $t("button.cancel") }}
           </button>
           <button
             v-if="modification"
             class="button is-success"
             @click="saveAnimal"
           >
-            {{ $t('button.save') }}
+            {{ $t("button.save") }}
           </button>
           <button v-else class="button is-warning" @click="modification = true">
-            {{ $t('button.modify') }}
+            {{ $t("button.modify") }}
           </button>
           <button class="button is-danger" @click="deleteAnimal">
-            {{ $t('button.delete') }}
+            {{ $t("button.delete") }}
           </button>
         </div>
       </div>
@@ -106,16 +106,16 @@
   </div>
 </template>
 <script>
-import animalApi from '@/api/animal.api';
-import AnimalFieldDisplaySex from '@/components/animal/form/AnimalFieldDisplaySex';
-import AnimalDatum from './AnimalField.vue';
+import animalApi from "@/api/animal.api";
+import AnimalFieldDisplaySex from "@/components/animal/form/AnimalFieldDisplaySex";
+import AnimalDatum from "./AnimalField.vue";
 
 export default {
   components: {
     AnimalDatum,
   },
-  props: ['id'],
-  emits: ['delete-animal', 'update-animal'],
+  props: ["id"],
+  emits: ["delete-animal", "update-animal"],
   data() {
     return {
       data: {},
@@ -150,7 +150,7 @@ export default {
       } catch (err) {
         console.log(err);
       } finally {
-        this.$emit('delete-animal', this.data.id);
+        this.$emit("delete-animal", this.data.id);
       }
     },
     updateAnimal(newData) {
@@ -158,7 +158,7 @@ export default {
         this.data[data] = newData[data];
       });
       this.modification = true;
-      this.$emit('update_animal', this.data);
+      this.$emit("update_animal", this.data);
     },
     cancelModification() {
       this.loadAnimal();

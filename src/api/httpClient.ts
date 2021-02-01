@@ -1,6 +1,6 @@
-import axios from 'axios';
-import router from '@/router';
-import store from '@/store';
+import axios from "axios";
+import router from "@/router";
+import store from "@/store";
 
 const FORBIDDEN_CODE = 403;
 
@@ -8,7 +8,7 @@ const httpClient = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL,
   timeout: 1000, // indicates, 1000ms ie. 1 second
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
@@ -31,7 +31,7 @@ httpClient.interceptors.response.use(
   },
   async (error) => {
     if (error.response.status === FORBIDDEN_CODE) {
-      await router.push({ path: 'login' });
+      await router.push({ path: "login" });
       return Promise.resolve();
     }
 

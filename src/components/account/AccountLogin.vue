@@ -1,9 +1,9 @@
 <template>
   <div v-if="accountLogin">
-    <b> {{ $t('account.accountCreated') }} </b>
+    <b> {{ $t("account.accountCreated") }} </b>
   </div>
   <div v-if="errors.length">
-    <b>{{ $t('account.errorsText') }}</b>
+    <b>{{ $t("account.errorsText") }}</b>
     <ul>
       <li v-for="error in errors" :key="error">{{ error }}</li>
     </ul>
@@ -40,22 +40,22 @@
   <div class="field">
     <p class="control">
       <button class="button is-success" @click="login">
-        {{ $t('account.register') }}
+        {{ $t("account.register") }}
       </button>
     </p>
   </div>
 </template>
 
 <script>
-import { login } from '@/api/user.api';
+import { login } from "@/api/user.api";
 
 export default {
-  name: 'AccountLogin.vue',
-  emits: ['account-login'],
+  name: "AccountLogin.vue",
+  emits: ["account-login"],
   data() {
     return {
-      mail: '',
-      password: '',
+      mail: "",
+      password: "",
       errors: [],
       accountLogin: false,
     };
@@ -65,13 +65,13 @@ export default {
       try {
         const res = await login(this.mail, this.password);
         const token = res.data;
-        this.$store.commit('setToken', token);
-        this.$emit('account-login', token);
+        this.$store.commit("setToken", token);
+        this.$emit("account-login", token);
       } catch (err) {
         this.errors.push(err);
       } finally {
-        this.mail = '';
-        this.password = '';
+        this.mail = "";
+        this.password = "";
         this.accountLogin = true;
       }
     },

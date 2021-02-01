@@ -1,9 +1,9 @@
 export default class Animal {
-  public id: string = '';
+  public id: string = "";
 
-  public name: string = '';
+  public name: string = "";
 
-  public specie: string = '';
+  public specie: string = "";
 
   public sex: boolean = true;
 

@@ -1,7 +1,7 @@
 <template>
   <div class="columns">
     <div class="column is-4 has-background-info has-text-left">
-      {{ $t('animalDetail.' + fieldData.key) }}
+      {{ $t("animalDetail." + fieldData.key) }}
     </div>
     <component
       :is="display"
@@ -13,11 +13,11 @@
 </template>
 
 <script>
-import AnimalFieldDisplayDefault from '../form/AnimalFieldDisplayDefault.vue';
+import AnimalFieldDisplayDefault from "../form/AnimalFieldDisplayDefault.vue";
 
 export default {
-  props: ['fieldData', 'edit', 'displayComponent'],
-  emits: ['update-field'],
+  props: ["fieldData", "edit", "displayComponent"],
+  emits: ["update-field"],
   data() {
     return {
       display: this.displayComponent
@@ -30,7 +30,7 @@ export default {
       if (newValue !== this.fieldData.value) {
         const newData = {};
         newData[this.fieldData.key] = newValue;
-        this.$emit('update-field', newData);
+        this.$emit("update-field", newData);
       }
     },
   },

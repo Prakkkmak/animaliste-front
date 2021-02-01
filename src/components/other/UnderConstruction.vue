@@ -7,12 +7,12 @@
 </template>
 
 <script lang="ts">
-import { Vue } from 'vue-class-component';
-import toaster from '@/utils/toaster';
+import { Vue } from "vue-class-component";
+import toaster from "@/utils/toaster";
 
 export default class UnderConstruction extends Vue {
   mounted() {
-    toaster.error('toasts.pageUnderConstruction', { timeout: 2000 });
+    toaster.error("toasts.pageUnderConstruction", { timeout: 2000 });
   }
 }
 </script>

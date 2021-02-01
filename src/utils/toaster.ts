@@ -1,11 +1,11 @@
-import { useToast } from 'vue-toastification';
-import { i18n } from '@/main';
+import { useToast } from "vue-toastification";
+import { i18n } from "@/main";
 import {
   ToastContent,
   ToastID,
   ToastOptions,
-} from 'vue-toastification/dist/types/types';
-import { TYPE } from 'vue-toastification/dist/types/ts/constants';
+} from "vue-toastification/dist/types/types";
+import { TYPE } from "vue-toastification/dist/types/ts/constants";
 
 const toast = useToast();
 
@@ -14,7 +14,7 @@ const success = (
   options?: (ToastOptions & { type?: TYPE.SUCCESS | undefined }) | undefined
 ): ToastID => {
   const newContent =
-    typeof content === 'string' && i18n.global.te(content)
+    typeof content === "string" && i18n.global.te(content)
       ? i18n.global.t(content)
       : content;
   return toast.success(newContent, options);
@@ -24,7 +24,7 @@ const error = (
   options?: (ToastOptions & { type?: TYPE.ERROR | undefined }) | undefined
 ): ToastID => {
   const newContent =
-    typeof content === 'string' && i18n.global.te(content)
+    typeof content === "string" && i18n.global.te(content)
       ? i18n.global.t(content)
       : content;
   return toast.error(newContent, options);
@@ -34,7 +34,7 @@ const info = (
   options?: (ToastOptions & { type?: TYPE.INFO | undefined }) | undefined
 ): ToastID => {
   const newContent =
-    typeof content === 'string' && i18n.global.te(content)
+    typeof content === "string" && i18n.global.te(content)
       ? i18n.global.t(content)
       : content;
   return toast.info(newContent, options);
@@ -44,7 +44,7 @@ const warning = (
   options?: (ToastOptions & { type?: TYPE.WARNING | undefined }) | undefined
 ): ToastID => {
   const newContent =
-    typeof content === 'string' && i18n.global.te(content)
+    typeof content === "string" && i18n.global.te(content)
       ? i18n.global.t(content)
       : content;
   return toast.warning(newContent, options);

@@ -1,13 +1,13 @@
-import Animal from '@/models/Animal';
-import httpClient from './httpClient';
+import Animal from "@/models/Animal";
+import httpClient from "./httpClient";
 
-const END_POINT = '/animals';
+const END_POINT = "/animals";
 const api = {
   getAllAnimals: async () => httpClient.get(END_POINT),
 
   getAnimalById: async (id: string) => httpClient.get(`${END_POINT}/${id}`),
 
-  createAnimal: async (animalBody: any) => httpClient.post('', animalBody),
+  createAnimal: async (animalBody: any) => httpClient.post("", animalBody),
 
   saveAnimal: async (id: string, animalBody: Animal) =>
     httpClient.put(`${END_POINT}/${id}`, animalBody),

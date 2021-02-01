@@ -28,7 +28,6 @@
     "vue/component-name-in-template-casing": ["error", "PascalCase", {
       "ignores": []
     }],
-    "prettier/prettier": ["error", { "singleQuote": true, "endOfLine": "auto" }],
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "error"

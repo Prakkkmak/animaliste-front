@@ -3,7 +3,7 @@
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">{{ $t('animalCreation.addAnimal') }}</p>
+        <p class="modal-card-title">{{ $t("animalCreation.addAnimal") }}</p>
         <button
           class="delete"
           aria-label="delete"
@@ -15,7 +15,7 @@
       </section>
       <footer class="modal-card-foot">
         <button class="button" @click="this.$emit('close')">
-          {{ $t('button.cancel') }}
+          {{ $t("button.cancel") }}
         </button>
       </footer>
     </div>
@@ -23,18 +23,18 @@
 </template>
 
 <script>
-import AnimalCreationForm from './AnimalCreationForm';
+import AnimalCreationForm from "./AnimalCreationForm";
 
 export default {
   components: {
     AnimalCreationForm,
   },
-  name: 'AnimalCreationModal',
-  emits: ['close', 'animal-created'],
+  name: "AnimalCreationModal",
+  emits: ["close", "animal-created"],
   methods: {
     validateCreationAndReload() {
-      this.$emit('close');
-      this.$emit('animal-created');
+      this.$emit("close");
+      this.$emit("animal-created");
     },
   },
 };

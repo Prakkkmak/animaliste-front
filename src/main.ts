@@ -1,15 +1,15 @@
-import { createApp } from 'vue';
-import { createI18n } from 'vue-i18n';
-import Toast, { PluginOptions } from 'vue-toastification';
-import router from './router';
-import store from './store';
-import App from './App.vue';
-import { languages, defaultLocale } from './locales/index';
-import '@fortawesome/fontawesome-free/css/all.css';
-import '@fortawesome/fontawesome-free/js/all.js';
-import 'vue-toastification/dist/index.css';
+import { createApp } from "vue";
+import { createI18n } from "vue-i18n";
+import Toast, { PluginOptions } from "vue-toastification";
+import router from "./router";
+import store from "./store";
+import App from "./App.vue";
+import { languages, defaultLocale } from "./locales/index";
+import "@fortawesome/fontawesome-free/css/all.css";
+import "@fortawesome/fontawesome-free/js/all.js";
+import "vue-toastification/dist/index.css";
 
-require('./assets/main.scss');
+require("./assets/main.scss");
 
 const messages = Object.assign(languages);
 
@@ -28,6 +28,6 @@ app.use(Toast, toastOptions);
 app.use(i18n);
 app.use(router);
 app.use(store);
-app.mount('#app');
+app.mount("#app");
 
 export { app, i18n };

@@ -1,7 +1,7 @@
 <template>
   <div class="columns">
     <div class="column is-2">
-      <label class="label">{{ $t('animalDetail.name') }}</label>
+      <label class="label">{{ $t("animalDetail.name") }}</label>
       <input
         class="input is-primary"
         v-model="animal.name"
@@ -10,7 +10,7 @@
       />
     </div>
     <div class="column is-2">
-      <label class="label">{{ $t('animalDetail.specie') }}</label>
+      <label class="label">{{ $t("animalDetail.specie") }}</label>
       <input
         class="input is-primary"
         v-model="animal.specie"
@@ -19,7 +19,7 @@
       />
     </div>
     <div class="column is-3">
-      <label class="label">{{ $t('animalDetail.sex') }}</label>
+      <label class="label">{{ $t("animalDetail.sex") }}</label>
       <div class="select is-primary">
         <select v-model="animal.sex">
           <option
@@ -35,23 +35,23 @@
     <div class="column is-4">
       <br />
       <button class="button is-success" @click="createAnimal">
-        {{ $t('save') }}
+        {{ $t("save") }}
       </button>
     </div>
   </div>
 </template>
 
 <script>
-import animalApi from '@/api/animal.api';
+import animalApi from "@/api/animal.api";
 
 export default {
   data() {
     return {
-      sexes: ['Mâle', 'Femelle'],
+      sexes: ["Mâle", "Femelle"],
       animal: {},
     };
   },
-  emits: ['exit'],
+  emits: ["exit"],
   methods: {
     async createAnimal() {
       try {
@@ -59,7 +59,7 @@ export default {
       } catch (err) {
         console.log(err);
       }
-      this.$emit('exit');
+      this.$emit("exit");
     },
   },
 };

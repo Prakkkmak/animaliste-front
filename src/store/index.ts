@@ -1,10 +1,10 @@
-import { createStore } from 'vuex';
-import createPersistedState from 'vuex-persistedstate';
+import { createStore } from "vuex";
+import createPersistedState from "vuex-persistedstate";
 
 const store = createStore({
   plugins: [createPersistedState()],
   state: {
-    token: '',
+    token: "",
   },
   mutations: {
     setToken(state, token) {

@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import Menu from '@/components/menu/Menu.vue';
+import Menu from "@/components/menu/Menu.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Menu,
   },

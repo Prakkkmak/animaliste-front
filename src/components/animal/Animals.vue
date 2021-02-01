@@ -19,11 +19,11 @@
 </template>
 
 <script lang="ts">
-import animalApi from '@/api/animal.api';
-import { Watch } from 'vue-property-decorator';
-import { Options, Vue } from 'vue-class-component';
-import Animal from '@/models/Animal';
-import AnimalDetail from './detail/AnimalDetail.vue';
+import animalApi from "@/api/animal.api";
+import { Watch } from "vue-property-decorator";
+import { Options, Vue } from "vue-class-component";
+import Animal from "@/models/Animal";
+import AnimalDetail from "./detail/AnimalDetail.vue";
 
 @Options({
   components: {
@@ -37,7 +37,7 @@ class Animals extends Vue {
 
   private loading: boolean = true;
 
-  private dataFilterString: string = '';
+  private dataFilterString: string = "";
 
   async mounted() {
     this.loading = true;
@@ -69,13 +69,13 @@ class Animals extends Vue {
     return -1;
   }
 
-  @Watch('dataFilterString')
+  @Watch("dataFilterString")
   filterAnimal() {
     this.filteredData = [];
     this.animals.forEach((animal) => {
       Object.keys(animal).forEach((field) => {
         if (
-          typeof animal[field] === 'string' &&
+          typeof animal[field] === "string" &&
           animal[field].includes(this.dataFilterString)
         ) {
           this.filteredData.push(animal.id);

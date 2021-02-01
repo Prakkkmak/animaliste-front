@@ -1,35 +1,35 @@
-import { createWebHistory, createRouter } from 'vue-router';
-import Animals from '@/components/animal/Animals.vue';
-import AnimalDetail from '@/components/animal/detail/AnimalDetail.vue';
-import AccountCreation from '@/components/account/creation/AccountCreation.vue';
-import UnderConstruction from '@/components/other/UnderConstruction.vue';
-import AccountLogin from '@/components/account/AccountLogin.vue';
+import { createWebHistory, createRouter } from "vue-router";
+import Animals from "@/components/animal/Animals.vue";
+import AnimalDetail from "@/components/animal/detail/AnimalDetail.vue";
+import AccountCreation from "@/components/account/creation/AccountCreation.vue";
+import UnderConstruction from "@/components/other/UnderConstruction.vue";
+import AccountLogin from "@/components/account/AccountLogin.vue";
 
 const routes = [
   {
-    path: '/',
-    name: 'Animals',
+    path: "/",
+    name: "Animals",
     component: Animals,
   },
   {
-    path: '/animals/:id',
-    name: 'AnimalDetail',
+    path: "/animals/:id",
+    name: "AnimalDetail",
     component: AnimalDetail,
     props: true,
   },
   {
-    path: '/register',
-    name: 'AccountCreation',
+    path: "/register",
+    name: "AccountCreation",
     component: AccountCreation,
   },
   {
-    path: '/login',
-    name: 'AccountLogin',
+    path: "/login",
+    name: "AccountLogin",
     component: AccountLogin,
   },
   {
-    path: '/under_construction',
-    name: 'UnderConstruction',
+    path: "/under_construction",
+    name: "UnderConstruction",
     component: UnderConstruction,
   },
 ];
