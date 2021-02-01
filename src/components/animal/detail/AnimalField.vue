@@ -3,12 +3,14 @@
     <div class="column is-4 has-background-info has-text-left">
       {{ $t("animalDetail." + fieldData.key) }}
     </div>
-    <component
-      :is="display"
-      :data="fieldData.value"
-      :edit="edit"
-      @update="updateField"
-    />
+    <div class="column is-8 has-text-left">
+      <component
+        :is="display"
+        :value="fieldData.value"
+        :edit="edit"
+        @update="updateField"
+      />
+    </div>
   </div>
 </template>
 
