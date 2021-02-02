@@ -57,11 +57,22 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { register } from "@/api/user.api";
+import toaster from "@/utils/toaster";
+import { Vue } from "vue-class-component";
 
-export default {
-  name: "AccountCreation",
+export default class AccountRegister extends Vue {
+  private mail: string = "";
+
+  private password: string = "";
+
+  private passwordVerification: string = "";
+
+  private errors: Array = [];
+
+  private accountCreated: boolean = false;
+
   data() {
     return {
       mail: "",
@@ -70,36 +81,35 @@ export default {
       errors: [],
       accountCreated: false,
     };
-  },
-  methods: {
-    checkForm() {
+  }
+
+  checkForm() {
+    this.errors = [];
+    if (this.mail.length < 5 || !this.mail.includes("@"))
+      this.errors.push(this.$t("account.errorMail"));
+    if (this.password.length < 8)
+      this.errors.push(this.$t("account.errorPasswordForm"));
+    if (this.password !== this.passwordVerification)
+      this.errors.push(this.$t("account.errorPasswordMismatch"));
+    return this.errors.length === 0;
+  }
+
+  async createAccount() {
+    if (!this.checkForm()) return;
+    try {
+      const res = await register(this.mail, this.password);
+      const token = res.data;
+      this.$store.commit("setToken", token);
+      toaster.success("toasts.success.accountCreated");
+    } catch (err) {
+      toaster.error("toasts.error.unknownError");
+    } finally {
+      this.mail = "";
+      this.password = "";
+      this.passwordVerification = "";
+      this.accountCreated = true;
       this.errors = [];
-      if (this.mail.length < 5 || !this.mail.includes("@")) {
-        this.errors.push(this.$t("account.errorMail"));
-      }
-      if (
-        this.password.length < 8 ||
-        this.password !== this.passwordVerification
-      ) {
-        this.errors.push(this.$t("account.errorPassword"));
-      }
-      return this.errors.length === 0;
-    },
-    async createAccount() {
-      if (!this.checkForm()) return;
-      try {
-        const res = await register(this.mail, this.password);
-        const token = res.data;
-        this.$store.commit("setToken", token);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        this.mail = "";
-        this.password = "";
-        this.passwordVerification = "";
-        this.accountCreated = true;
-      }
-    },
-  },
-};
+    }
+  }
+}
 </script>
