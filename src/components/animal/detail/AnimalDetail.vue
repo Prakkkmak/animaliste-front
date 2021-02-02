@@ -108,6 +108,7 @@
 <script>
 import animalApi from "@/api/animal.api";
 import AnimalFieldDisplaySex from "@/components/animal/form/AnimalFieldDisplaySex";
+import toaster from "@/utils/toaster";
 import AnimalDatum from "./AnimalField.vue";
 
 export default {
@@ -138,7 +139,7 @@ export default {
         const res = await animalApi.getAnimalById(this.id);
         this.data = res.data;
       } catch (err) {
-        console.log(err);
+        toaster.error("toasts.error.unknownError");
       } finally {
         this.loading = false;
         this.modification = false;
@@ -148,7 +149,7 @@ export default {
       try {
         await animalApi.deleteAnimal(this.data.id);
       } catch (err) {
-        console.log(err);
+        toaster.error("toasts.error.unknownError");
       } finally {
         this.$emit("delete-animal", this.data.id);
       }
@@ -167,7 +168,7 @@ export default {
       try {
         await animalApi.saveAnimal(this.data.id, this.data);
       } catch (err) {
-        console.log(err);
+        toaster.error("toasts.error.unknownError");
       }
       this.modification = false;
     },

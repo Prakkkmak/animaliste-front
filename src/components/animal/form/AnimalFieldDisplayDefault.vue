@@ -1,35 +1,35 @@
 <template>
-  <div class="column is-8 has-text-left" v-if="!edit">
-    <p v-if="data">{{ data }}</p>
+  <div v-if="!edit">
+    <p v-if="value">{{ value }}</p>
     <p v-else>{{ $t("animalDetail.noData") }}</p>
   </div>
-  <div v-else class="column">
+  <div v-else>
     <div class="field">
       <div class="control">
-        <input
-          class="input is-primary"
-          type="text"
-          :value="newValue"
-          @blur="sendNewValue"
-        />
+        <input class="input is-primary" type="text" v-model="newValue" />
       </div>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  props: ["data", "edit"],
+<script lang="ts">
+import { Options, Vue } from "vue-class-component";
+import "reflect-metadata";
+import { Prop, Watch } from "vue-property-decorator";
+
+@Options({
   emits: ["update"],
-  data() {
-    return {
-      newValue: this.data,
-    };
-  },
-  methods: {
-    sendNewValue() {
-      this.$emit("update", this.newValue);
-    },
-  },
-};
+})
+export default class AnimalFieldInputDisplay extends Vue {
+  @Prop() readonly value!: string;
+
+  @Prop() readonly edit!: boolean;
+
+  private newValue: string = this.value;
+
+  @Watch("newValue")
+  onNewValueChange() {
+    this.$emit("update", this.newValue);
+  }
+}
 </script>
