@@ -1,6 +1,6 @@
 import { render } from "@testing-library/vue";
-import { register } from "@/api/user.api";
 import AccountRegister from "@/components/account/AccountRegister.vue";
+import { register } from "../src/api/user.api";
 
 jest.mock("@/api/user.api.ts");
 

@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import "reflect-metadata";
+// import "reflect-metadata";
 import { Prop, Watch } from "vue-property-decorator";
 
 @Options({
