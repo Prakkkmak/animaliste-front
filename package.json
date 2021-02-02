@@ -9,8 +9,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@testing-library/vue": "^6.3.4",
-    "@types/jest": "^26.0.20",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "core-js": "^3.6.5",
@@ -26,6 +24,8 @@
     "vuex-persistedstate": "^4.0.0-beta.3"
   },
   "devDependencies": {
+    "@testing-library/vue": "^6.3.4",
+    "@types/jest": "^26.0.20",
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
@@ -71,12 +71,5 @@
     "last 2 versions",
     "not dead"
   ],
-  "jest": {
-    "verbose": true,
-    "transform": {
-      "^[^.]+.vue$": "vue-jest",
-      "^.+\\.js$": "babel-jest"
-    }
-  },
   "typings": "./dist/definitions/index.d.ts"
 }
