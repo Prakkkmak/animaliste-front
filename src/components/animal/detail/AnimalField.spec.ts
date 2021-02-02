@@ -1,3 +1,4 @@
+import 'jest';
 import { render, screen } from "@testing-library/vue";
 import AnimalField from "./AnimalField.vue";
 
