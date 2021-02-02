@@ -59,6 +59,7 @@
 
 <script>
 import { register } from "@/api/user.api";
+import toaster from "@/utils/toaster";
 
 export default {
   name: "AccountCreation",
@@ -92,7 +93,7 @@ export default {
         const token = res.data;
         this.$store.commit("setToken", token);
       } catch (err) {
-        console.log(err);
+        toaster.error("toasts.error.unknownError");
       } finally {
         this.mail = "";
         this.password = "";

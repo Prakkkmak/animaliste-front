@@ -43,6 +43,7 @@
 
 <script>
 import animalApi from "@/api/animal.api";
+import toaster from "@/utils/toaster";
 
 export default {
   data() {
@@ -57,7 +58,7 @@ export default {
       try {
         await animalApi.createAnimal(this.animal);
       } catch (err) {
-        console.log(err);
+        toaster.error("toasts.error.unknownError");
       }
       this.$emit("exit");
     },
