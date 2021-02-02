@@ -1,8 +1,8 @@
 import { render } from "@testing-library/vue";
 import { register } from "@/api/user.api";
-import AccountRegister from "./AccountRegister.vue";
+import AccountRegister from "@/components/account/AccountRegister.vue";
 
-jest.mock("@/api/user.api");
+jest.mock("@/api/user.api.ts");
 
 beforeEach(() => {
   render(AccountRegister);
