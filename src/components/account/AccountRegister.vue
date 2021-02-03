@@ -1,7 +1,4 @@
 <template>
-  <div v-if="accountCreated">
-    <b> {{ $t("account.accountCreated") }} </b>
-  </div>
   <div v-if="errors.length">
     <b>{{ $t("account.errorsText") }}</b>
     <ul>
@@ -71,18 +68,6 @@ export default class AccountRegister extends Vue {
 
   private errors: Array<string> = [];
 
-  private accountCreated: boolean = false;
-
-  data() {
-    return {
-      mail: "",
-      password: "",
-      passwordVerification: "",
-      errors: [],
-      accountCreated: false,
-    };
-  }
-
   checkForm() {
     this.errors = [];
     if (this.mail.length < 5 || !this.mail.includes("@"))
@@ -97,10 +82,7 @@ export default class AccountRegister extends Vue {
   async createAccount() {
     if (!this.checkForm()) return;
     try {
-      console.log("a");
       const res = await userApi.register(this.mail, this.password);
-      console.log("b");
-      console.log(JSON.stringify(res));
       const token = res.data;
       this.$store.commit("setToken", token);
       toaster.success("toasts.success.accountCreated");
@@ -110,7 +92,6 @@ export default class AccountRegister extends Vue {
       this.mail = "";
       this.password = "";
       this.passwordVerification = "";
-      this.accountCreated = true;
       this.errors = [];
     }
   }
