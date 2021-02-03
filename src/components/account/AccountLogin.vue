@@ -1,7 +1,4 @@
 <template>
-  <div v-if="accountLogin">
-    <b> {{ $t("account.accountCreated") }} </b>
-  </div>
   <div v-if="errors.length">
     <b>{{ $t("account.errorsText") }}</b>
     <ul>
@@ -46,37 +43,39 @@
   </div>
 </template>
 
-<script>
-import { login } from "@/api/user.api";
+<script lang="ts">
+import userApi from "@/api/user.api";
+import { Vue } from "vue-class-component";
+import { Emit } from "vue-property-decorator";
 
-export default {
-  name: "AccountLogin.vue",
-  emits: ["account-login"],
-  data() {
-    return {
-      mail: "",
-      password: "",
-      errors: [],
-      accountLogin: false,
-    };
-  },
-  methods: {
-    async login() {
-      try {
-        const res = await login(this.mail, this.password);
-        const token = res.data;
-        this.$store.commit("setToken", token);
-        this.$emit("account-login", token);
-      } catch (err) {
-        this.errors.push(err);
-      } finally {
-        this.mail = "";
-        this.password = "";
-        this.accountLogin = true;
-      }
-    },
-  },
-};
+export default class AccountLogin extends Vue {
+
+  private mail: string = "";
+
+  private password: string = "";
+
+  private errors: Array<string> = [];
+
+  async login() {
+    try {
+      const res = await userApi.login(this.mail, this.password);
+      const token = res.data;
+      this.$store.commit("setToken", token);
+      this.onLogin(token);
+    } catch (err) {
+      this.errors.push(err);
+    } finally {
+      this.mail = "";
+      this.password = "";
+      this.accountLogin = true;
+    }
+  }
+
+  @Emit()
+  onLogin(token) {
+    return token;
+  }
+}
 </script>
 
 <style scoped></style>
