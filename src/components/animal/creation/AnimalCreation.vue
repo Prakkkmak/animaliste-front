@@ -14,24 +14,23 @@
   />
 </template>
 
-<script>
-import AnimalCreationModal from "./AnimalCreationModal";
+<script lang="ts">
+import { Options, Vue } from "vue-class-component";
+import "reflect-metadata";
+import { Prop, Watch, Emit } from "vue-property-decorator";
+import AnimalCreationModal from "./AnimalCreationModal";:
 
-export default {
-  emits: ["animal-created"],
+@Options({
   components: {
-    AnimalCreationModal,
-  },
-  data() {
-    return {
-      isPopUpOpen: false,
-    };
-  },
-  methods: {
-    onAnimalCreated() {
-      this.$emit("animal-created");
-      this.isPopUpOpen = false;
-    },
-  },
-};
+    AnimalCreationModal
+  }
+})
+export default class AnimalCreation extends Vue{
+  private isPopUpOpen: boolean = false;
+
+  @Emit()
+  onAnimalCreated() {
+    this.isPopUpOpen = false;
+  }
+}
 </script>
