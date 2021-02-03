@@ -41,27 +41,25 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import animalApi from "@/api/animal.api";
 import toaster from "@/utils/toaster";
+import { Vue } from "vue-class-component";
+import "reflect-metadata";
+import { Emit } from "vue-property-decorator";
 
-export default {
-  data() {
-    return {
-      sexes: ["Mâle", "Femelle"],
-      animal: {},
-    };
-  },
-  emits: ["exit"],
-  methods: {
-    async createAnimal() {
-      try {
-        await animalApi.createAnimal(this.animal);
-      } catch (err) {
-        toaster.error("toasts.error.unknownError");
-      }
-      this.$emit("exit");
-    },
-  },
-};
+export default class AnimalCreationForm extends Vue {
+  private readonly sexes = ["Mâle", "Femelle"];
+
+  private animal = {};
+
+  @Emit("on-exit")
+  async createAnimal() {
+    try {
+      await animalApi.createAnimal(this.animal);
+    } catch (err) {
+      toaster.error("toasts.error.unknownError");
+    }
+  }
+}
 </script>
