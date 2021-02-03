@@ -117,8 +117,7 @@ import {Emit, Prop} from "vue-property-decorator";
   components: {
     AnimalDatum
   }
-});
-
+})
 export default class AnimalDetail extends Vue{
   @Prop(String)
   private readonly id : String | undefined;
@@ -190,5 +189,5 @@ export default class AnimalDetail extends Vue{
 
   @Emit()
   animalDeleted(id){}
-};
+}
 </script>
