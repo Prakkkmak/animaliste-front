@@ -14,12 +14,12 @@
 
 <script lang="ts">
 import Menu from "@/components/menu/Menu.vue";
-import { Vue } from "vue-class-component";
+import { Vue, Options } from "vue-class-component";
 
-@Option({
+@Options({
   components: {
     Menu,
-  }
+  },
 })
 export default class App extends Vue{
   mounted() {
@@ -30,7 +30,7 @@ export default class App extends Vue{
 
   private account = null;
 
-  accountLogin(account) {
+  accountLogin(account: any) {
     this.account = account;
   }
 }
