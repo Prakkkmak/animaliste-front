@@ -29,12 +29,7 @@ export default class App extends Vue{
     }
   }
 
-  data() {
-    return {
-      animalListKey: 1,
-      account: null,
-    };
-  }
+  private account = null;
 
   accountLogin(account) {
     this.account = account;
