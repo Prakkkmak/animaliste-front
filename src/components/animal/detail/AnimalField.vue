@@ -27,7 +27,7 @@ export default class AnimalField extends Vue {
   private readonly edit: Boolean | undefined;
 
   @Prop(String)
-  private readonly displayComponent: String | undefined;
+  private readonly displayComponent: String = "";
 
   private display = this.displayComponent
     ? this.displayComponent

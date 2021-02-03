@@ -4,7 +4,7 @@
       @click="extended = !extended"
       class="column is-clickable has-background-primary"
     >
-      {{ data.name }}
+      {{ datum.name }}
     </div>
     <div v-if="extended" class="column">
       <div class="columns">
@@ -123,7 +123,7 @@ export default class AnimalDetail extends Vue{
   @Prop(String)
   private readonly id : string = "";
 
-  public data = Object.create(null);
+  private datum = {};
 
   private extended : Boolean = false;
 
@@ -138,14 +138,14 @@ export default class AnimalDetail extends Vue{
   }
 
   getFieldData(key) {
-    return { key, value: this.data[key] };
+    return { key, value: this.datum[key] };
   }
 
   async loadAnimal() {
     this.loading = true;
     try {
       const res = await animalApi.getAnimalById(this.id);
-      this.data = res.data;
+      this.datum = res.data;
     } catch (err) {
       toaster.error("toasts.error.unknownError");
     } finally {
@@ -156,17 +156,17 @@ export default class AnimalDetail extends Vue{
 
   async deleteAnimal() {
     try {
-      await animalApi.deleteAnimal(this.data.id);
+      await animalApi.deleteAnimal(this.datum.id);
     } catch (err) {
       toaster.error("toasts.error.unknownError");
     } finally {
-      this.animalDeleted(this.data.id)
+      this.animalDeleted(this.datum.id)
     }
   }
 
   updateAnimal(newData) {
     Object.keys(newData).forEach((data) => {
-      this.data[data] = newData[data];
+      this.datum[data] = newData[data];
     });
     this.modification = true;
     this.animalUpdated();
@@ -178,7 +178,7 @@ export default class AnimalDetail extends Vue{
 
   async saveAnimal() {
     try {
-      await animalApi.saveAnimal(this.data.id, this.data);
+      await animalApi.saveAnimal(this.datum.id, this.datum);
     } catch (err) {
       toaster.error("toasts.error.unknownError");
     }
