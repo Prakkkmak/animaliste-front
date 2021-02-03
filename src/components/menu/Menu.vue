@@ -52,19 +52,18 @@
 
 <script lang="ts">
 import AnimalCreationMenu from "./AnimalCreationMenu.vue";
-import {Vue} from "vue-class-component";
+import { Vue } from "vue-class-component";
 
 @Option({
   components: {
     AnimalCreationMenu
   }
 });
-
 export default class Menu extends Vue{
   showVersion() {
     return process.env.VUE_APP_VERSION;
   }
-};
+}
 </script>
 
 <style scoped></style>
