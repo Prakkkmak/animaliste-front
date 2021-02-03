@@ -58,7 +58,7 @@
 </template>
 
 <script lang="ts">
-import { register } from "@/api/user.api";
+import userApi from "@/api/user.api";
 import toaster from "@/utils/toaster";
 import { Vue } from "vue-class-component";
 
@@ -97,7 +97,9 @@ export default class AccountRegister extends Vue {
   async createAccount() {
     if (!this.checkForm()) return;
     try {
-      const res = await register(this.mail, this.password);
+      console.log("a");
+      const res = await userApi.register(this.mail, this.password);
+      console.log(JSON.stringify(res));
       const token = res.data;
       this.$store.commit("setToken", token);
       toaster.success("toasts.success.accountCreated");

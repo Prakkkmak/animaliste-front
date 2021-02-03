@@ -9,6 +9,6 @@ module.exports = {
       "<rootDir>/__mocks__/fileMock.js",
     "\\.(css|less|scss|less)$": "babel-jest",
   },
-  setupFilesAfterEnv: ["./jest.init.ts", "./tests/mock/server.ts"],
+  setupFilesAfterEnv: ["./jest.init.ts"],
   types: ["node", "jest", "@testing-library/jest-dom"],
 };
