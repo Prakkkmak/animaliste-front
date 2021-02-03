@@ -49,7 +49,6 @@ import { Vue } from "vue-class-component";
 import { Emit } from "vue-property-decorator";
 
 export default class AccountLogin extends Vue {
-
   private mail: string = "";
 
   private password: string = "";
@@ -67,12 +66,11 @@ export default class AccountLogin extends Vue {
     } finally {
       this.mail = "";
       this.password = "";
-      this.accountLogin = true;
     }
   }
 
   @Emit()
-  onLogin(token) {
+  onLogin(token: string) {
     return token;
   }
 }

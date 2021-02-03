@@ -14,7 +14,6 @@ export const handlers = [
   }),
 
   rest.post(`${BASE_URL}/users/register`, (req, res, ctx) => {
-    console.log(JSON.stringify(req));
     return res(
       // Respond with a 202 status code
       ctx.status(202),

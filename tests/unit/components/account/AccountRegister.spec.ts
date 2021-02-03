@@ -12,16 +12,44 @@ test("should have placeholder fields", () => {
   expect(passwordFields.length).toEqual(2);
 });
 
-test("should register", async () => {
-  const mailInput = screen.getByPlaceholderText("account.mail");
-  const passwordFields = screen.getAllByPlaceholderText("account.password");
-  userEvent.type(mailInput, "mail@test.fr");
-  expect(screen.getByDisplayValue(/mail@test.fr/)).toBeTruthy();
-  userEvent.type(passwordFields[0], "12345678");
-  userEvent.type(passwordFields[1], "12345678");
-  await userEvent.click(screen.getByText("account.register"));
-  screen.debug();
-  await waitFor(() => {}, { timeout: 5000 });
-  screen.debug();
-  expect(mailInput).toHaveDisplayValue("");
+describe("fill fields", () => {
+  beforeEach(() => {
+    const mailInput = screen.getByPlaceholderText("account.mail");
+    const passwordFields = screen.getAllByPlaceholderText("account.password");
+    userEvent.type(mailInput, "mail@test.fr");
+    userEvent.type(passwordFields[0], "12345678");
+    userEvent.type(passwordFields[1], "12345678");
+  });
+
+  it("should register", async () => {
+    const mailInput = screen.getByPlaceholderText("account.mail");
+    expect(screen.getByDisplayValue(/mail@test.fr/)).toBeTruthy();
+    userEvent.click(screen.getByText("account.register"));
+    await waitFor(() => expect(mailInput).toHaveDisplayValue(""));
+  });
+
+  it("should have wrong mail", async () => {
+    const mailInput = screen.getByPlaceholderText("account.mail");
+    userEvent.type(mailInput, "failed");
+    userEvent.click(screen.getByText("account.register"));
+    await waitFor(() => expect(screen.getByText("account.errorMail")));
+  });
+
+  it("should have wrong password", async () => {
+    const passwordFields = screen.getAllByPlaceholderText("account.password");
+    userEvent.type(passwordFields[0], "psw");
+    userEvent.type(passwordFields[1], "psw");
+    userEvent.click(screen.getByText("account.register"));
+    await waitFor(() => expect(screen.getByText("account.errorPasswordForm")));
+  });
+
+  it("should have password mismatch", async () => {
+    const passwordFields = screen.getAllByPlaceholderText("account.password");
+    userEvent.type(passwordFields[0], "12345678");
+    userEvent.type(passwordFields[1], "123456789");
+    userEvent.click(screen.getByText("account.register"));
+    await waitFor(() =>
+        expect(screen.getByText("account.errorPasswordMismatch"))
+    );
+  });
 });

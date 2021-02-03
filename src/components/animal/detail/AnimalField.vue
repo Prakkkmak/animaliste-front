@@ -21,10 +21,10 @@ import { Emit, Prop } from "vue-property-decorator";
 
 export default class AnimalField extends Vue {
   @Prop(Object)
-  private readonly fieldData: Object | undefined;
+  private readonly fieldData!: { value: string; key: string };
 
   @Prop(Boolean)
-  private readonly edit: Boolean | undefined;
+  private readonly edit!: Boolean;
 
   @Prop(String)
   private readonly displayComponent: String = "";
@@ -33,15 +33,15 @@ export default class AnimalField extends Vue {
     ? this.displayComponent
     : AnimalFieldDisplayDefault;
 
-  updateField(newValue) {
+  updateField(newValue: string) {
     if (newValue !== this.fieldData.value) {
-      const newData = {};
-      newData[this.fieldData.key] = newValue;
-      this.fieldUpdated();
+      this.fieldUpdated(newValue);
     }
   }
 
   @Emit()
-  fieldUpdated(){}
+  fieldUpdated(newValue: string) {
+    return newValue;
+  }
 }
 </script>
