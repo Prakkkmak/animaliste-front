@@ -1,6 +1,6 @@
 import { config } from "@vue/test-utils";
 import "@testing-library/jest-dom/extend-expect";
-import { server } from "@/tests/mocks/server.js";
+import { server } from "./tests/mocks/server";
 
 config.global.mocks = {
   $t: (msg: string) => msg,

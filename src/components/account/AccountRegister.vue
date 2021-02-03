@@ -99,6 +99,7 @@ export default class AccountRegister extends Vue {
     try {
       console.log("a");
       const res = await userApi.register(this.mail, this.password);
+      console.log("b");
       console.log(JSON.stringify(res));
       const token = res.data;
       this.$store.commit("setToken", token);
