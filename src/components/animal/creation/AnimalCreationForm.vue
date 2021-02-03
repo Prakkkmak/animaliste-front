@@ -60,7 +60,6 @@ export default class AnimalCreationForm extends Vue {
     } catch (err) {
       toaster.error("toasts.error.unknownError");
     }
-    this.$emit("exit");
   }
 }
 </script>
