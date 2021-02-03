@@ -1,7 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Animals from "@/components/animal/Animals.vue";
 import AnimalDetail from "@/components/animal/detail/AnimalDetail.vue";
-import AccountCreation from "@/components/account/creation/AccountCreation.vue";
+import AccountCreation from "@/components/account/AccountRegister.vue";
 import UnderConstruction from "@/components/other/UnderConstruction.vue";
 import AccountLogin from "@/components/account/AccountLogin.vue";
 

@@ -28,11 +28,13 @@
         "modify": "Modifier"
     },
     "account": {
-        "accountCreated": "Compte créé avec succès !",
+        "accountCreated": "Le compte a été créé avec succès !",
         "accountLogin": "Vous vous êtes connecté!",
         "disconnect": "Se déconnecter",
-        "errorMail": "Mail incorrect.",
+        "errorMail": "Mail incorrect. Votre mail doit être sous la forme jean.dupont@mail.fr.",
         "errorPassword": "Mot de passe incorrect.",
+        "errorPasswordMismatch": "Les deux mots de passe ne corespondent pas.",
+        "errorPasswordForm": "Le mot de passe doit faire 8 caractères.",
         "errorsText": "Veuillez corriger les erreurs suivantes",
         "login": "Se connecter",
         "mail": "Email",
@@ -56,6 +58,9 @@
     },
     "toast": {
         "pageUnderConstruction": "Page en cours de construction.",
+        "success": {
+            "accountCreated": "Le compte a été créé avec succès !"
+        },
         "error": {
             "unknownError": "une erreur est survenue. Veuillez contacter un administrateur système."
         }

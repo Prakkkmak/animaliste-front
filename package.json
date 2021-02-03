@@ -9,11 +9,12 @@
     "test": "jest"
   },
   "dependencies": {
-    "@testing-library/vue": "^6.3.4",
-    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.22",
+    "@vue/cli-plugin-unit-jest": "^4.5.11",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "core-js": "^3.6.5",
+    "reflect-metadata": "^0.1.13",
     "ts-jest": "^26.5.0",
     "vue": "^3.0.5",
     "vue-axios": "^3.2.2",
@@ -26,17 +27,27 @@
     "vuex-persistedstate": "^4.0.0-beta.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
     "@fortawesome/fontawesome-free": "^5.15.1",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/user-event": "^12.6.3",
+    "@testing-library/vue": "^6.3.4",
+    "@types/jest": "^26.0.20",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
+    "@vue/babel-preset-app": "^4.5.11",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-typescript": "^4.5.11",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.5",
     "@vue/eslint-config-typescript": "^5.0.2",
-    "@vue/test-utils": "^2.0.0-beta.14",
+    "@vue/test-utils": "^2.0.0-rc.0",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.3",
+    "msw": "^0.26.1",
     "bulma": "^0.9.1",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -71,12 +82,10 @@
     "last 2 versions",
     "not dead"
   ],
-  "jest": {
-    "verbose": true,
-    "transform": {
-      "^[^.]+.vue$": "vue-jest",
-      "^.+\\.js$": "babel-jest"
-    }
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   },
   "typings": "./dist/definitions/index.d.ts"
 }
