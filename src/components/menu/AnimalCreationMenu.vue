@@ -10,15 +10,15 @@
 </template>
 
 <script lang="ts">
-import AnimalCreationModal from "@/animal/creation/AnimalCreationModal.vue";
-import { Vue } from "vue-class-component";
+import AnimalCreationModal from "@/components/animal/creation/AnimalCreationModal.vue";
+import {Options, Vue} from "vue-class-component";
 import { Emit } from "vue-property-decorator";
 
-@Option({
+@Options({
   components: {
     AnimalCreationModal
   }
-})
+});
 
 export default class AnimalCreationMenu extends Vue{
   private isPopUpOpen : Boolean = false;

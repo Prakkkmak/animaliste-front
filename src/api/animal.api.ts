@@ -12,7 +12,7 @@ const api = {
   saveAnimal: async (id: string, animalBody: Animal) =>
     httpClient.put(`${END_POINT}/${id}`, animalBody),
 
-  deleteAnimal: async (id: number) => httpClient.delete(`${END_POINT}/${id}`),
+  deleteAnimal: async (id: string) => httpClient.delete(`${END_POINT}/${id}`),
 };
 
 export default api;

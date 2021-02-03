@@ -52,9 +52,9 @@
 
 <script lang="ts">
 import AnimalCreationMenu from "./AnimalCreationMenu.vue";
-import { Vue } from "vue-class-component";
+import {Options, Vue} from "vue-class-component";
 
-@Option({
+@Options({
   components: {
     AnimalCreationMenu
   }

@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import AnimalFieldDisplayDefault from "@/form/AnimalFieldDisplayDefault.vue";
+import AnimalFieldDisplayDefault from "@/components/animal/form/AnimalFieldDisplayDefault.vue";
 import { Vue } from "vue-class-component";
 import { Emit, Prop } from "vue-property-decorator";
 
@@ -27,7 +27,7 @@ export default class AnimalField extends Vue {
   private readonly edit: Boolean | undefined;
 
   @Prop(String)
-  private readonly displayComponent: String | undefined;
+  private readonly displayComponent: String = "";
 
   private display = this.displayComponent
     ? this.displayComponent

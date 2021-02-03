@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/vue";
-import AnimalField from "../../../../../src/components/animal/detail/AnimalField.vue";
+import AnimalField from "@/components/animal/detail/AnimalField.vue";
 
 const fieldData = {
   key: "field_name",
