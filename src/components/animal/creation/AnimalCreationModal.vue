@@ -11,10 +11,10 @@
         ></button>
       </header>
       <section class="modal-card-body">
-        <AnimalCreationForm @exit="validateCreationAndReload" />
+        <AnimalCreationForm @exit="this.animalCreated" />
       </section>
       <footer class="modal-card-foot">
-        <button class="button" @click="this.$emit('close')">
+        <button class="button" @click="this.onClose">
           {{ $t("button.cancel") }}
         </button>
       </footer>
@@ -22,22 +22,26 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { Options, Vue } from "vue-class-component";
+import "reflect-metadata";
+import { Emit } from "vue-property-decorator";
 import AnimalCreationForm from "./AnimalCreationForm";
 
-export default {
+@Options({
   components: {
     AnimalCreationForm,
   },
-  name: "AnimalCreationModal",
-  emits: ["close", "animal-created"],
-  methods: {
-    validateCreationAndReload() {
-      this.$emit("close");
-      this.$emit("animal-created");
-    },
-  },
-};
+})
+export default class AnimalCreationModal extends Vue {
+  @Emit()
+  animalCreated() {
+    this.onClose();
+  }
+
+  @Emit()
+  onClose() {}
+}
 </script>
 
 <style scoped></style>
