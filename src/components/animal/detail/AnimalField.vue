@@ -8,33 +8,40 @@
         :is="display"
         :value="fieldData.value"
         :edit="edit"
-        @update="updateField"
+        @update="fieldUpdated"
       />
     </div>
   </div>
 </template>
 
-<script>
-import AnimalFieldDisplayDefault from "../form/AnimalFieldDisplayDefault.vue";
+<script lang="ts">
+import AnimalFieldDisplayDefault from "@/form/AnimalFieldDisplayDefault.vue";
+import { Vue } from "vue-class-component";
+import { Emit, Prop } from "vue-property-decorator";
 
-export default {
-  props: ["fieldData", "edit", "displayComponent"],
-  emits: ["update-field"],
-  data() {
-    return {
-      display: this.displayComponent
-        ? this.displayComponent
-        : AnimalFieldDisplayDefault,
-    };
-  },
-  methods: {
-    updateField(newValue) {
-      if (newValue !== this.fieldData.value) {
-        const newData = {};
-        newData[this.fieldData.key] = newValue;
-        this.$emit("update-field", newData);
-      }
-    },
-  },
-};
+export default class AnimalField extends Vue {
+  @Prop(Object)
+  private readonly fieldData: Object | undefined;
+
+  @Prop(Boolean)
+  private readonly edit: Boolean | undefined;
+
+  @Prop(String)
+  private readonly displayComponent: String | undefined;
+
+  private display = this.displayComponent
+    ? this.displayComponent
+    : AnimalFieldDisplayDefault;
+
+  updateField(newValue) {
+    if (newValue !== this.fieldData.value) {
+      const newData = {};
+      newData[this.fieldData.key] = newValue;
+      this.fieldUpdated();
+    }
+  }
+
+  @Emit()
+  fieldUpdated(){}
+}
 </script>
