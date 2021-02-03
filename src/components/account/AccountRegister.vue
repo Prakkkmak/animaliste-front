@@ -69,7 +69,7 @@ export default class AccountRegister extends Vue {
 
   private passwordVerification: string = "";
 
-  private errors: Array = [];
+  private errors: Array<string> = [];
 
   private accountCreated: boolean = false;
 

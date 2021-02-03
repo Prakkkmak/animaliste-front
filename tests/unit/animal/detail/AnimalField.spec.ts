@@ -1,6 +1,5 @@
-import 'jest';
 import { render, screen } from "@testing-library/vue";
-import AnimalField from "./AnimalField.vue";
+import AnimalField from "@/components/animal/detail/AnimalField.vue";
 
 const fieldData = {
   key: "field_name",
