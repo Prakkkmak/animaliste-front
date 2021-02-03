@@ -14,14 +14,13 @@
 
 <script lang="ts">
 import Menu from "@/components/menu/Menu.vue";
-import {Vue} from "vue-class-component";
+import { Vue } from "vue-class-component";
 
 @Option({
   components: {
     Menu,
   }
-});
-
+})
 export default class App extends Vue{
   mounted() {
     if (this.$store.state.token) {
@@ -34,7 +33,7 @@ export default class App extends Vue{
   accountLogin(account) {
     this.account = account;
   }
-};
+}
 </script>
 
 <style>
