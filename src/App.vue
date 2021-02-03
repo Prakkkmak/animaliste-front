@@ -12,30 +12,33 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Menu from "@/components/menu/Menu.vue";
+import {Vue} from "vue-class-component";
 
-export default {
-  name: "App",
+@Option({
   components: {
     Menu,
-  },
+  }
+});
+
+export default class App extends Vue{
   mounted() {
     if (this.$store.state.token) {
       this.account = this.$store.state.token;
     }
-  },
+  }
+
   data() {
     return {
       animalListKey: 1,
       account: null,
     };
-  },
-  methods: {
-    accountLogin(account) {
-      this.account = account;
-    },
-  },
+  }
+
+  accountLogin(account) {
+    this.account = account;
+  }
 };
 </script>
 
