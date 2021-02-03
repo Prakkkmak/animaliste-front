@@ -112,6 +112,7 @@ import toaster from "@/utils/toaster";
 import AnimalDatum from "./AnimalField.vue";
 import {Options, Vue} from "vue-class-component";
 import { Emit, Prop } from "vue-property-decorator";
+import Animal from "@/models/Animal";
 
 @Options({
   components: {
@@ -123,7 +124,7 @@ export default class AnimalDetail extends Vue{
   @Prop(String)
   private readonly id : string = "";
 
-  private datum = {};
+  private datum : Animal = new Animal();
 
   private extended : Boolean = false;
 
@@ -137,7 +138,7 @@ export default class AnimalDetail extends Vue{
     await this.loadAnimal();
   }
 
-  getFieldData(key) {
+  getFieldData(key: string) {
     return { key, value: this.datum[key] };
   }
 
@@ -164,7 +165,7 @@ export default class AnimalDetail extends Vue{
     }
   }
 
-  updateAnimal(newData) {
+  updateAnimal(newData: any) {
     Object.keys(newData).forEach((data) => {
       this.datum[data] = newData[data];
     });
@@ -189,6 +190,6 @@ export default class AnimalDetail extends Vue{
   animalUpdated(){}
 
   @Emit()
-  animalDeleted(id){}
+  animalDeleted(id: string){}
 }
 </script>
