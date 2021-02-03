@@ -107,22 +107,23 @@
 </template>
 <script lang="ts">
 import animalApi from "@/api/animal.api";
-import AnimalFieldDisplaySex from "@/components/animal/form/AnimalFieldDisplaySex";
+import AnimalFieldDisplaySex from "@/components/animal/form/AnimalFieldDisplaySex.vue";
 import toaster from "@/utils/toaster";
 import AnimalDatum from "./AnimalField.vue";
-import {Vue} from "vue-class-component";
-import {Emit, Prop} from "vue-property-decorator";
+import {Options, Vue} from "vue-class-component";
+import { Emit, Prop } from "vue-property-decorator";
 
-@Option({
+@Options({
   components: {
     AnimalDatum
   }
-})
+});
+
 export default class AnimalDetail extends Vue{
   @Prop(String)
-  private readonly id : String | undefined;
+  private readonly id : string = "";
 
-  private data = Object.create(null);
+  public data = Object.create(null);
 
   private extended : Boolean = false;
 

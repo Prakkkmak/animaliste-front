@@ -14,13 +14,14 @@
 
 <script lang="ts">
 import Menu from "@/components/menu/Menu.vue";
-import { Vue } from "vue-class-component";
+import {Options, Vue} from "vue-class-component";
 
-@Option({
+@Options({
   components: {
     Menu,
   }
-})
+});
+
 export default class App extends Vue{
   mounted() {
     if (this.$store.state.token) {

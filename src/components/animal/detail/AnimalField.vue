@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import AnimalFieldDisplayDefault from "@/form/AnimalFieldDisplayDefault.vue";
+import AnimalFieldDisplayDefault from "@/components/animal/form/AnimalFieldDisplayDefault.vue";
 import { Vue } from "vue-class-component";
 import { Emit, Prop } from "vue-property-decorator";
 
