@@ -50,17 +50,20 @@
   </footer>
 </template>
 
-<script>
-import AnimalCreationMenu from "./AnimalCreationMenu";
+<script lang="ts">
+import AnimalCreationMenu from "./AnimalCreationMenu.vue";
+import {Vue} from "vue-class-component";
 
-export default {
-  name: "Menu.vue",
-  components: { AnimalCreationMenu },
-  methods: {
-    showVersion() {
-      return process.env.VUE_APP_VERSION;
-    },
-  },
+@Option({
+  components: {
+    AnimalCreationMenu
+  }
+});
+
+export default class Menu extends Vue{
+  showVersion() {
+    return process.env.VUE_APP_VERSION;
+  }
 };
 </script>
 
