@@ -147,7 +147,7 @@ export default class AnimalDetail extends Vue {
       const res = await animalApi.getAnimalById(this.id);
       this.datum = res.data;
     } catch (err) {
-      toaster.error("toasts.error.unknownError");
+      toaster.error("toast.error.unknownError");
     } finally {
       this.loading = false;
       this.modification = false;
@@ -158,7 +158,7 @@ export default class AnimalDetail extends Vue {
     try {
       await animalApi.deleteAnimal(this.datum.id);
     } catch (err) {
-      toaster.error("toasts.error.unknownError");
+      toaster.error("toast.error.unknownError");
     } finally {
       this.animalDeleted(this.datum.id);
     }
@@ -180,7 +180,7 @@ export default class AnimalDetail extends Vue {
     try {
       await animalApi.saveAnimal(this.datum.id, this.datum);
     } catch (err) {
-      toaster.error("toasts.error.unknownError");
+      toaster.error("toast.error.unknownError");
     }
     this.modification = false;
   }

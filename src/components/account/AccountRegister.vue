@@ -85,9 +85,9 @@ export default class AccountRegister extends Vue {
       const res = await userApi.register(this.mail, this.password);
       const token = res.data;
       this.$store.commit("setToken", token);
-      toaster.success("toasts.success.accountCreated");
+      toaster.success("toast.success.accountCreated");
     } catch (err) {
-      toaster.error("toasts.error.unknownError");
+      toaster.error("toast.error.unknownError");
     } finally {
       this.mail = "";
       this.password = "";

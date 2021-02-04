@@ -12,7 +12,7 @@ import toaster from "@/utils/toaster";
 
 export default class UnderConstruction extends Vue {
   mounted() {
-    toaster.error("toasts.pageUnderConstruction", { timeout: 2000 });
+    toaster.error("toast.pageUnderConstruction", { timeout: 2000 });
   }
 }
 </script>

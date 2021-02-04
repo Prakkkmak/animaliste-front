@@ -58,7 +58,7 @@ export default class AnimalCreationForm extends Vue {
     try {
       await animalApi.createAnimal(this.animal);
     } catch (err) {
-      toaster.error("toasts.error.unknownError");
+      toaster.error("toast.error.unknownError");
     }
   }
 }
