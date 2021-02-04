@@ -62,7 +62,7 @@
             "accountCreated": "Le compte a été créé avec succès !"
         },
         "error": {
-            "unknownError": "une erreur est survenue. Veuillez contacter un administrateur système."
+            "unknownError": "Une erreur est survenue. Veuillez contacter un administrateur système."
         }
     }
 }

@@ -23,7 +23,6 @@ import animalApi from "@/api/animal.api";
 import { Watch } from "vue-property-decorator";
 import { Options, Vue } from "vue-class-component";
 import Animal from "@/models/Animal";
-import toaster from "@/utils/toaster";
 import AnimalDetail from "./detail/AnimalDetail.vue";
 
 @Options({
@@ -45,8 +44,6 @@ class Animals extends Vue {
     try {
       const res = await animalApi.getAllAnimals();
       this.animals = res.data;
-    } catch (err) {
-      toaster.error("toast.error.unknownError");
     } finally {
       this.loading = false;
     }

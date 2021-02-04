@@ -47,6 +47,7 @@
 import userApi from "@/api/user.api";
 import { Vue } from "vue-class-component";
 import { Emit } from "vue-property-decorator";
+import toaster from "@/utils/toaster";
 
 export default class AccountLogin extends Vue {
   private mail: string = "";
@@ -62,7 +63,7 @@ export default class AccountLogin extends Vue {
       this.$store.commit("setToken", token);
       this.onLogin(token);
     } catch (err) {
-      this.errors.push(err);
+      toaster.error("toast.error.unknownError");
     } finally {
       this.mail = "";
       this.password = "";
