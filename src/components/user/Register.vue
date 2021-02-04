@@ -1,6 +1,6 @@
 <template>
   <div v-if="errors.length">
-    <b>{{ $t("account.errorsText") }}</b>
+    <b>{{ $t("user.errorsText") }}</b>
     <ul>
       <li v-for="error in errors" :key="error">{{ error }}</li>
     </ul>
@@ -10,7 +10,7 @@
       <input
         class="input"
         type="email"
-        :placeholder="$t('account.mail')"
+        :placeholder="$t('user.mail')"
         v-model="mail"
       />
       <span class="icon is-small is-left">
@@ -26,7 +26,7 @@
       <input
         class="input"
         type="password"
-        :placeholder="$t('account.password')"
+        :placeholder="$t('user.password')"
         v-model="password"
       />
       <span class="icon is-small is-left">
@@ -37,7 +37,7 @@
       <input
         class="input"
         type="password"
-        :placeholder="$t('account.password')"
+        :placeholder="$t('user.password')"
         v-model="passwordVerification"
       />
       <span class="icon is-small is-left">
@@ -48,7 +48,7 @@
   <div class="field">
     <p class="control">
       <button class="button is-success" @click="createAccount">
-        {{ $t("account.register") }}
+        {{ $t("user.register") }}
       </button>
     </p>
   </div>
@@ -71,11 +71,11 @@ export default class AccountRegister extends Vue {
   checkForm() {
     this.errors = [];
     if (this.mail.length < 5 || !this.mail.includes("@"))
-      this.errors.push(this.$t("account.errorMail"));
+      this.errors.push(this.$t("user.errorMail"));
     if (this.password.length < 8)
-      this.errors.push(this.$t("account.errorPasswordForm"));
+      this.errors.push(this.$t("user.errorPasswordForm"));
     if (this.password !== this.passwordVerification)
-      this.errors.push(this.$t("account.errorPasswordMismatch"));
+      this.errors.push(this.$t("user.errorPasswordMismatch"));
     return this.errors.length === 0;
   }
 

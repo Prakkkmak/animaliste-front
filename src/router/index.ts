@@ -1,9 +1,9 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Animals from "@/components/animal/Animals.vue";
 import AnimalDetail from "@/components/animal/detail/AnimalDetail.vue";
-import AccountCreation from "@/components/account/AccountRegister.vue";
+import AccountCreation from "@/components/user/Register.vue";
 import UnderConstruction from "@/components/other/UnderConstruction.vue";
-import AccountLogin from "@/components/account/AccountLogin.vue";
+import AccountLogin from "@/components/user/Login.vue";
 
 const routes = [
   {
