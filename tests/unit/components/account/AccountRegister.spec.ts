@@ -49,7 +49,7 @@ describe("fill fields", () => {
     userEvent.type(passwordFields[1], "123456789");
     userEvent.click(screen.getByText("account.register"));
     await waitFor(() =>
-        expect(screen.getByText("account.errorPasswordMismatch"))
+      expect(screen.getByText("account.errorPasswordMismatch"))
     );
   });
 });

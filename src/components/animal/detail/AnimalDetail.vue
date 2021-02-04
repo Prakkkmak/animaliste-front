@@ -109,28 +109,27 @@
 import animalApi from "@/api/animal.api";
 import AnimalFieldDisplaySex from "@/components/animal/form/AnimalFieldDisplaySex.vue";
 import toaster from "@/utils/toaster";
-import AnimalDatum from "./AnimalField.vue";
-import {Options, Vue} from "vue-class-component";
+import { Options, Vue } from "vue-class-component";
 import { Emit, Prop } from "vue-property-decorator";
 import Animal from "@/models/Animal";
+import AnimalDatum from "./AnimalField.vue";
 
 @Options({
   components: {
-    AnimalDatum
-  }
-});
-
-export default class AnimalDetail extends Vue{
+    AnimalDatum,
+  },
+})
+export default class AnimalDetail extends Vue {
   @Prop(String)
-  private readonly id : string = "";
+  private readonly id: string = "";
 
-  private datum : Animal = new Animal();
+  private datum: Animal = new Animal();
 
-  private extended : Boolean = false;
+  private extended: Boolean = false;
 
-  private loading : Boolean = true;
+  private loading: Boolean = true;
 
-  private modification : Boolean = false;
+  private modification: Boolean = false;
 
   private animalFieldDisplaySex = AnimalFieldDisplaySex;
 
@@ -161,7 +160,7 @@ export default class AnimalDetail extends Vue{
     } catch (err) {
       toaster.error("toasts.error.unknownError");
     } finally {
-      this.animalDeleted(this.datum.id)
+      this.animalDeleted(this.datum.id);
     }
   }
 
@@ -187,9 +186,11 @@ export default class AnimalDetail extends Vue{
   }
 
   @Emit()
-  animalUpdated(){}
+  animalUpdated() {}
 
   @Emit()
-  animalDeleted(id: string){}
+  animalDeleted(id: string) {
+    return id;
+  }
 }
 </script>

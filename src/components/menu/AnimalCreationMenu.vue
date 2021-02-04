@@ -11,17 +11,16 @@
 
 <script lang="ts">
 import AnimalCreationModal from "@/components/animal/creation/AnimalCreationModal.vue";
-import {Options, Vue} from "vue-class-component";
+import { Options, Vue } from "vue-class-component";
 import { Emit } from "vue-property-decorator";
 
 @Options({
   components: {
-    AnimalCreationModal
-  }
-});
-
-export default class AnimalCreationMenu extends Vue{
-  private isPopUpOpen : Boolean = false;
+    AnimalCreationModal,
+  },
+})
+export default class AnimalCreationMenu extends Vue {
+  private isPopUpOpen: Boolean = false;
 
   onAnimalCreated() {
     this.isPopUpOpen = false;
@@ -29,7 +28,7 @@ export default class AnimalCreationMenu extends Vue{
   }
 
   @Emit()
-  animalCreated(){}
+  animalCreated() {}
 }
 </script>
 

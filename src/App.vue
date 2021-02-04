@@ -21,7 +21,7 @@ import { Vue, Options } from "vue-class-component";
     Menu,
   },
 })
-export default class App extends Vue{
+export default class App extends Vue {
   mounted() {
     if (this.$store.state.token) {
       this.account = this.$store.state.token;

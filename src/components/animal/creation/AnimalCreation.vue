@@ -17,15 +17,15 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import "reflect-metadata";
-import { Prop, Watch, Emit } from "vue-property-decorator";
-import AnimalCreationModal from "./AnimalCreationModal";:
+import { Emit } from "vue-property-decorator";
+import AnimalCreationModal from "./AnimalCreationModal.vue";
 
 @Options({
   components: {
-    AnimalCreationModal
-  }
+    AnimalCreationModal,
+  },
 })
-export default class AnimalCreation extends Vue{
+export default class AnimalCreation extends Vue {
   private isPopUpOpen: boolean = false;
 
   @Emit()

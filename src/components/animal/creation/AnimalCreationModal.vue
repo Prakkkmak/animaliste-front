@@ -26,7 +26,7 @@
 import { Options, Vue } from "vue-class-component";
 import "reflect-metadata";
 import { Emit } from "vue-property-decorator";
-import AnimalCreationForm from "./AnimalCreationForm";
+import AnimalCreationForm from "./AnimalCreationForm.vue";
 
 @Options({
   components: {

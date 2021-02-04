@@ -51,15 +51,15 @@
 </template>
 
 <script lang="ts">
+import { Options, Vue } from "vue-class-component";
 import AnimalCreationMenu from "./AnimalCreationMenu.vue";
-import {Options, Vue} from "vue-class-component";
 
 @Options({
   components: {
-    AnimalCreationMenu
-  }
-});
-export default class Menu extends Vue{
+    AnimalCreationMenu,
+  },
+})
+export default class Menu extends Vue {
   showVersion() {
     return process.env.VUE_APP_VERSION;
   }
