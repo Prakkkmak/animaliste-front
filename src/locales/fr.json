@@ -27,7 +27,7 @@
         "search": "Rechercher",
         "modify": "Modifier"
     },
-    "account": {
+    "user": {
         "accountCreated": "Le compte a été créé avec succès !",
         "accountLogin": "Vous vous êtes connecté!",
         "disconnect": "Se déconnecter",
@@ -39,7 +39,7 @@
         "login": "Se connecter",
         "mail": "Email",
         "password": "Mot de passe",
-        "register": "Enregister"
+        "register": "S'inscrire"
     },
     "menu": {
         "administration": "Administration",
@@ -62,7 +62,7 @@
             "accountCreated": "Le compte a été créé avec succès !"
         },
         "error": {
-            "unknownError": "une erreur est survenue. Veuillez contacter un administrateur système."
+            "unknownError": "Une erreur est survenue. Veuillez contacter un administrateur système."
         }
     }
 }

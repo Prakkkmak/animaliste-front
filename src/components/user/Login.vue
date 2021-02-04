@@ -37,7 +37,7 @@
   <div class="field">
     <p class="control">
       <button class="button is-success" @click="login">
-        {{ $t("user.register") }}
+        {{ $t("user.login") }}
       </button>
     </p>
   </div>
@@ -48,7 +48,7 @@ import userApi from "@/api/user.api";
 import { Vue } from "vue-class-component";
 import { Emit } from "vue-property-decorator";
 
-export default class AccountLogin extends Vue {
+export default class Login extends Vue {
   private mail: string = "";
 
   private password: string = "";
@@ -75,5 +75,3 @@ export default class AccountLogin extends Vue {
   }
 }
 </script>
-
-<style scoped></style>

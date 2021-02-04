@@ -59,7 +59,7 @@ import userApi from "@/api/user.api";
 import toaster from "@/utils/toaster";
 import { Vue } from "vue-class-component";
 
-export default class AccountRegister extends Vue {
+export default class Register extends Vue {
   private mail: string = "";
 
   private password: string = "";

@@ -3,7 +3,7 @@ import Animals from "@/components/animal/Animals.vue";
 import AnimalDetail from "@/components/animal/detail/AnimalDetail.vue";
 import AccountCreation from "@/components/user/Register.vue";
 import UnderConstruction from "@/components/other/UnderConstruction.vue";
-import AccountLogin from "@/components/user/Login.vue";
+import Login from "@/components/user/Login.vue";
 
 const routes = [
   {
@@ -25,7 +25,7 @@ const routes = [
   {
     path: "/login",
     name: "AccountLogin",
-    component: AccountLogin,
+    component: Login,
   },
   {
     path: "/under_construction",
