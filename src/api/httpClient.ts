@@ -1,6 +1,7 @@
 import axios from "axios";
 import router from "@/router";
 import store from "@/store";
+import toaster from "@/utils/toaster";
 
 const FORBIDDEN_CODE = 403;
 
@@ -32,9 +33,9 @@ httpClient.interceptors.response.use(
   async (error) => {
     if (error.response.status === FORBIDDEN_CODE) {
       await router.push({ path: "login" });
+      toaster.info("Veuillez vous connecter");
       return Promise.resolve();
     }
-
     return Promise.reject(error);
   }
 );
