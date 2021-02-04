@@ -1,5 +1,4 @@
 <template>
-  <p>TOKEN ACTUEL : {{ $store.state.token }}</p>
   <div>
     <div class="columns">
       <div class="column is-2">
