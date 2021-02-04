@@ -30,13 +30,16 @@ describe("fill fields", () => {
 
   it("should have wrong mail", async () => {
     const mailInput = screen.getByPlaceholderText("account.mail");
-    userEvent.type(mailInput, "failed");
+    userEvent.clear(mailInput);
+    userEvent.type(mailInput, "noarobase");
     userEvent.click(screen.getByText("account.register"));
     await waitFor(() => expect(screen.getByText("account.errorMail")));
   });
 
   it("should have wrong password", async () => {
     const passwordFields = screen.getAllByPlaceholderText("account.password");
+    userEvent.clear(passwordFields[0]);
+    userEvent.clear(passwordFields[1]);
     userEvent.type(passwordFields[0], "psw");
     userEvent.type(passwordFields[1], "psw");
     userEvent.click(screen.getByText("account.register"));
