@@ -46,7 +46,16 @@
   </aside>
   <footer class="footer">
     Version {{ showVersion() }}
-    <a href="https://github.com/Prakkkmak/animaliste-front">Github</a>
+    <ul>
+      <li>
+        <a href="https://github.com/Prakkkmak/animaliste-front">Github</a>
+      </li>
+      <li>
+        <a href="https://github.com/Prakkkmak/animaliste-front/issues"
+          >Reporter un bug</a
+        >
+      </li>
+    </ul>
   </footer>
 </template>
 
