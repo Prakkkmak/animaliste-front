@@ -27,7 +27,7 @@
         "search": "Rechercher",
         "modify": "Modifier"
     },
-    "account": {
+    "user": {
         "accountCreated": "Le compte a été créé avec succès !",
         "accountLogin": "Vous vous êtes connecté!",
         "disconnect": "Se déconnecter",

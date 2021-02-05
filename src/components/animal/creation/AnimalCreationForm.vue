@@ -2,40 +2,46 @@
   <div class="columns">
     <div class="column is-2">
       <label class="label">{{ $t("animalDetail.name") }}</label>
-      <input
-        class="input is-primary"
-        v-model="animal.name"
-        type="text"
-        placeholder="Chachounet"
-      />
+      <label>
+        <input
+          class="input is-primary"
+          v-model="animal.name"
+          type="text"
+          placeholder="Chachounet"
+        />
+      </label>
     </div>
     <div class="column is-2">
       <label class="label">{{ $t("animalDetail.specie") }}</label>
-      <input
-        class="input is-primary"
-        v-model="animal.specie"
-        type="text"
-        placeholder="Chat"
-      />
+      <label>
+        <input
+          class="input is-primary"
+          v-model="animal.specie"
+          type="text"
+          placeholder="Chat"
+        />
+      </label>
     </div>
     <div class="column is-3">
       <label class="label">{{ $t("animalDetail.sex") }}</label>
       <div class="select is-primary">
-        <select v-model="animal.sex">
-          <option
-            v-for="option in sexes"
-            :value="option === 'Mâle' ? true : false"
-            :key="option"
-          >
-            {{ option }}
-          </option>
-        </select>
+        <label>
+          <select v-model="animal.sex">
+            <option
+              v-for="option in sexes"
+              :value="option === 'Mâle'"
+              :key="option"
+            >
+              {{ option }}
+            </option>
+          </select>
+        </label>
       </div>
     </div>
     <div class="column is-4">
       <br />
       <button class="button is-success" @click="createAnimal">
-        {{ $t("save") }}
+        {{ $t("button.save") }}
       </button>
     </div>
   </div>

@@ -6,7 +6,9 @@
   <div v-else>
     <div class="field">
       <div class="control">
-        <input class="input is-primary" type="text" v-model="newValue" />
+        <label>
+          <input class="input is-primary" type="text" v-model="newValue" />
+        </label>
       </div>
     </div>
   </div>

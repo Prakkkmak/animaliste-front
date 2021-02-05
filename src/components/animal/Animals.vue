@@ -1,11 +1,13 @@
 <template>
   <ul v-if="!loading">
-    <input
-      class="input"
-      type="text"
-      placeholder=""
-      v-model="dataFilterString"
-    />
+    <label>
+      <input
+        class="input"
+        type="text"
+        placeholder=""
+        v-model="dataFilterString"
+      />
+    </label>
     <div v-for="animal in animals" :key="animal.id" class="columns">
       <AnimalDetail
         :id="animal.id"
