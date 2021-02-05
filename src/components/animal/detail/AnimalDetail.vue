@@ -78,7 +78,10 @@
         </div>
         <div class="column is-4">
           <figure class="image">
-            <img src="https://dummyimage.com/320x200/000/fff" />
+            <img
+              src="https://dummyimage.com/320x200/000/fff"
+              alt="Picture of {{ datum.name }}"
+            />
           </figure>
           <button
             v-if="modification"

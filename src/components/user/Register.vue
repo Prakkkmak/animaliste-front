@@ -7,12 +7,14 @@
   </div>
   <div class="field">
     <p class="control has-icons-left has-icons-right">
-      <input
-        class="input"
-        type="email"
-        :placeholder="$t('user.mail')"
-        v-model="mail"
-      />
+      <label>
+        <input
+          class="input"
+          type="email"
+          :placeholder="$t('user.mail')"
+          v-model="mail"
+        />
+      </label>
       <span class="icon is-small is-left">
         <i class="fas fa-envelope"></i>
       </span>
@@ -23,23 +25,27 @@
   </div>
   <div class="field">
     <p class="control has-icons-left">
-      <input
-        class="input"
-        type="password"
-        :placeholder="$t('user.password')"
-        v-model="password"
-      />
+      <label>
+        <input
+          class="input"
+          type="password"
+          :placeholder="$t('user.password')"
+          v-model="password"
+        />
+      </label>
       <span class="icon is-small is-left">
         <i class="fas fa-lock"></i>
       </span>
     </p>
     <p class="control has-icons-left">
-      <input
-        class="input"
-        type="password"
-        :placeholder="$t('user.password')"
-        v-model="passwordVerification"
-      />
+      <label>
+        <input
+          class="input"
+          type="password"
+          :placeholder="$t('user.password')"
+          v-model="passwordVerification"
+        />
+      </label>
       <span class="icon is-small is-left">
         <i class="fas fa-lock"></i>
       </span>

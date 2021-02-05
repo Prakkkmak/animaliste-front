@@ -59,8 +59,6 @@ describe("fill fields", () => {
     userEvent.type(passwordFields[0], "12345678");
     userEvent.type(passwordFields[1], "123456789");
     userEvent.click(screen.getByText("user.register"));
-    await waitFor(() =>
-      expect(screen.getByText("user.errorPasswordMismatch"))
-    );
+    await waitFor(() => expect(screen.getByText("user.errorPasswordMismatch")));
   });
 });
