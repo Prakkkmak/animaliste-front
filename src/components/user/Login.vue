@@ -55,7 +55,17 @@ export default class Login extends Vue {
 
   private errors: Array<string> = [];
 
+  checkForm() {
+    this.errors = [];
+    if (this.mail.length < 5 || !this.mail.includes("@"))
+      this.errors.push(this.$t("user.errorMail"));
+    if (this.password.length < 8)
+      this.errors.push(this.$t("user.errorPasswordForm"));
+    return this.errors.length === 0;
+  }
+
   async login() {
+    if(!this.checkForm()) return;
     try {
       const res = await userApi.login(this.mail, this.password);
       const token = res.data;
