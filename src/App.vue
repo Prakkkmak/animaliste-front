@@ -1,4 +1,10 @@
 <template>
+  <section class="hero is-primary">
+    <div class="hero-body">
+      <p class="title">Animaliste</p>
+      <p class="subtitle">Pour vos animaux réfugiés</p>
+    </div>
+  </section>
   <div>
     <div class="columns">
       <div class="column is-2">
@@ -9,6 +15,11 @@
       </div>
     </div>
   </div>
+  <footer class="footer">
+    <strong>Animaliste</strong> by
+    <a href="https://github.com/Prakkkmak">Prakkkmak</a>. /Licence code &
+    contenu\
+  </footer>
 </template>
 
 <script lang="ts">
