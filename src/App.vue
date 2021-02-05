@@ -1,8 +1,8 @@
 <template>
   <section class="hero is-primary">
     <div class="hero-body">
-      <p class="title">Animaliste</p>
-      <p class="subtitle">Pour vos animaux réfugiés</p>
+      <p class="title">{{ $t("header.title") }}</p>
+      <p class="subtitle">{{ $t("header.subtitle") }}</p>
     </div>
   </section>
   <div>
