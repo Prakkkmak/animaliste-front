@@ -65,14 +65,12 @@ export default class Login extends Vue {
   }
 
   async login() {
-    if(!this.checkForm()) return;
+    if (!this.checkForm()) return;
     try {
       const res = await userApi.login(this.mail, this.password);
       const token = res.data;
       this.$store.commit("setToken", token);
       this.onLogin(token);
-    } catch (err) {
-      this.errors.push(err);
     } finally {
       this.mail = "";
       this.password = "";
