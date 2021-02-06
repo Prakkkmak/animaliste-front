@@ -1,9 +1,14 @@
 import { render, screen, waitFor } from "@testing-library/vue";
 import userEvent from "@testing-library/user-event";
 import Login from "@/components/user/Login.vue";
+import store from "@/store";
 
 beforeEach(() => {
-  render(Login);
+  render(Login, {
+    global: {
+      plugins: [store],
+    }
+  });
 });
 
 test("fields exist", () => {

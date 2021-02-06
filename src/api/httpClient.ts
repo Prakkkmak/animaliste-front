@@ -1,6 +1,7 @@
 import axios from "axios";
 import router from "@/router";
 import store from "@/store";
+import toaster from "@/utils/toaster";
 
 const FORBIDDEN_CODE = 403;
 
@@ -34,7 +35,7 @@ httpClient.interceptors.response.use(
       await router.push({ path: "login" });
       return Promise.resolve();
     }
-
+    toaster.error("Erreur dans la requête");
     return Promise.reject(error);
   }
 );

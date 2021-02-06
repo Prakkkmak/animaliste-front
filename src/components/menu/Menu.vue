@@ -33,12 +33,12 @@
     </p>
     <ul class="menu-list">
       <li>
-        <router-link :to="{ name: 'AccountCreation' }">
+        <router-link :to="{ name: 'Register' }">
           <a>{{ $t("menu.createAccount") }}</a>
         </router-link>
       </li>
       <li>
-        <router-link :to="{ name: 'AccountLogin' }">
+        <router-link :to="{ name: 'Login' }">
           <a>{{ $t("menu.connect") }}</a>
         </router-link>
       </li>
