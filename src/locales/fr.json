@@ -52,6 +52,10 @@
         "general": "Général",
         "other": "Autres"
     },
+    "header": {
+        "title": "Animaliste",
+        "subtitle": "Pour vos animaux réfugiés"
+    },
     "animalCreation": {
             "addAnimal": "Ajout d'un animal",
             "newAnimal": "Nouvel animal"
