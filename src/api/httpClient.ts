@@ -32,7 +32,6 @@ httpClient.interceptors.response.use(
   },
   async (error) => {
     if (error.response && error.response.status === FORBIDDEN_CODE) {
-      console.log(router.currentRoute.value.name);
       if (
         router.currentRoute.value.name === "Login" ||
         router.currentRoute.value.name === "Register"
