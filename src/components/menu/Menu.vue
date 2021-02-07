@@ -45,15 +45,15 @@
     </ul>
   </aside>
   <footer class="footer">
-    Version {{ showVersion() }}
+    {{ $t("menu.version") }} {{ showVersion() }}
     <ul>
       <li>
         <a href="https://github.com/Prakkkmak/animaliste-front">Github</a>
       </li>
       <li>
-        <a href="https://github.com/Prakkkmak/animaliste-front/issues"
-          >Reporter un bug</a
-        >
+        <a href="https://github.com/Prakkkmak/animaliste-front/issues">{{
+          $t("menu.reportBug")
+        }}</a>
       </li>
     </ul>
   </footer>

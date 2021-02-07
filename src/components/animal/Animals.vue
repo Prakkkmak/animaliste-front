@@ -25,6 +25,7 @@ import animalApi from "@/api/animal.api";
 import { Watch } from "vue-property-decorator";
 import { Options, Vue } from "vue-class-component";
 import Animal from "@/models/Animal";
+import toaster from "@/utils/toaster";
 import AnimalDetail from "./detail/AnimalDetail.vue";
 
 @Options({
