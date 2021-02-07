@@ -31,7 +31,6 @@ httpClient.interceptors.response.use(
     return response;
   },
   async (error) => {
-    console.log(error);
     if (error.response && error.response.status === FORBIDDEN_CODE) {
       await router.push({ path: "login" });
       toaster.warning("toast.warning.connect");
