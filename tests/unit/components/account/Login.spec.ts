@@ -3,11 +3,13 @@ import userEvent from "@testing-library/user-event";
 import Login from "@/components/user/Login.vue";
 import store from "@/store";
 
+jest.mock("@/router");
+
 beforeEach(() => {
   render(Login, {
     global: {
       plugins: [store],
-    }
+    },
   });
 });
 
@@ -70,6 +72,6 @@ describe("fill fields", () => {
 
   it("should login", async () => {
     userEvent.click(screen.getByText("user.login"));
-    await waitFor(() => screen.getByText("Le compte a été créé avec succès !"));
+    await waitFor(() => screen.getByText("Vous vous êtes connécté avec succès !"));
   });
 });

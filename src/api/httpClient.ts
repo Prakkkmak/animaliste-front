@@ -31,11 +31,12 @@ httpClient.interceptors.response.use(
     return response;
   },
   async (error) => {
+    console.log(error);
     if (error.response && error.response.status === FORBIDDEN_CODE) {
       await router.push({ path: "login" });
-      return Promise.resolve();
+      toaster.warning("toast.warning.connect");
+      return Promise.reject(error);
     }
-    toaster.error("Erreur dans la requête");
     return Promise.reject(error);
   }
 );

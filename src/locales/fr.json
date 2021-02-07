@@ -59,10 +59,14 @@
     "toast": {
         "pageUnderConstruction": "Page en cours de construction.",
         "success": {
-            "accountCreated": "Le compte a été créé avec succès !"
+            "accountCreated": "Le compte a été créé avec succès !",
+            "login": "Vous vous êtes connécté avec succès !"
         },
         "error": {
             "unknownError": "Une erreur est survenue. Veuillez contacter un administrateur système."
+        },
+        "warning": {
+            "connect": "Veuillez vous connecter"
         }
     }
 }

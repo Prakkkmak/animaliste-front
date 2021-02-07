@@ -8,12 +8,17 @@ export const handlers = [
 
   rest.post(`${BASE_URL}/users/login`, (req, res, ctx) => {
     const body = req.body as { mail: String; password: String };
-    if (body.mail === "mail@test.fr" && body.password === "12345678")
+    console.log(body);
+    console.log(body.mail === "mail@test.fr" && body.password === "12345678");
+    if (body.mail === "mail@test.fr" && body.password === "12345678") {
+      console.log("a");
       return res(
         // Respond with a 200 status code
-        ctx.status(202)
+        ctx.status(202),
+        ctx.text("token1234")
       );
-    return res(ctx.status(403));
+    }
+    return res(ctx.status(404));
   }),
 
   rest.post(`${BASE_URL}/users/register`, (req, res, ctx) => {

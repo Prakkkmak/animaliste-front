@@ -87,7 +87,7 @@ export default class Register extends Vue {
       this.$store.commit("setToken", token);
       toaster.success("toast.success.accountCreated");
     } catch (err) {
-      toaster.error("toast.error.unknownError");
+      toaster.error();
     } finally {
       this.mail = "";
       this.password = "";
