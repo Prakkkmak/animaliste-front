@@ -7,11 +7,11 @@
         <button
           class="delete"
           aria-label="delete"
-          @click="$emit('close')"
+          @click="this.onClose"
         ></button>
       </header>
       <section class="modal-card-body">
-        <AnimalCreationForm @exit="this.animalCreated" />
+        <AnimalCreationForm @on-exit="this.animalCreated" />
       </section>
       <footer class="modal-card-foot">
         <button class="button" @click="this.onClose">

@@ -50,7 +50,9 @@
         "connect": "Se connecter",
         "dogs": "Chiens",
         "general": "Général",
-        "other": "Autres"
+        "other": "Autres",
+        "reportBug": "Rapporter un bug",
+        "version": "Version"
     },
     "header": {
         "title": "Animaliste",

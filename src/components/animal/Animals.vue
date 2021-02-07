@@ -11,8 +11,8 @@
     <div v-for="animal in animals" :key="animal.id" class="columns">
       <AnimalDetail
         :id="animal.id"
-        @delete-animal="deleteAnimal"
-        @update-animal="updateAnimal"
+        @animal-deleted="deleteAnimal"
+        @animal-updated="updateAnimal"
         v-if="!dataFilterString.length || filteredData.includes(animal.id)"
       />
     </div>
@@ -25,6 +25,7 @@ import animalApi from "@/api/animal.api";
 import { Watch } from "vue-property-decorator";
 import { Options, Vue } from "vue-class-component";
 import Animal from "@/models/Animal";
+import toaster from "@/utils/toaster";
 import AnimalDetail from "./detail/AnimalDetail.vue";
 
 @Options({

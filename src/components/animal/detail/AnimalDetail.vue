@@ -12,68 +12,68 @@
           <AnimalDatum
             :fieldData="getFieldData('name')"
             :edit="modification"
-            @fieldUpdated="updateAnimal"
+            @field-updated="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('sex')"
             :edit="modification"
             :displayComponent="animalFieldDisplaySex"
-            @fieldUpdated="updateAnimal"
+            @field-updated="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('specie')"
             :edit="modification"
-            @fieldUpdated="updateAnimal"
+            @field-updated="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('race')"
             :edit="modification"
-            @fieldUpdated="updateAnimal"
+            @field-updated="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('description')"
             :edit="modification"
-            @fieldUpdated="updateAnimal"
+            @field-updated="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('likes')"
             :edit="modification"
-            @fieldUpdated="updateAnimal"
+            @field-updated="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('dislikes')"
             :edit="modification"
-            @fieldUpdated="updateAnimal"
+            @field-updated="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('vaccines')"
             :edit="modification"
-            @fieldUpdated="updateAnimal"
+            @field-updated="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('nutrition')"
             :edit="modification"
-            @fieldUpdated="updateAnimal"
+            @field-updated="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('origin')"
             :edit="modification"
-            @fieldUpdated="updateAnimal"
+            @field-updated="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('chip')"
             :edit="modification"
-            @fieldUpdated="updateAnimal"
+            @field-updated="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('registerDate')"
             :edit="modification"
-            @fieldUpdated="updateAnimal"
+            @field-updated="updateAnimal"
           />
           <AnimalDatum
             :fieldData="getFieldData('id')"
             :edit="false"
-            @fieldUpdated="updateAnimal"
+            @field-updated="updateAnimal"
           />
         </div>
         <div class="column is-4">
@@ -121,6 +121,7 @@ import AnimalDatum from "./AnimalField.vue";
   components: {
     AnimalDatum,
   },
+  emits: ["animal-updated"],
 })
 export default class AnimalDetail extends Vue {
   @Prop(String)
@@ -167,10 +168,8 @@ export default class AnimalDetail extends Vue {
     }
   }
 
-  updateAnimal(newData: any) {
-    Object.keys(newData).forEach((data) => {
-      this.datum[data] = newData[data];
-    });
+  updateAnimal(newData: { key: string; value: string }) {
+    this.datum[newData.key] = newData.value;
     this.modification = true;
     this.animalUpdated();
   }
@@ -189,7 +188,9 @@ export default class AnimalDetail extends Vue {
   }
 
   @Emit()
-  animalUpdated() {}
+  animalUpdated() {
+    return this.datum;
+  }
 
   @Emit()
   animalDeleted(id: string) {
