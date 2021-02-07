@@ -11,8 +11,8 @@
     <div v-for="animal in animals" :key="animal.id" class="columns">
       <AnimalDetail
         :id="animal.id"
-        @animalDeleted="deleteAnimal"
-        @animalUpdated="updateAnimal"
+        @animal-deleted="deleteAnimal"
+        @animal-updated="updateAnimal"
         v-if="!dataFilterString.length || filteredData.includes(animal.id)"
       />
     </div>

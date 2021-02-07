@@ -16,9 +16,12 @@
 
 <script lang="ts">
 import AnimalFieldDisplayDefault from "@/components/animal/form/AnimalFieldDisplayDefault.vue";
-import { Vue } from "vue-class-component";
+import { Options, Vue } from "vue-class-component";
 import { Emit, Prop } from "vue-property-decorator";
 
+@Options({
+  emits: ["field-updated"],
+})
 export default class AnimalField extends Vue {
   @Prop(Object)
   private readonly fieldData!: { value: string; key: string };
@@ -27,7 +30,7 @@ export default class AnimalField extends Vue {
   private readonly edit!: Boolean;
 
   @Prop(String)
-  private readonly displayComponent!: String;
+  private readonly displayComponent!: any;
 
   private display = this.displayComponent
     ? this.displayComponent
@@ -41,7 +44,7 @@ export default class AnimalField extends Vue {
 
   @Emit()
   fieldUpdated(newValue: string) {
-    return newValue;
+    return { key: this.fieldData.key, value: newValue };
   }
 }
 </script>
