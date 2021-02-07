@@ -1,32 +1,35 @@
 <template>
   <li @click="isPopUpOpen = true">
-    <a>{{ $t('menu.createAnimal') }}</a>
+    <a>{{ $t("menu.createAnimal") }}</a>
   </li>
   <AnimalCreationModal
     v-show="isPopUpOpen"
-    @close="isPopUpOpen = false"
-    @animal-created="onAnimalCreated"
+    @onClose="isPopUpOpen = false"
+    @animalCreated="onAnimalCreated"
   />
 </template>
 
-<script>
-import AnimalCreationModal from '../animal/AnimalCreationModal';
+<script lang="ts">
+import AnimalCreationModal from "@/components/animal/creation/AnimalCreationModal.vue";
+import { Options, Vue } from "vue-class-component";
+import { Emit } from "vue-property-decorator";
 
-export default {
-  name: 'AnimalCreationMenu',
-  components: { AnimalCreationModal },
-  data() {
-    return {
-      isPopUpOpen: false,
-    };
+@Options({
+  components: {
+    AnimalCreationModal,
   },
-  methods: {
-    onAnimalCreated() {
-      this.isPopUpOpen = false;
-      this.$emit('animal-created');
-    },
-  },
-};
+})
+export default class AnimalCreationMenu extends Vue {
+  private isPopUpOpen: Boolean = false;
+
+  onAnimalCreated() {
+    this.isPopUpOpen = false;
+    this.animalCreated();
+  }
+
+  @Emit()
+  animalCreated() {}
+}
 </script>
 
 <style scoped></style>

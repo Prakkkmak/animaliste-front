@@ -1,16 +1,18 @@
 <template>
   <ul v-if="!loading">
-    <input
-      class="input"
-      type="text"
-      placeholder=""
-      v-model="dataFilterString"
-    />
-    <div v-for="animal in data" :key="animal.id" class="columns">
+    <label>
+      <input
+        class="input"
+        type="text"
+        placeholder=""
+        v-model="dataFilterString"
+      />
+    </label>
+    <div v-for="animal in animals" :key="animal.id" class="columns">
       <AnimalDetail
         :id="animal.id"
-        @delete-animal="deleteAnimal"
-        @update-animal="updateAnimal"
+        @animal-deleted="deleteAnimal"
+        @animal-updated="updateAnimal"
         v-if="!dataFilterString.length || filteredData.includes(animal.id)"
       />
     </div>
@@ -18,68 +20,72 @@
   <p v-if="loading">Chargement en cours..</p>
 </template>
 
-<script>
-import AnimalDetail from './AnimalDetail.vue';
+<script lang="ts">
+import animalApi from "@/api/animal.api";
+import { Watch } from "vue-property-decorator";
+import { Options, Vue } from "vue-class-component";
+import Animal from "@/models/Animal";
+import toaster from "@/utils/toaster";
+import AnimalDetail from "./detail/AnimalDetail.vue";
 
-export default {
+@Options({
   components: {
     AnimalDetail,
   },
-  data() {
-    return {
-      data: {},
-      filteredData: [],
-      loading: true,
-      dataFilterString: '',
-    };
-  },
+})
+class Animals extends Vue {
+  private animals: Array<Animal> = [];
+
+  private filteredData: Array<string> = [];
+
+  private loading: boolean = true;
+
+  private dataFilterString: string = "";
+
   async mounted() {
     this.loading = true;
     try {
-      const res = await fetch(`${process.env.VUE_APP_BASE_URL}/animals`, {
-        method: 'get',
-        headers: {
-          'content-type': 'application/json',
-        },
-      });
-      this.data = await res.json();
+      const res = await animalApi.getAllAnimals();
+      this.animals = res.data;
     } catch (err) {
-      console.log(err);
+      toaster.error();
     } finally {
       this.loading = false;
     }
-  },
-  watch: {
-    dataFilterString() {
-      this.filterAnimal();
-    },
-  },
-  methods: {
-    deleteAnimal(id) {
-      this.data.splice(this.getIndex(id), 1);
-    },
-    updateAnimal(data) {
-      this.data[this.getIndex(data.id)] = data;
-    },
-    filterAnimal() {
-      this.filteredData = [];
-      this.data.forEach((animal) => {
-        Object.keys(animal).forEach((field) => {
-          if (
-            typeof animal[field] === 'string' &&
-            animal[field].includes(this.dataFilterString)
-          ) {
-            this.filteredData.push(animal.id);
-          }
-        });
+  }
+
+  deleteAnimal(id: string) {
+    this.animals.splice(this.getIndex(id), 1);
+  }
+
+  updateAnimal(animal: Animal) {
+    this.animals[this.getIndex(animal.id)] = animal;
+  }
+
+  getData(id: string): Animal | undefined {
+    return this.animals.find((animal) => animal.id === id);
+  }
+
+  getIndex(id: string): number {
+    const animal = this.getData(id);
+    if (animal) return this.animals.indexOf(animal);
+    return -1;
+  }
+
+  @Watch("dataFilterString")
+  filterAnimal() {
+    this.filteredData = [];
+    this.animals.forEach((animal) => {
+      Object.keys(animal).forEach((field) => {
+        if (
+          typeof animal[field] === "string" &&
+          animal[field].includes(this.dataFilterString)
+        ) {
+          this.filteredData.push(animal.id);
+        }
       });
-    },
-    getData(id) {
-      return this.data.find((animal) => animal.id === id);
-    },
-    getIndex(id) {
-      return this.data.indexOf(this.getData(id));
-    },
-  },
-};
+    });
+  }
+}
+export default Animals;
 </script>

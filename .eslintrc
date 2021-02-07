@@ -5,14 +5,18 @@
     "jest": true
   },
   "parserOptions": {
-    "parser": "babel-eslint",
+    "parser": "@typescript-eslint/parser",
     "sourceType": "module"
   },
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "extends": [
     "airbnb-base",
     "plugin:vue/vue3-essential",
     "prettier/vue",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "eslint:recommended"
   ],
   "rules": {
     "comma-dangle": "off",
@@ -24,7 +28,9 @@
     "vue/component-name-in-template-casing": ["error", "PascalCase", {
       "ignores": []
     }],
-    "prettier/prettier": ["error", { "singleQuote": true, "endOfLine": "auto" }],
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+    "prettier/prettier": ["error",{"endOfLine": "auto" }],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error"
   }
 }

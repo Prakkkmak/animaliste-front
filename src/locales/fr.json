@@ -24,18 +24,22 @@
         "cancel": "Annuler",
         "delete": "Supprimer",
         "save": "Enregistrer",
-        "search": "Rechercher"
+        "search": "Rechercher",
+        "modify": "Modifier"
     },
-    "account": {
-        "accountCreated": "Compte créé avec succès !",
+    "user": {
+        "accountCreated": "Le compte a été créé avec succès !",
+        "accountLogin": "Vous vous êtes connecté!",
         "disconnect": "Se déconnecter",
-        "errorMail": "Mail incorrect.",
+        "errorMail": "Mail incorrect. Votre mail doit être sous la forme jean.dupont@mail.fr.",
         "errorPassword": "Mot de passe incorrect.",
+        "errorPasswordMismatch": "Les deux mots de passe ne corespondent pas.",
+        "errorPasswordForm": "Le mot de passe doit faire 8 caractères.",
         "errorsText": "Veuillez corriger les erreurs suivantes",
         "login": "Se connecter",
         "mail": "Email",
         "password": "Mot de passe",
-        "register": "Enregister"
+        "register": "S'inscrire"
     },
     "menu": {
         "administration": "Administration",
@@ -46,10 +50,29 @@
         "connect": "Se connecter",
         "dogs": "Chiens",
         "general": "Général",
-        "other": "Autres"
+        "other": "Autres",
+        "reportBug": "Rapporter un bug",
+        "version": "Version"
+    },
+    "header": {
+        "title": "Animaliste",
+        "subtitle": "Pour vos animaux réfugiés"
     },
     "animalCreation": {
             "addAnimal": "Ajout d'un animal",
             "newAnimal": "Nouvel animal"
+    },
+    "toast": {
+        "pageUnderConstruction": "Page en cours de construction.",
+        "success": {
+            "accountCreated": "Le compte a été créé avec succès !",
+            "login": "Vous vous êtes connécté avec succès !"
+        },
+        "error": {
+            "unknownError": "Une erreur est survenue. Veuillez contacter un administrateur système."
+        },
+        "warning": {
+            "connect": "Veuillez vous connecter"
+        }
     }
 }

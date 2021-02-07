@@ -1,43 +1,46 @@
 <template>
-  <div id="app">
+  <div>
+    <Header />
+    <br />
     <div class="columns">
       <div class="column is-2">
         <Menu />
       </div>
       <div class="column">
-        <AccountCreation />
-        <AnimalCreation @animal-created="updateList" />
-        <Animals :key="animalListKey" />
+        <router-view />
       </div>
     </div>
   </div>
+  <footer class="footer">
+    <strong>Animaliste</strong> by
+    <a href="https://github.com/Prakkkmak">Lévy Marques</a> & Bastien Lamour.
+  </footer>
 </template>
 
-<script>
-import Animals from './components/animal/Animals.vue';
-import AnimalCreation from './components/animal/AnimalCreation.vue';
-import AccountCreation from './components/account/AccountCreation';
-import Menu from './components/menu/Menu';
+<script lang="ts">
+import Menu from "@/components/menu/Menu.vue";
+import Header from "@/components/Header.vue";
+import { Vue, Options } from "vue-class-component";
 
-export default {
-  name: 'App',
+@Options({
   components: {
     Menu,
-    AccountCreation,
-    Animals,
-    AnimalCreation,
+    Header,
   },
-  data() {
-    return {
-      animalListKey: 1,
-    };
-  },
-  methods: {
-    updateList() {
-      this.animalListKey += 1;
-    },
-  },
-};
+})
+export default class App extends Vue {
+  mounted() {
+    if (this.$store.state.token) {
+      this.account = this.$store.state.token;
+    }
+  }
+
+  private account = null;
+
+  accountLogin(account: any) {
+    this.account = account;
+  }
+}
 </script>
 
 <style>
@@ -47,6 +50,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

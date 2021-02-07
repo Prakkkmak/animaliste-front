@@ -1,53 +1,78 @@
 <template>
   <aside class="menu">
     <p class="menu-label">
-      {{ $t('menu.general') }}
+      {{ $t("menu.general") }}
     </p>
     <ul class="menu-list">
       <AnimalCreationMenu />
       <li>
-        <a>{{ $t('menu.animals') }}</a>
+        <router-link :to="{ name: 'Animals' }">
+          <a>{{ $t("menu.animals") }}</a>
+        </router-link>
         <ul>
           <li>
-            <a>{{ $t('menu.cats') }}</a>
+            <router-link :to="{ name: 'UnderConstruction' }">
+              <a>{{ $t("menu.cats") }}</a>
+            </router-link>
           </li>
           <li>
-            <a>{{ $t('menu.dogs') }}</a>
+            <router-link :to="{ name: 'UnderConstruction' }">
+              <a>{{ $t("menu.dogs") }}</a>
+            </router-link>
           </li>
           <li>
-            <a>{{ $t('menu.other') }}</a>
+            <router-link :to="{ name: 'UnderConstruction' }">
+              <a>{{ $t("menu.other") }}</a>
+            </router-link>
           </li>
         </ul>
       </li>
     </ul>
     <p class="menu-label">
-      {{ $t('menu.administration') }}
+      {{ $t("menu.administration") }}
     </p>
     <ul class="menu-list">
       <li>
-        <a>{{ $t('menu.createAccount') }}</a>
+        <router-link :to="{ name: 'Register' }">
+          <a>{{ $t("menu.createAccount") }}</a>
+        </router-link>
       </li>
       <li>
-        <a>{{ $t('menu.connect') }}</a>
-      </li>
-      <li>
-        <a>{{ $t('menu.other') }}</a>
+        <router-link :to="{ name: 'Login' }">
+          <a>{{ $t("menu.connect") }}</a>
+        </router-link>
       </li>
     </ul>
   </aside>
   <footer class="footer">
-    Version DEV-0.1 (14/01/2021)
-    <a href="https://github.com/Prakkkmak/animaliste-front">Github</a>
+    {{ $t("menu.version") }} {{ showVersion() }}
+    <ul>
+      <li>
+        <a href="https://github.com/Prakkkmak/animaliste-front">Github</a>
+      </li>
+      <li>
+        <a href="https://github.com/Prakkkmak/animaliste-front/issues">{{
+          $t("menu.reportBug")
+        }}</a>
+      </li>
+    </ul>
   </footer>
 </template>
 
-<script>
-import AnimalCreationMenu from './AnimalCreationMenu';
+<script lang="ts">
+import { Options, Vue } from "vue-class-component";
+import AnimalCreationMenu from "./AnimalCreationMenu.vue";
 
-export default {
-  name: 'Menu.vue',
-  components: { AnimalCreationMenu },
-};
+@Options({
+  components: {
+    AnimalCreationMenu,
+  },
+})
+export default class Menu extends Vue {
+  showVersion() {
+    return process.env.VUE_APP_VERSION;
+  }
+}
 </script>
 
 <style scoped></style>
