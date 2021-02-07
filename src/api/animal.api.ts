@@ -7,7 +7,8 @@ const api = {
 
   getAnimalById: async (id: string) => httpClient.get(`${END_POINT}/${id}`),
 
-  createAnimal: async (animalBody: any) => httpClient.post("", animalBody),
+  createAnimal: async (animalBody: any) =>
+    httpClient.post(END_POINT, animalBody),
 
   saveAnimal: async (id: string, animalBody: Animal) =>
     httpClient.put(`${END_POINT}/${id}`, animalBody),

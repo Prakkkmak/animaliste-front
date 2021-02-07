@@ -13,7 +13,7 @@
   </div>
   <footer class="footer">
     <strong>Animaliste</strong> by
-    <a href="https://github.com/Prakkkmak">Lévy Marque</a> & Bastien Lamour.
+    <a href="https://github.com/Prakkkmak">Lévy Marques</a> & Bastien Lamour.
   </footer>
 </template>
 

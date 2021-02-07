@@ -32,7 +32,14 @@ httpClient.interceptors.response.use(
   },
   async (error) => {
     if (error.response && error.response.status === FORBIDDEN_CODE) {
-      await router.push({ path: "login" });
+      console.log(router.currentRoute.value.name);
+      if (
+        router.currentRoute.value.name === "Login" ||
+        router.currentRoute.value.name === "Register"
+      ) {
+        return Promise.reject(error);
+      }
+      await router.push({ name: "Login" });
       toaster.warning("toast.warning.connect");
       return Promise.resolve(error);
     }
