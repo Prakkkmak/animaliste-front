@@ -4,8 +4,8 @@
   </li>
   <AnimalCreationModal
     v-show="isPopUpOpen"
-    @close="isPopUpOpen = false"
-    @animal-created="onAnimalCreated"
+    @onClose="isPopUpOpen = false"
+    @animalCreated="onAnimalCreated"
   />
 </template>
 

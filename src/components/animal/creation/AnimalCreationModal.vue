@@ -7,7 +7,7 @@
         <button
           class="delete"
           aria-label="delete"
-          @click="$emit('close')"
+          @click="this.onClose"
         ></button>
       </header>
       <section class="modal-card-body">

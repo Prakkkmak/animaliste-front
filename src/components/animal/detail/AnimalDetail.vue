@@ -189,7 +189,9 @@ export default class AnimalDetail extends Vue {
   }
 
   @Emit()
-  animalUpdated() {}
+  animalUpdated() {
+    return this.datum;
+  }
 
   @Emit()
   animalDeleted(id: string) {
