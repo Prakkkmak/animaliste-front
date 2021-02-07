@@ -46,6 +46,8 @@ class Animals extends Vue {
     try {
       const res = await animalApi.getAllAnimals();
       this.animals = res.data;
+    } catch (err) {
+      toaster.error();
     } finally {
       this.loading = false;
     }

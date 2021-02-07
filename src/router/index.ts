@@ -1,9 +1,9 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Animals from "@/components/animal/Animals.vue";
 import AnimalDetail from "@/components/animal/detail/AnimalDetail.vue";
-import AccountCreation from "@/components/user/Register.vue";
+import Register from "@/components/user/Register.vue";
 import UnderConstruction from "@/components/other/UnderConstruction.vue";
-import AccountLogin from "@/components/user/Login.vue";
+import Login from "@/components/user/Login.vue";
 
 const routes = [
   {
@@ -19,13 +19,13 @@ const routes = [
   },
   {
     path: "/register",
-    name: "AccountCreation",
-    component: AccountCreation,
+    name: "Register",
+    component: Register,
   },
   {
     path: "/login",
-    name: "AccountLogin",
-    component: AccountLogin,
+    name: "Login",
+    component: Login,
   },
   {
     path: "/under_construction",

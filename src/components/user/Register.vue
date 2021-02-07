@@ -65,7 +65,7 @@ import userApi from "@/api/user.api";
 import toaster from "@/utils/toaster";
 import { Vue } from "vue-class-component";
 
-export default class AccountRegister extends Vue {
+export default class Register extends Vue {
   private mail: string = "";
 
   private password: string = "";
@@ -93,7 +93,7 @@ export default class AccountRegister extends Vue {
       this.$store.commit("setToken", token);
       toaster.success("toast.success.accountCreated");
     } catch (err) {
-      toaster.error("toast.error.unknownError");
+      toaster.error();
     } finally {
       this.mail = "";
       this.password = "";

@@ -7,6 +7,7 @@ import {
 } from "vue-toastification/dist/types/types";
 import { TYPE } from "vue-toastification/dist/types/ts/constants";
 
+const UNKNOWN_ERROR = "toast.error.unknownError";
 const toast = useToast();
 
 const success = (
@@ -20,9 +21,12 @@ const success = (
   return toast.success(newContent, options);
 };
 const error = (
-  content: ToastContent,
+  content?: ToastContent,
   options?: (ToastOptions & { type?: TYPE.ERROR | undefined }) | undefined
 ): ToastID => {
+  if (!content) {
+    return error(UNKNOWN_ERROR);
+  }
   const newContent =
     typeof content === "string" && i18n.global.te(content)
       ? i18n.global.t(content)

@@ -41,7 +41,7 @@
   <div class="field">
     <p class="control">
       <button class="button is-success" @click="login">
-        {{ $t("user.register") }}
+        {{ $t("user.login") }}
       </button>
     </p>
   </div>
@@ -53,21 +53,32 @@ import { Vue } from "vue-class-component";
 import { Emit } from "vue-property-decorator";
 import toaster from "@/utils/toaster";
 
-export default class AccountLogin extends Vue {
+export default class Login extends Vue {
   private mail: string = "";
 
   private password: string = "";
 
   private errors: Array<string> = [];
 
+  checkForm() {
+    this.errors = [];
+    if (this.mail.length < 5 || !this.mail.includes("@"))
+      this.errors.push(this.$t("user.errorMail"));
+    if (this.password.length < 8)
+      this.errors.push(this.$t("user.errorPasswordForm"));
+    return this.errors.length === 0;
+  }
+
   async login() {
+    if (!this.checkForm()) return;
     try {
       const res = await userApi.login(this.mail, this.password);
       const token = res.data;
       this.$store.commit("setToken", token);
+      toaster.success("toast.success.login");
       this.onLogin(token);
     } catch (err) {
-      toaster.error("toast.error.unknownError");
+      toaster.error();
     } finally {
       this.mail = "";
       this.password = "";
@@ -80,5 +91,3 @@ export default class AccountLogin extends Vue {
   }
 }
 </script>
-
-<style scoped></style>

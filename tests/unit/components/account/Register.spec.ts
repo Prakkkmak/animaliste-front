@@ -1,13 +1,13 @@
 import { render, screen, waitFor } from "@testing-library/vue";
 import userEvent from "@testing-library/user-event";
-import AccountRegister from "../../../../src/components/user/Register.vue";
+import Register from "@/components/user/Register.vue";
 
 beforeEach(() => {
-  render(AccountRegister);
+  render(Register);
 });
 
 test("should have placeholder fields", () => {
-  expect(screen.getByPlaceholderText("user.mail")).toBeTruthy();
+  expect(screen.queryByPlaceholderText("user.mail")).toBeTruthy();
   const passwordFields = screen.getAllByPlaceholderText("user.password");
   expect(passwordFields.length).toEqual(2);
 });
@@ -21,11 +21,13 @@ describe("fill fields", () => {
     userEvent.type(passwordFields[1], "12345678");
   });
 
-  it("should register", async () => {
+  it("should reset form when register", async () => {
     const mailInput = screen.getByPlaceholderText("user.mail");
-    expect(screen.getByDisplayValue(/mail@test.fr/)).toBeTruthy();
+    const passwordInputs = screen.getAllByPlaceholderText("user.password");
     userEvent.click(screen.getByText("user.register"));
     await waitFor(() => expect(mailInput).toHaveDisplayValue(""));
+    await waitFor(() => expect(passwordInputs[0]).toHaveDisplayValue(""));
+    await waitFor(() => expect(passwordInputs[1]).toHaveDisplayValue(""));
   });
 
   it("should have wrong mail with no @", async () => {
@@ -33,25 +35,25 @@ describe("fill fields", () => {
     userEvent.clear(mailInput);
     userEvent.type(mailInput, "noarobase");
     userEvent.click(screen.getByText("user.register"));
-    await waitFor(() => expect(screen.getByText("user.errorMail")));
+    await waitFor(() => expect(screen.queryByText("user.errorMail")));
   });
 
-  it("should have wrong mail too few chars", async () => {
+  it("should have wrong mail not enough chars", async () => {
     const mailInput = screen.getByPlaceholderText("user.mail");
     userEvent.clear(mailInput);
     userEvent.type(mailInput, "@");
     userEvent.click(screen.getByText("user.register"));
-    await waitFor(() => expect(screen.getByText("user.errorMail")));
+    await waitFor(() => expect(screen.queryByText("user.errorMail")));
   });
 
-  it("should have password not enough long", async () => {
+  it("should have password not long enough", async () => {
     const passwordFields = screen.getAllByPlaceholderText("user.password");
     userEvent.clear(passwordFields[0]);
     userEvent.clear(passwordFields[1]);
     userEvent.type(passwordFields[0], "psw");
     userEvent.type(passwordFields[1], "psw");
     userEvent.click(screen.getByText("user.register"));
-    await waitFor(() => expect(screen.getByText("user.errorPasswordForm")));
+    await waitFor(() => expect(screen.queryByText("user.errorPasswordForm")));
   });
 
   it("should have password mismatch", async () => {
@@ -59,6 +61,8 @@ describe("fill fields", () => {
     userEvent.type(passwordFields[0], "12345678");
     userEvent.type(passwordFields[1], "123456789");
     userEvent.click(screen.getByText("user.register"));
-    await waitFor(() => expect(screen.getByText("user.errorPasswordMismatch")));
+    await waitFor(() =>
+      expect(screen.queryByText("user.errorPasswordMismatch"))
+    );
   });
 });
