@@ -4,76 +4,100 @@
       @click="extended = !extended"
       class="column is-clickable has-background-primary"
     >
-      {{ datum.name }}
+      {{ animal.name }}
     </div>
     <div v-if="extended" class="column">
       <div class="columns">
         <div class="column">
-          <AnimalDatum
-            :fieldData="getFieldData('name')"
+          <AnimalFieldInput
+            label="name"
+            :value="animal.name"
             :edit="modification"
-            @field-updated="updateAnimal"
+            @update="updateAnimal"
           />
-          <AnimalDatum
-            :fieldData="getFieldData('sex')"
+
+          <AnimalFieldInputSex
+            label="sex"
+            :value="animal.sex"
             :edit="modification"
-            :displayComponent="animalFieldDisplaySex"
-            @field-updated="updateAnimal"
+            @update="updateAnimal"
           />
-          <AnimalDatum
-            :fieldData="getFieldData('specie')"
+
+          <AnimalFieldInput
+            label="specie"
+            :value="animal.specie"
             :edit="modification"
-            @field-updated="updateAnimal"
+            @update="updateAnimal"
           />
-          <AnimalDatum
-            :fieldData="getFieldData('race')"
+
+          <AnimalFieldInput
+            label="race"
+            :value="animal.race"
             :edit="modification"
-            @field-updated="updateAnimal"
+            @update="updateAnimal"
           />
-          <AnimalDatum
-            :fieldData="getFieldData('description')"
+
+          <AnimalFieldInput
+            label="description"
+            :value="animal.description"
             :edit="modification"
-            @field-updated="updateAnimal"
+            @update="updateAnimal"
           />
-          <AnimalDatum
-            :fieldData="getFieldData('likes')"
+
+          <AnimalFieldInput
+            label="likes"
+            :value="animal.likes"
             :edit="modification"
-            @field-updated="updateAnimal"
+            @update="updateAnimal"
           />
-          <AnimalDatum
-            :fieldData="getFieldData('dislikes')"
+
+          <AnimalFieldInput
+            label="dislikes"
+            :value="animal.dislikes"
             :edit="modification"
-            @field-updated="updateAnimal"
+            @update="updateAnimal"
           />
-          <AnimalDatum
-            :fieldData="getFieldData('vaccines')"
+
+          <AnimalFieldInput
+            label="vaccines"
+            :value="animal.vaccines"
             :edit="modification"
-            @field-updated="updateAnimal"
+            @update="updateAnimal"
           />
-          <AnimalDatum
-            :fieldData="getFieldData('nutrition')"
+
+          <AnimalFieldInput
+            label="nutrition"
+            :value="animal.nutrition"
             :edit="modification"
-            @field-updated="updateAnimal"
+            @update="updateAnimal"
           />
-          <AnimalDatum
-            :fieldData="getFieldData('origin')"
+
+          <AnimalFieldInput
+            label="origin"
+            :value="animal.origin"
             :edit="modification"
-            @field-updated="updateAnimal"
+            @update="updateAnimal"
           />
-          <AnimalDatum
-            :fieldData="getFieldData('chip')"
+
+          <AnimalFieldInput
+            label="chip"
+            :value="animal.chip"
             :edit="modification"
-            @field-updated="updateAnimal"
+            @update="updateAnimal"
           />
-          <AnimalDatum
-            :fieldData="getFieldData('registerDate')"
+
+          <AnimalFieldInput
+            label="registerDate"
+            :value="animal.registerDate"
             :edit="modification"
-            @field-updated="updateAnimal"
+            @update="updateAnimal"
           />
-          <AnimalDatum
-            :fieldData="getFieldData('id')"
+
+          <AnimalFieldInput
+            label="id"
+            :value="animal.id"
             :edit="false"
-            @field-updated="updateAnimal"
+            @update="updateAnimal"
           />
         </div>
         <div class="column is-4">
@@ -110,16 +134,17 @@
 </template>
 <script lang="ts">
 import animalApi from "@/api/animal.api";
-import AnimalFieldDisplaySex from "@/components/animal/form/AnimalFieldDisplaySex.vue";
+import AnimalFieldInputSex from "@/components/animal/form/AnimalFieldInputSex.vue";
+import AnimalFieldInput from "@/components/animal/form/AnimalFieldInput.vue";
 import toaster from "@/utils/toaster";
 import { Options, Vue } from "vue-class-component";
 import { Emit, Prop } from "vue-property-decorator";
 import Animal from "@/models/Animal";
-import AnimalDatum from "./AnimalField.vue";
 
 @Options({
   components: {
-    AnimalDatum,
+    AnimalFieldInput,
+    AnimalFieldInputSex,
   },
   emits: ["animal-updated"],
 })
@@ -127,7 +152,7 @@ export default class AnimalDetail extends Vue {
   @Prop(String)
   private readonly id: string = "";
 
-  private datum: Animal = new Animal();
+  private animal: Animal = new Animal();
 
   private extended: Boolean = false;
 
@@ -135,21 +160,27 @@ export default class AnimalDetail extends Vue {
 
   private modification: Boolean = false;
 
-  private animalFieldDisplaySex = AnimalFieldDisplaySex;
+  private animalFieldDisplaySex = AnimalFieldInputSex;
 
   async mounted() {
     await this.loadAnimal();
   }
 
+  updateAnimal(key: string, value: string) {
+    this.animal[key] = value;
+    this.modification = true;
+    this.animalUpdated();
+  }
+
   getFieldData(key: string) {
-    return { key, value: this.datum[key] };
+    return { key, value: this.animal[key] };
   }
 
   async loadAnimal() {
     this.loading = true;
     try {
       const res = await animalApi.getAnimalById(this.id);
-      this.datum = res.data;
+      this.animal = res.data;
     } catch (err) {
       toaster.error();
     } finally {
@@ -160,18 +191,12 @@ export default class AnimalDetail extends Vue {
 
   async deleteAnimal() {
     try {
-      await animalApi.deleteAnimal(this.datum.id);
+      await animalApi.deleteAnimal(this.animal.id);
     } catch (err) {
       toaster.error();
     } finally {
-      this.animalDeleted(this.datum.id);
+      this.animalDeleted(this.animal.id);
     }
-  }
-
-  updateAnimal(newData: { key: string; value: string }) {
-    this.datum[newData.key] = newData.value;
-    this.modification = true;
-    this.animalUpdated();
   }
 
   cancelModification() {
@@ -180,7 +205,7 @@ export default class AnimalDetail extends Vue {
 
   async saveAnimal() {
     try {
-      await animalApi.saveAnimal(this.datum.id, this.datum);
+      await animalApi.saveAnimal(this.animal.id, this.animal);
     } catch (err) {
       toaster.error();
     }
@@ -189,7 +214,7 @@ export default class AnimalDetail extends Vue {
 
   @Emit()
   animalUpdated() {
-    return this.datum;
+    return this.animal;
   }
 
   @Emit()
