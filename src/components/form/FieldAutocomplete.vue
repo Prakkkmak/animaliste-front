@@ -1,4 +1,8 @@
 <!--https://stackoverflow.com/questions/51637551/attaching-a-dropdown-to-text-input-using-bulma -->
+<!--
+Pour utiliser ce champ, il suffit de lui passer une liste de choix (choices) en paramètre.
+Il renvoie les mises à jour du champ input.
+-->
 <template>
   <div class="dropdown is-active">
     <div class="dropdown-trigger">
@@ -29,6 +33,9 @@ export default class FieldAutocomplete extends Vue {
 
   private value: string = "";
 
+  /**
+   * Filtre les choix contenant et étant différent de la valeur de 'choice'
+   */
   filterChoices(): Array<string> {
     return this.choices.filter(
       (choice) => choice.includes(this.value) && !(choice === this.value)
