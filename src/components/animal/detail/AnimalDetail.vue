@@ -23,7 +23,7 @@
             @update="updateAnimal"
           />
 
-          <AnimalFieldInput
+          <AnimalFieldAutocomplete
             label="specie"
             :value="animal.specie"
             :edit="modification"
@@ -136,6 +136,7 @@
 import animalApi from "@/api/animal.api";
 import AnimalFieldInputSex from "@/components/animal/form/AnimalFieldInputSex.vue";
 import AnimalFieldInput from "@/components/animal/form/AnimalFieldInput.vue";
+import AnimalFieldAutocomplete from "@/components/animal/form/AnimalFieldAutocomplete.vue";
 import toaster from "@/utils/toaster";
 import { Options, Vue } from "vue-class-component";
 import { Emit, Prop } from "vue-property-decorator";
@@ -145,6 +146,7 @@ import Animal from "@/models/Animal";
   components: {
     AnimalFieldInput,
     AnimalFieldInputSex,
+    AnimalFieldAutocomplete,
   },
   emits: ["animal-updated"],
 })
@@ -168,7 +170,6 @@ export default class AnimalDetail extends Vue {
 
   updateAnimal(key: string, value: string) {
     this.animal[key] = value;
-    this.modification = true;
     this.animalUpdated();
   }
 

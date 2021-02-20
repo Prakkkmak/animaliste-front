@@ -23,9 +23,12 @@ Il renvoie les mises à jour du champ input.
 </template>
 
 <script lang="ts">
-import { Vue } from "vue-class-component";
+import { Options, Vue } from "vue-class-component";
 import { Prop } from "vue-property-decorator";
 
+@Options({
+  emits: ["update"],
+})
 export default class FieldAutocomplete extends Vue {
   @Prop() private choices: Array<string> = [];
 

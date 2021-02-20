@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/vue";
-import AnimalField from "@/components/animal/detail/AnimalField.vue";
+import AnimalFieldInput from "@/components/animal/detail/AnimalFieldInput.vue";
 
 const fieldData = {
   key: "field_name",
@@ -7,7 +7,7 @@ const fieldData = {
 };
 
 beforeEach(() => {
-  render(AnimalField, {
+  render(AnimalFieldInput, {
     props: {
       fieldData,
     },
