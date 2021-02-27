@@ -4,11 +4,17 @@ Pour utiliser ce champ, il suffit de lui passer une liste de choix (choices) en 
 Il renvoie les mises à jour du champ input.
 -->
 <template>
-  <div class="dropdown is-active">
+  <div class="dropdown is-active is-fluid">
     <div class="dropdown-trigger">
-      <input v-model="value" class="input" @input="$emit('update', value)" />
+      <input
+        @blur="focus = false"
+        @focus="focus = true"
+        v-model="value"
+        class="input"
+        @input="$emit('update', value)"
+      />
     </div>
-    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+    <div v-if="focus" class="dropdown-menu" id="dropdown-menu" role="menu">
       <div
         class="dropdown-content"
         v-for="choice in filterChoices()"
@@ -35,6 +41,8 @@ export default class FieldAutocomplete extends Vue {
   private dropdownItems: Array<string> = this.choices;
 
   private value: string = "";
+
+  private focus: boolean = false;
 
   /**
    * Filtre les choix contenant et étant différent de la valeur de 'choice'
