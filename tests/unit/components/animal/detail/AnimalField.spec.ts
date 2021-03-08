@@ -1,20 +1,16 @@
 import { render, screen } from "@testing-library/vue";
-import AnimalFieldInput from "@/components/animal/detail/AnimalFieldInput.vue";
-
-const fieldData = {
-  key: "field_name",
-  value: "field_value",
-};
+import AnimalFieldInput from "@/components/animal/form/AnimalFieldInput.vue";
 
 beforeEach(() => {
   render(AnimalFieldInput, {
     props: {
-      fieldData,
+      label: "field_name",
+      value: "field_value",
     },
   });
 });
 
 test("should show fieldData", () => {
-  screen.getByText(/field_name/);
+  screen.getByText(/animalDetail.field_name/);
   screen.getByText(/field_value/);
 });
