@@ -42,6 +42,7 @@
           <a>{{ $t("menu.connect") }}</a>
         </router-link>
       </li>
+      <DisconnectMenu />
     </ul>
   </aside>
   <footer class="footer">
@@ -61,11 +62,13 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import DisconnectMenu from "@/components/menu/DisconnectMenu.vue";
 import AnimalCreationMenu from "./AnimalCreationMenu.vue";
 
 @Options({
   components: {
     AnimalCreationMenu,
+    DisconnectMenu,
   },
 })
 export default class Menu extends Vue {

@@ -52,6 +52,7 @@ import userApi from "@/api/user.api";
 import { Vue } from "vue-class-component";
 import { Emit } from "vue-property-decorator";
 import toaster from "@/utils/toaster";
+import router from "@/router";
 
 export default class Login extends Vue {
   private mail: string = "";
@@ -76,6 +77,7 @@ export default class Login extends Vue {
       const token = res.data;
       this.$store.commit("setToken", token);
       toaster.success("toast.success.login");
+      await router.push("/");
       this.onLogin(token);
     } catch (err) {
       toaster.error();

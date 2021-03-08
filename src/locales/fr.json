@@ -7,6 +7,7 @@
         "male": "Mâle",
         "female": "Femelle",
         "hello": "Bonjour",
+        "id": "id",
         "identifier": "Identifiant",
         "likes": "Aime",
         "name": "Nom",
@@ -48,6 +49,7 @@
         "createAccount": "Créer un compte",
         "createAnimal": "Enregistrer un nouvel animal",
         "connect": "Se connecter",
+        "disconnect": "Se déconnecter",
         "dogs": "Chiens",
         "general": "Général",
         "other": "Autres",
@@ -66,7 +68,8 @@
         "pageUnderConstruction": "Page en cours de construction.",
         "success": {
             "accountCreated": "Le compte a été créé avec succès !",
-            "login": "Vous vous êtes connécté avec succès !"
+            "login": "Vous vous êtes connécté avec succès !",
+            "disconnect": "Vous êtes désormais déconnecté."
         },
         "error": {
             "unknownError": "Une erreur est survenue. Veuillez contacter un administrateur système."
